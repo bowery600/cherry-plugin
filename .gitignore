@@ -1,0 +1,7 @@
+# Exclude large zipped backups and packages to optimize token usage and indexing speed.
+*.zip
+*.zip.bak
+test_unzip/
+node_modules/
+graphify-out/
+.playwright-mcp/

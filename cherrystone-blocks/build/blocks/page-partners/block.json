@@ -1,0 +1,18 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "cherrystone/page-partners",
+  "version": "1.0.0",
+  "title": "Partners Page Template",
+  "category": "cherrystone-pages",
+  "icon": "networking",
+  "description": "Locked full Partners page layout composed from Cherrystone section blocks.",
+  "textdomain": "cherrystone-blocks",
+  "supports": {
+    "html": false,
+    "align": [
+      "full"
+    ]
+  },
+  "attributes": {}
+}

@@ -1,0 +1,45 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "cherrystone/coastal-motif-spline-hero",
+	"version": "1.0.0",
+	"title": "Coastal Spline Hero",
+	"category": "cherrystone-core",
+	"icon": "cover-image",
+	"description": "Premium landing page hero block featuring interactive SVG animated coastal spline wave coordinates.",
+	"textdomain": "cherrystone-blocks",
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ]
+	},
+	"attributes": {
+		"kicker": {
+			"type": "string",
+			"default": "COASTAL VENTURE NETWORK"
+		},
+		"headline": {
+			"type": "string",
+			"default": "Early-stage capital for New England founders."
+		},
+		"subheading": {
+			"type": "string",
+			"default": "We bring pooled angel funding, sector expertise, and board leadership to accelerate regional startups from screening to scale."
+		},
+		"btnPrimaryText": {
+			"type": "string",
+			"default": "APPLY FOR FUNDING"
+		},
+		"btnPrimaryLink": {
+			"type": "string",
+			"default": "#apply"
+		},
+		"btnSecondaryText": {
+			"type": "string",
+			"default": "JOIN AS MEMBER"
+		},
+		"btnSecondaryLink": {
+			"type": "string",
+			"default": "#join"
+		}
+	}
+}

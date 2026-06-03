@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0"
+	xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:wp="http://wordpress.org/export/1.2/"
+>
+<channel>
+	<title>Cherrystone Angel Group</title>
+	<link>http://localhost</link>
+	<description>Venture Capital and Angel Investing</description>
+	<pubDate>Wed, 03 Jun 2026 00:00:00 +0000</pubDate>
+	<language>en-US</language>
+	<wp:wxr_version>1.2</wp:wxr_version>
+	<wp:base_site_url>http://localhost</wp:base_site_url>
+	<wp:base_blog_url>http://localhost</wp:base_blog_url>
+
+	<!-- Page: Home -->
+	<item>
+		<title>Home</title>
+		<link>http://localhost/home</link>
+		<pubDate>Wed, 03 Jun 2026 00:00:00 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost/?page_id=10001</guid>
+		<description></description>
+		<content:encoded><![CDATA[<!-- wp:cherrystone/page-home /-->]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>10001</wp:post_id>
+		<wp:post_date><![CDATA[2026-06-03 00:00:00]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-06-03 00:00:00]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[home]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>1</wp:menu_order>
+		<wp:post_type><![CDATA[page]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+	</item>
+
+	<!-- Page: About -->
+	<item>
+		<title>About</title>
+		<link>http://localhost/about</link>
+		<pubDate>Wed, 03 Jun 2026 00:00:00 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost/?page_id=10002</guid>
+		<description></description>
+		<content:encoded><![CDATA[<!-- wp:cherrystone/page-about /-->]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>10002</wp:post_id>
+		<wp:post_date><![CDATA[2026-06-03 00:00:00]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-06-03 00:00:00]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[about]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>2</wp:menu_order>
+		<wp:post_type><![CDATA[page]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+	</item>
+
+	<!-- Page: Apply -->
+	<item>
+		<title>Apply</title>
+		<link>http://localhost/apply</link>
+		<pubDate>Wed, 03 Jun 2026 00:00:00 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost/?page_id=10003</guid>
+		<description></description>
+		<content:encoded><![CDATA[<!-- wp:html -->
+<section class="page-hero with-graphic">
+	<div class="container">
+		<span class="eyebrow accent">Apply for capital</span>
+		<h1 style="margin-top:24px">Tell us what<br>you're building.</h1>
+		<p class="lede">For founders raising in life sciences, software, consumer, industrial tech, healthcare, or fintech. We read every application - even the ones we say no to.</p>
+		<div class="page-hero-meta">
+			<span><strong>Stage</strong> Pre-seed to Series A</span>
+			<span><strong>Geography</strong> New England preferred</span>
+			<span><strong>Verticals</strong> 6</span>
+		</div>
+		<div class="application-progress" data-cherry-progress aria-label="Application readiness 0%">
+			<div>
+				<span>Application readiness</span>
+				<strong data-cherry-progress-value>0%</strong>
+			</div>
+			<span class="application-progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span data-cherry-progress-bar style="width:0%"></span></span>
+		</div>
+	</div>
+</section>
+
+<section class="block warm diligence-timeline-section">
+	<div class="container">
+		<div class="block-head">
+			<div>
+				<span class="eyebrow accent">Process</span>
+				<h2 style="margin-top:24px">The path to capital.</h2>
+			</div>
+			<p class="lede">We move quickly and respect your time. These are the steps we use as we evaluate your application.</p>
+		</div>
+		<div class="value-grid">
+			<div class="value-card"><span class="num">01 - APPLY</span><h3>Submit the basics.</h3><p>Tell us what you are scaling, your New England roots, and your current round size.</p></div>
+			<div class="value-card"><span class="num">02 - SCREEN</span><h3>Meet the committee.</h3><p>A focused screening conversation with members who understand your sector and stage.</p></div>
+			<div class="value-card"><span class="num">03 - DILIGENCE</span><h3>Go deeper with members.</h3><p>We review customers, product, metrics, market assumptions, and round structure.</p></div>
+			<div class="value-card"><span class="num">04 - PITCH</span><h3>Pitch the room.</h3><p>Present to the Cherrystone membership and move toward individual checks.</p></div>
+		</div>
+	</div>
+</section>
+<!-- /wp:html -->
+
+<!-- wp:cherrystone/founder-application-form /-->
+
+<!-- wp:html -->
+<section class="footer-cta">
+	<div class="container footer-cta-grid">
+		<div>
+			<span class="eyebrow accent">Get involved</span>
+			<h2>Capital. Judgment. <em>Time.</em><br>Where founders need it.</h2>
+		</div>
+		<div class="footer-cta-cards">
+			<a class="footer-cta-card" href="/apply/"><span>FOR FOUNDERS</span><h3>Apply for capital</h3><p>One application, reviewed by our investment committee.</p></a>
+			<a class="footer-cta-card" href="/members/"><span>FOR INVESTORS</span><h3>Become a member</h3><p>Join active members investing alongside operators, founders, and former exits.</p></a>
+		</div>
+	</div>
+</section>
+<!-- /wp:html -->]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>10003</wp:post_id>
+		<wp:post_date><![CDATA[2026-06-03 00:00:00]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-06-03 00:00:00]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[apply]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>3</wp:menu_order>
+		<wp:post_type><![CDATA[page]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+	</item>
+
+	<!-- Page: Communications -->
+	<item>
+		<title>Communications</title>
+		<link>http://localhost/communications</link>
+		<pubDate>Wed, 03 Jun 2026 00:00:00 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost/?page_id=10004</guid>
+		<description></description>
+		<content:encoded><![CDATA[<!-- wp:cherrystone/page-communications /-->]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>10004</wp:post_id>
+		<wp:post_date><![CDATA[2026-06-03 00:00:00]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-06-03 00:00:00]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[communications]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>4</wp:menu_order>
+		<wp:post_type><![CDATA[page]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+	</item>
+
+	<!-- Page: Leadership -->
+	<item>
+		<title>Leadership</title>
+		<link>http://localhost/leadership</link>
+		<pubDate>Wed, 03 Jun 2026 00:00:00 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost/?page_id=10005</guid>
+		<description></description>
+		<content:encoded><![CDATA[<!-- wp:cherrystone/page-leadership /-->]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>10005</wp:post_id>
+		<wp:post_date><![CDATA[2026-06-03 00:00:00]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-06-03 00:00:00]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[leadership]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>5</wp:menu_order>
+		<wp:post_type><![CDATA[page]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+	</item>
+
+	<!-- Page: Member Interest -->
+	<item>
+		<title>Member Interest</title>
+		<link>http://localhost/member-interest</link>
+		<pubDate>Wed, 03 Jun 2026 00:00:00 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost/?page_id=10006</guid>
+		<description></description>
+		<content:encoded><![CDATA[<!-- wp:cherrystone/page-member-interest /-->]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>10006</wp:post_id>
+		<wp:post_date><![CDATA[2026-06-03 00:00:00]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-06-03 00:00:00]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[member-interest]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>6</wp:menu_order>
+		<wp:post_type><![CDATA[page]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+	</item>
+
+	<!-- Page: Member Portal -->
+	<item>
+		<title>Member Portal</title>
+		<link>http://localhost/member-portal</link>
+		<pubDate>Wed, 03 Jun 2026 00:00:00 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost/?page_id=10007</guid>
+		<description></description>
+		<content:encoded><![CDATA[<!-- wp:cherrystone/page-member-portal /-->]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>10007</wp:post_id>
+		<wp:post_date><![CDATA[2026-06-03 00:00:00]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-06-03 00:00:00]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[member-portal]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>7</wp:menu_order>
+		<wp:post_type><![CDATA[page]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+	</item>
+
+	<!-- Page: Member Directory -->
+	<item>
+		<title>Member Directory</title>
+		<link>http://localhost/member-directory</link>
+		<pubDate>Wed, 03 Jun 2026 00:00:00 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost/?page_id=10014</guid>
+		<description></description>
+		<content:encoded><![CDATA[<!-- wp:cherrystone/page-member-directory /-->]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>10014</wp:post_id>
+		<wp:post_date><![CDATA[2026-06-03 00:00:00]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-06-03 00:00:00]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[member-directory]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>8</wp:menu_order>
+		<wp:post_type><![CDATA[page]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+	</item>
+
+	<!-- Page: Members -->
+	<item>
+		<title>Members</title>
+		<link>http://localhost/members</link>
+		<pubDate>Wed, 03 Jun 2026 00:00:00 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost/?page_id=10008</guid>
+		<description></description>
+		<content:encoded><![CDATA[<!-- wp:cherrystone/page-members /-->]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>10008</wp:post_id>
+		<wp:post_date><![CDATA[2026-06-03 00:00:00]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-06-03 00:00:00]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[members]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>8</wp:menu_order>
+		<wp:post_type><![CDATA[page]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+	</item>
+
+	<!-- Page: Pitch -->
+	<item>
+		<title>Pitch</title>
+		<link>http://localhost/pitch</link>
+		<pubDate>Wed, 03 Jun 2026 00:00:00 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost/?page_id=10009</guid>
+		<description></description>
+		<content:encoded><![CDATA[<!-- wp:cherrystone/page-pitch /-->]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>10009</wp:post_id>
+		<wp:post_date><![CDATA[2026-06-03 00:00:00]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-06-03 00:00:00]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[pitch]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>9</wp:menu_order>
+		<wp:post_type><![CDATA[page]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+	</item>
+
+	<!-- Page: Portfolio -->
+	<item>
+		<title>Portfolio</title>
+		<link>http://localhost/portfolio</link>
+		<pubDate>Wed, 03 Jun 2026 00:00:00 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost/?page_id=10010</guid>
+		<description></description>
+		<content:encoded><![CDATA[<!-- wp:cherrystone/page-portfolio /-->]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>10010</wp:post_id>
+		<wp:post_date><![CDATA[2026-06-03 00:00:00]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-06-03 00:00:00]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[portfolio]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>10</wp:menu_order>
+		<wp:post_type><![CDATA[page]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+	</item>
+
+	<!-- Page: Portfolio Exits -->
+	<item>
+		<title>Portfolio Exits</title>
+		<link>http://localhost/portfolio-exits</link>
+		<pubDate>Wed, 03 Jun 2026 00:00:00 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost/?page_id=10011</guid>
+		<description></description>
+		<content:encoded><![CDATA[<!-- wp:cherrystone/page-portfolio-exits /-->]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>10011</wp:post_id>
+		<wp:post_date><![CDATA[2026-06-03 00:00:00]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-06-03 00:00:00]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[portfolio-exits]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>11</wp:menu_order>
+		<wp:post_type><![CDATA[page]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+	</item>
+
+	<!-- Page: Sponsors -->
+	<item>
+		<title>Sponsors</title>
+		<link>http://localhost/sponsors</link>
+		<pubDate>Wed, 03 Jun 2026 00:00:00 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost/?page_id=10012</guid>
+		<description></description>
+		<content:encoded><![CDATA[<!-- wp:cherrystone/page-sponsors /-->]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>10012</wp:post_id>
+		<wp:post_date><![CDATA[2026-06-03 00:00:00]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-06-03 00:00:00]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[sponsors]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>12</wp:menu_order>
+		<wp:post_type><![CDATA[page]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+	</item>
+
+	<!-- Page: Partners -->
+	<item>
+		<title>Partners</title>
+		<link>http://localhost/partners</link>
+		<pubDate>Wed, 03 Jun 2026 00:00:00 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost/?page_id=10013</guid>
+		<description></description>
+		<content:encoded><![CDATA[<!-- wp:cherrystone/page-partners /-->]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>10013</wp:post_id>
+		<wp:post_date><![CDATA[2026-06-03 00:00:00]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-06-03 00:00:00]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[partners]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>13</wp:menu_order>
+		<wp:post_type><![CDATA[page]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+	</item>
+</channel>
+</rss>

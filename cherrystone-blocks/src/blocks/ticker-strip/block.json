@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "cherrystone/ticker-strip",
+	"version": "1.0.0",
+	"title": "Ticker Strip",
+	"category": "cherrystone",
+	"icon": "ellipsis",
+	"description": "Animated portfolio and event ticker strip.",
+	"textdomain": "cherrystone-blocks",
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ]
+	},
+	"attributes": {
+		"items": {
+			"type": "array",
+			"default": [
+				{ "text": "Advanced Silicon Group - Lead Seed" },
+				{ "text": "Narragansett Brewery - Recap" },
+				{ "text": "Flourish Care - Priced Seed" },
+				{ "text": "Pitch Night 2026 - Oct 21, Providence" },
+				{ "text": "NODAR - Series A follow" }
+			]
+		}
+	}
+}

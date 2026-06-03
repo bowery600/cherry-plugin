@@ -1,0 +1,237 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "cherrystone/member-portal",
+  "version": "1.0.0",
+  "title": "Member Portal",
+  "category": "cherrystone-core",
+  "icon": "lock",
+  "description": "Editable member portal landing, meeting schedule, and resource cards.",
+  "textdomain": "cherrystone-blocks",
+  "render": "file:./render.php",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "attributes": {
+    "heroEyebrow": {
+      "type": "string",
+      "default": "Member portal"
+    },
+    "heroHeading": {
+      "type": "string",
+      "default": "Member information and resources."
+    },
+    "heroLede": {
+      "type": "string",
+      "default": "Calendar, screening committee assignments, dues information, and member-only documents."
+    },
+    "eventsEyebrow": {
+      "type": "string",
+      "default": "This year"
+    },
+    "eventsHeading": {
+      "type": "string",
+      "default": "Upcoming meetings."
+    },
+    "eventsLede": {
+      "type": "string",
+      "default": "All times Eastern. Member meetings are confidential; please do not forward calendar invites."
+    },
+    "events": {
+      "type": "array",
+      "default": [
+        {
+          "day": "20",
+          "month": "May",
+          "year": "2026",
+          "title": "General Meeting",
+          "loc": "Bryant University, Smithfield, RI",
+          "type": "In-person",
+          "ctaLabel": "",
+          "url": ""
+        },
+        {
+          "day": "27",
+          "month": "May",
+          "year": "2026",
+          "title": "Screening Committee",
+          "loc": "Zoom",
+          "type": "Remote",
+          "ctaLabel": "",
+          "url": ""
+        },
+        {
+          "day": "17",
+          "month": "June",
+          "year": "2026",
+          "title": "General Meeting",
+          "loc": "Brown University, South Street Landing",
+          "type": "In-person",
+          "ctaLabel": "",
+          "url": ""
+        },
+        {
+          "day": "24",
+          "month": "June",
+          "year": "2026",
+          "title": "Screening Committee",
+          "loc": "Zoom",
+          "type": "Remote",
+          "ctaLabel": "",
+          "url": ""
+        },
+        {
+          "day": "15",
+          "month": "July",
+          "year": "2026",
+          "title": "General Meeting",
+          "loc": "Agawam Hunt Club, Rumford, RI",
+          "type": "In-person",
+          "ctaLabel": "",
+          "url": ""
+        },
+        {
+          "day": "29",
+          "month": "July",
+          "year": "2026",
+          "title": "Screening Committee",
+          "loc": "Zoom",
+          "type": "Remote",
+          "ctaLabel": "",
+          "url": ""
+        },
+        {
+          "day": "",
+          "month": "August",
+          "year": "2026",
+          "title": "No meeting",
+          "loc": "",
+          "type": "",
+          "ctaLabel": "",
+          "url": ""
+        },
+        {
+          "day": "16",
+          "month": "Sept",
+          "year": "2026",
+          "title": "General Meeting",
+          "loc": "Location TBD",
+          "type": "In-person",
+          "ctaLabel": "",
+          "url": ""
+        },
+        {
+          "day": "30",
+          "month": "Sept",
+          "year": "2026",
+          "title": "Screening Committee",
+          "loc": "Zoom",
+          "type": "Remote",
+          "ctaLabel": "",
+          "url": ""
+        },
+        {
+          "day": "21",
+          "month": "Oct",
+          "year": "2026",
+          "title": "Venture Pitch Night",
+          "loc": "CIC, Providence, RI",
+          "type": "In-person",
+          "ctaLabel": "",
+          "url": ""
+        },
+        {
+          "day": "28",
+          "month": "Oct",
+          "year": "2026",
+          "title": "Screening Committee",
+          "loc": "Zoom",
+          "type": "Remote",
+          "ctaLabel": "",
+          "url": ""
+        },
+        {
+          "day": "18",
+          "month": "Nov",
+          "year": "2026",
+          "title": "General Meeting",
+          "loc": "Location TBD",
+          "type": "In-person",
+          "ctaLabel": "",
+          "url": ""
+        },
+        {
+          "day": "02",
+          "month": "Dec",
+          "year": "2026",
+          "title": "Screening Committee",
+          "loc": "Zoom",
+          "type": "Remote",
+          "ctaLabel": "",
+          "url": ""
+        },
+        {
+          "day": "16",
+          "month": "Dec",
+          "year": "2026",
+          "title": "Holiday Party",
+          "loc": "Agawam Hunt Club, Rumford, RI",
+          "type": "In-person",
+          "ctaLabel": "",
+          "url": ""
+        }
+      ]
+    },
+    "resourcesEyebrow": {
+      "type": "string",
+      "default": "Documents"
+    },
+    "resourcesHeading": {
+      "type": "string",
+      "default": "Member-only resources."
+    },
+    "resourcesLede": {
+      "type": "string",
+      "default": "For internal use by current members. Do not redistribute."
+    },
+    "resources": {
+      "type": "array",
+      "default": [
+        {
+          "tag": "GOVERNANCE",
+          "title": "Member handbook (2026 edition)",
+          "desc": "Bylaws, voting procedures, and committee structure."
+        },
+        {
+          "tag": "FINANCIAL",
+          "title": "Annual dues schedule",
+          "desc": "2026 dues, payment instructions, and renewal calendar."
+        },
+        {
+          "tag": "LEGAL",
+          "title": "506(c) accreditation forms",
+          "desc": "Forms required for participation in priced rounds."
+        },
+        {
+          "tag": "SCREENING",
+          "title": "Screening committee playbook",
+          "desc": "How we evaluate, score, and surface deals to the room."
+        },
+        {
+          "tag": "PORTFOLIO",
+          "title": "Portfolio report",
+          "desc": "Confidential update on active companies."
+        },
+        {
+          "tag": "INTROS",
+          "title": "Member introduction request form",
+          "desc": "Request a warm intro from another member."
+        }
+      ]
+    }
+  }
+}

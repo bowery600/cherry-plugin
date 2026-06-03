@@ -1,0 +1,41 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "cherrystone/events-list",
+  "version": "1.1.0",
+  "title": "Events List",
+  "category": "cherrystone",
+  "icon": "calendar-alt",
+  "description": "Pitch Nights and events list driven by the Pitch Nights you manage in wp-admin.",
+  "textdomain": "cherrystone-blocks",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "attributes": {
+    "eyebrow": {
+      "type": "string",
+      "default": "Calendar"
+    },
+    "heading": {
+      "type": "string",
+      "default": "Upcoming events."
+    },
+    "lede": {
+      "type": "string",
+      "default": "Add meetings, deadlines, pitch nights, committee sessions, or community events."
+    },
+    "maxItems": {
+      "type": "number",
+      "default": 0
+    },
+    "upcomingOnly": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "render": "file:./render.php"
+}

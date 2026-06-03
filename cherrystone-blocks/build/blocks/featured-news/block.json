@@ -1,0 +1,57 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "cherrystone/featured-news",
+  "version": "1.0.0",
+  "title": "Featured News",
+  "category": "cherrystone-core",
+  "icon": "megaphone",
+  "description": "Editorial layout for featured story and stacked recent news posts.",
+  "textdomain": "cherrystone-blocks",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "attributes": {
+    "featuredCategory": {
+      "type": "string",
+      "default": "Featured Letter"
+    },
+    "featuredDate": {
+      "type": "string",
+      "default": "May 30, 2026"
+    },
+    "featuredTitle": {
+      "type": "string",
+      "default": "Annual Letter to New England Founders & Co-Investors"
+    },
+    "featuredDesc": {
+      "type": "string",
+      "default": "Reflecting on two decades of patient, operator-led capital. Read our deep dive into the current state of early-stage software, healthcare tech, and life sciences in Providence and Boston."
+    },
+    "featuredUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "sidePosts": {
+      "type": "array",
+      "default": [
+        {
+          "date": "May 12, 2026",
+          "title": "Advanced Silicon Group raises Priced Seed Round led by members",
+          "cat": "Portfolio News",
+          "url": ""
+        },
+        {
+          "date": "April 28, 2026",
+          "title": "Narragansett Brewery recapitalization secures regional growth",
+          "cat": "Portfolio News",
+          "url": ""
+        }
+      ]
+    }
+  }
+}

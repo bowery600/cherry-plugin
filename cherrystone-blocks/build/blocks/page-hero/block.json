@@ -1,0 +1,93 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "cherrystone/page-hero",
+  "version": "1.0.0",
+  "title": "Page Hero",
+  "category": "cherrystone-core",
+  "icon": "cover-image",
+  "description": "Reusable inner-page hero with eyebrow, lede, optional graphic, and metadata.",
+  "textdomain": "cherrystone-blocks",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "attributes": {
+    "eyebrow": {
+      "type": "string",
+      "default": "Page"
+    },
+    "heading": {
+      "type": "string",
+      "default": "A focused page introduction."
+    },
+    "lede": {
+      "type": "string",
+      "default": "Use this section to orient visitors with a concise summary and a few high-signal details."
+    },
+    "showGraphic": {
+      "type": "boolean",
+      "default": true
+    },
+    "showMeta": {
+      "type": "boolean",
+      "default": true
+    },
+    "showActions": {
+      "type": "boolean",
+      "default": false
+    },
+    "showProgress": {
+      "type": "boolean",
+      "default": false
+    },
+    "progressLabel": {
+      "type": "string",
+      "default": "Application readiness"
+    },
+    "progressValue": {
+      "type": "number",
+      "default": 0
+    },
+    "primaryCtaLabel": {
+      "type": "string",
+      "default": "Get started"
+    },
+    "primaryCtaUrl": {
+      "type": "string",
+      "default": "/"
+    },
+    "secondaryCtaLabel": {
+      "type": "string",
+      "default": "Learn more"
+    },
+    "secondaryCtaUrl": {
+      "type": "string",
+      "default": "/"
+    },
+    "metaItems": {
+      "type": "array",
+      "default": [
+        {
+          "label": "Founded",
+          "value": "2004"
+        },
+        {
+          "label": "HQ",
+          "value": "Providence, RI"
+        },
+        {
+          "label": "Focus",
+          "value": "New England"
+        },
+        {
+          "label": "Verticals",
+          "value": "6"
+        }
+      ]
+    }
+  }
+}

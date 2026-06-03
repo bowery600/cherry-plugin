@@ -1,0 +1,18 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "cherrystone/page-sponsors",
+  "version": "1.0.0",
+  "title": "Sponsors Page Template",
+  "category": "cherrystone-pages",
+  "icon": "layout",
+  "description": "Locked full Sponsors page layout composed from Cherrystone section blocks.",
+  "textdomain": "cherrystone-blocks",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ]
+  }
+}

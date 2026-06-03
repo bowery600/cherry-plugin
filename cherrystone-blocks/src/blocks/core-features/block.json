@@ -1,0 +1,52 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "cherrystone/core-features",
+	"version": "1.0.0",
+	"title": "Core Features",
+	"category": "cherrystone",
+	"icon": "grid-view",
+	"description": "Three-column value proposition block from the Cherrystone homepage.",
+	"textdomain": "cherrystone-blocks",
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ]
+	},
+	"attributes": {
+		"eyebrow": {
+			"type": "string",
+			"default": "What we do"
+		},
+		"heading": {
+			"type": "string",
+			"default": "A working group, not a fund."
+		},
+		"lede": {
+			"type": "string",
+			"default": "We are a member-led group. Each investor writes their own check, and the room reviews every deal together. Cherrystone has been doing this for two decades - patiently, in New England."
+		},
+		"cards": {
+			"type": "array",
+			"default": [
+				{
+					"num": "01 - CAPITAL",
+					"icon": "money",
+					"title": "Early-stage checks across six verticals.",
+					"body": "Life sciences, software, consumer, industrial tech, healthcare, and fintech. Individual member checks plus pooled vehicles when the round calls for it."
+				},
+				{
+					"num": "02 - JUDGMENT",
+					"icon": "layers",
+					"title": "Operators with real exits.",
+					"body": "Our leadership and members include a former Canadian Ambassador, a former Pfizer VP, M&A bankers, PE partners, and founders behind exits to Merck, Verifone, Philips, and Genscape."
+				},
+				{
+					"num": "03 - TIME",
+					"icon": "clock",
+					"title": "Long-term partners after the wire.",
+					"body": "Founders we back get hands-on help - board seats where useful, intros to customers and downstream funds, and follow-on capital when the metrics earn it."
+				}
+			]
+		}
+	}
+}

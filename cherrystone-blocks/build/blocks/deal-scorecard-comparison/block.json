@@ -1,0 +1,83 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "cherrystone/deal-scorecard-comparison",
+  "version": "1.0.0",
+  "title": "Deal Scorecard Comparison",
+  "category": "cherrystone-investors",
+  "icon": "chart-bar",
+  "description": "Side-by-side visual comparison of active deals under review, showing scores across key metrics.",
+  "textdomain": "cherrystone-blocks",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "attributes": {
+    "eyebrow": {
+      "type": "string",
+      "default": "ACTIVE PIPELINE"
+    },
+    "heading": {
+      "type": "string",
+      "default": "Deals under review."
+    },
+    "lede": {
+      "type": "string",
+      "default": "A side-by-side look at the startups currently moving through our diligence process, scored across the dimensions that matter most to our members."
+    },
+    "deals": {
+      "type": "array",
+      "default": [
+        {
+          "company": "Visiomed Rx",
+          "sector": "Life Sciences",
+          "overallScore": 82,
+          "metrics": [
+            {
+              "name": "Market Size",
+              "score": 85
+            },
+            {
+              "name": "Team",
+              "score": 90
+            },
+            {
+              "name": "Traction",
+              "score": 72
+            },
+            {
+              "name": "Defensibility",
+              "score": 80
+            }
+          ]
+        },
+        {
+          "company": "HyperRoute",
+          "sector": "B2B SaaS",
+          "overallScore": 76,
+          "metrics": [
+            {
+              "name": "Market Size",
+              "score": 78
+            },
+            {
+              "name": "Team",
+              "score": 85
+            },
+            {
+              "name": "Traction",
+              "score": 68
+            },
+            {
+              "name": "Defensibility",
+              "score": 72
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "cherrystone/stats",
+	"version": "1.0.0",
+	"title": "Stats Band",
+	"category": "cherrystone",
+	"icon": "chart-bar",
+	"description": "Dark metric band with Cherrystone numbers.",
+	"textdomain": "cherrystone-blocks",
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ]
+	},
+	"attributes": {
+		"eyebrow": {
+			"type": "string",
+			"default": "By the numbers"
+		},
+		"heading": {
+			"type": "string",
+			"default": "Two decades of patient, member-led capital."
+		},
+		"lede": {
+			"type": "string",
+			"default": "An ACA-affiliated angel group with a Rhode Island address and a New England network. Numbers below reflect cumulative activity since founding."
+		},
+		"stats": {
+			"type": "array",
+			"default": [
+				{
+					"value": "2004",
+					"label": "Founded in Providence, Rhode Island."
+				},
+				{
+					"value": "25+",
+					"label": "Active portfolio companies across six verticals."
+				},
+				{
+					"value": "6",
+					"label": "Industry verticals covered by member expertise."
+				},
+				{
+					"value": "12",
+					"label": "Leadership team members with operating, banking, and exit experience."
+				}
+			]
+		}
+	}
+}

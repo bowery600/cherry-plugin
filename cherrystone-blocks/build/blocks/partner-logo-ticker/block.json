@@ -1,0 +1,61 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "cherrystone/partner-logo-ticker",
+  "version": "1.0.0",
+  "title": "Partner Logo Ticker",
+  "category": "cherrystone-core",
+  "icon": "slides",
+  "description": "Auto-scrolling infinite ticker strip showcasing partner organizations, co-investors, and sponsor logos.",
+  "textdomain": "cherrystone-blocks",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "attributes": {
+    "eyebrow": {
+      "type": "string",
+      "default": "TRUSTED PARTNERS"
+    },
+    "heading": {
+      "type": "string",
+      "default": "Our co-investment network."
+    },
+    "lede": {
+      "type": "string",
+      "default": "We partner with leading accelerators, angel groups, and venture funds across New England to co-invest in the region's most promising early-stage companies."
+    },
+    "partners": {
+      "type": "array",
+      "default": [
+        {
+          "name": "Providence Angels",
+          "tier": "Co-Investor"
+        },
+        {
+          "name": "New England Venture Partners",
+          "tier": "Co-Investor"
+        },
+        {
+          "name": "TechStars Boston",
+          "tier": "Accelerator"
+        },
+        {
+          "name": "MassChallenge",
+          "tier": "Accelerator"
+        },
+        {
+          "name": "Yale Ventures",
+          "tier": "Co-Investor"
+        },
+        {
+          "name": "Brown Venture Forum",
+          "tier": "Sponsor"
+        }
+      ]
+    }
+  }
+}
