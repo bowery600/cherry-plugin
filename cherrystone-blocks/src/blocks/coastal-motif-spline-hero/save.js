@@ -9,10 +9,21 @@ export default function save( { attributes } ) {
 		btnPrimaryLink,
 		btnSecondaryText,
 		btnSecondaryLink,
+		speed,
+		noiseDensity,
+		color1,
+		color2,
+		color3,
+		videoSrc,
 	} = attributes;
 
 	const blockProps = useBlockProps.save( {
 		className: 'sequence-hero-container',
+		'data-speed': speed,
+		'data-noise': noiseDensity,
+		'data-color1': color1,
+		'data-color2': color2,
+		'data-color3': color3,
 	} );
 
 	return (
@@ -33,9 +44,16 @@ export default function save( { attributes } ) {
 
 			{ /* Pinned Scroll Sequence Section */ }
 			<section { ...blockProps }>
-				{ /* Background Canvas */ }
-				<div className="sequence-canvas-container">
-					<canvas className="sequence-canvas" />
+				<div className="sequence-video-container">
+					{ /* eslint-disable-next-line jsx-a11y/media-has-caption */ }
+					<video
+						className="sequence-video"
+						src={ videoSrc }
+						muted
+						playsInline
+						preload="auto"
+						aria-hidden="true"
+					/>
 				</div>
 
 				{ /* Foreground Centered Parallax Typography Overlay */ }

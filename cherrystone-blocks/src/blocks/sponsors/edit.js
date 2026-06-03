@@ -15,24 +15,49 @@ export default function Edit( { attributes, setAttributes } ) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'Section text', 'cherrystone-blocks' ) } initialOpen>
+				<PanelBody
+					title={ __( 'Section text', 'cherrystone-blocks' ) }
+					initialOpen
+				>
 					<TextControl
 						label={ __( 'Eyebrow', 'cherrystone-blocks' ) }
 						value={ eyebrow }
-						onChange={ ( value ) => setAttributes( { eyebrow: value } ) }
+						onChange={ ( value ) =>
+							setAttributes( { eyebrow: value } )
+						}
 					/>
 					<TextControl
 						label={ __( 'Heading', 'cherrystone-blocks' ) }
 						value={ heading }
-						onChange={ ( value ) => setAttributes( { heading: value } ) }
+						onChange={ ( value ) =>
+							setAttributes( { heading: value } )
+						}
 					/>
 					<SelectControl
 						label={ __( 'Visible group', 'cherrystone-blocks' ) }
 						value={ tierFilter }
 						options={ [
-							{ label: __( 'Sponsors and partners', 'cherrystone-blocks' ), value: '' },
-							{ label: __( 'Sponsors only', 'cherrystone-blocks' ), value: 'Sponsors' },
-							{ label: __( 'Partners only', 'cherrystone-blocks' ), value: 'Partners' },
+							{
+								label: __(
+									'Sponsors and partners',
+									'cherrystone-blocks'
+								),
+								value: '',
+							},
+							{
+								label: __(
+									'Sponsors only',
+									'cherrystone-blocks'
+								),
+								value: 'Sponsors',
+							},
+							{
+								label: __(
+									'Partners only',
+									'cherrystone-blocks'
+								),
+								value: 'Partners',
+							},
 						] }
 						onChange={ ( value ) =>
 							setAttributes( { tierFilter: value } )
@@ -40,7 +65,10 @@ export default function Edit( { attributes, setAttributes } ) {
 					/>
 					<p>
 						<ExternalLink href="/wp-admin/edit.php?post_type=cherry_sponsor">
-							{ __( 'Manage Partners & Sponsors →', 'cherrystone-blocks' ) }
+							{ __(
+								'Manage Partners & Sponsors →',
+								'cherrystone-blocks'
+							) }
 						</ExternalLink>
 					</p>
 				</PanelBody>

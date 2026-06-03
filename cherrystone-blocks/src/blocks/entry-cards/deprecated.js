@@ -73,7 +73,10 @@ const v1 = {
 									tagName="h3"
 									value={ card.title }
 								/>
-								<RichText.Content tagName="p" value={ card.body } />
+								<RichText.Content
+									tagName="p"
+									value={ card.body }
+								/>
 								<span className="split-panel-cta">
 									<RichText.Content
 										tagName="span"

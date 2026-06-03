@@ -21,8 +21,17 @@
  */
 const defaultConfig = require( '@wordpress/scripts/config/webpack.config' );
 
+const entry =
+	typeof defaultConfig.entry === 'function'
+		? defaultConfig.entry()
+		: defaultConfig.entry || {};
+
 module.exports = {
 	...defaultConfig,
+	entry: {
+		...entry,
+		'unified-canvas': './src/unified-canvas.js',
+	},
 	module: {
 		...defaultConfig.module,
 		rules: [

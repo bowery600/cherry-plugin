@@ -40,6 +40,30 @@
 		"btnSecondaryLink": {
 			"type": "string",
 			"default": "#join"
+		},
+		"speed": {
+			"type": "number",
+			"default": 1.0
+		},
+		"noiseDensity": {
+			"type": "number",
+			"default": 2.0
+		},
+		"color1": {
+			"type": "string",
+			"default": "#0E4164"
+		},
+		"color2": {
+			"type": "string",
+			"default": "#5f6f73"
+		},
+		"color3": {
+			"type": "string",
+			"default": "#0a4266"
+		},
+		"videoSrc": {
+			"type": "string",
+			"default": "/wp-content/uploads/output.webm"
 		}
 	}
 }

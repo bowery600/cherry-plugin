@@ -19,8 +19,8 @@ const TEMPLATE = [
 			lede: 'A historical view of our realized investments.',
 			ctaLabel: '',
 			ctaUrl: '',
-			statusFilter: 'Exit'
-		}
+			statusFilter: 'Exit',
+		},
 	],
 	[ 'cherrystone/footer-cta', {} ],
 ];

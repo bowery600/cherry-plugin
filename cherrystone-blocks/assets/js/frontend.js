@@ -87,7 +87,7 @@
 					}
 
 					if ( panel ) {
-						panel.hidden = ! isOpen;
+						// CSS grid-template-rows transition handles visibility
 					}
 				};
 
@@ -153,13 +153,15 @@
 				slot.textContent = message || '';
 				slot.hidden = ! message;
 			}
-			form.querySelectorAll( `[name="${ name }"]` ).forEach( ( input ) => {
-				if ( message ) {
-					input.setAttribute( 'aria-invalid', 'true' );
-				} else {
-					input.removeAttribute( 'aria-invalid' );
+			form.querySelectorAll( `[name="${ name }"]` ).forEach(
+				( input ) => {
+					if ( message ) {
+						input.setAttribute( 'aria-invalid', 'true' );
+					} else {
+						input.removeAttribute( 'aria-invalid' );
+					}
 				}
-			} );
+			);
 		};
 
 		const checkedValues = ( form, name ) =>
@@ -340,7 +342,9 @@
 				slot.setAttribute( 'role', 'alert' );
 				form.querySelectorAll( `[name="${ name }"]` ).forEach(
 					( input ) => {
-						const ids = ( input.getAttribute( 'aria-describedby' ) || '' )
+						const ids = (
+							input.getAttribute( 'aria-describedby' ) || ''
+						)
 							.split( ' ' )
 							.filter( Boolean );
 						if ( ids.indexOf( slot.id ) === -1 ) {
@@ -407,275 +411,7 @@
 			} );
 		} );
 
-		// ── Image Sequence Canvas Hero with Parallax (Gutenberg Block) ──
-		const initImageSequenceHero = () => {
-			const container = document.querySelector( '.sequence-hero-container' );
-			if ( ! container ) {
-				return;
-			}
-
-			const canvas = container.querySelector( '.sequence-canvas' );
-			const preloader = document.querySelector( '.preloader-overlay' );
-			const preloaderBar = preloader ? preloader.querySelector( '.preloader-bar' ) : null;
-			const preloaderPct = preloader ? preloader.querySelector( '.preloader-percentage' ) : null;
-
-			const kicker = container.querySelector( '.sequence-kicker' );
-			const title = container.querySelector( '.sequence-title' );
-			const sub = container.querySelector( '.sequence-sub' );
-			const actions = container.querySelector( '.sequence-actions' );
-			const indicator = container.querySelector( '.sequence-scroll-indicator' );
-
-			if ( ! canvas ) {
-				return;
-			}
-
-			const prefersReducedMotion =
-				window.matchMedia &&
-				window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches;
-
-			const startFrame = 30;            // first frame to show (ignore frames 1–29)
-			const lastFrame = 120;
-			const frameCount = lastFrame - startFrame + 1;
-			const images = [];
-			const sequence = { frame: 0 };
-			let loadedCount = 0;
-
-			// Resolve frames from the plugin asset URL (provided via wp_localize_script).
-			// A page-relative fallback keeps the static React build working unchanged.
-			const framesBase = ( window.CherrystoneHero && window.CherrystoneHero.framesBase ) || 'frames/';
-			const getFrameUrl = ( index ) => {
-				const num = String( index + startFrame ).padStart( 3, '0' );
-				return `${ framesBase }frame_${ num }.webp`;
-			};
-
-			const renderFrame = ( index ) => {
-				const img = images[ index ];
-				if ( ! img ) {
-					return;
-				}
-
-				const ctx = canvas.getContext( '2d' );
-				if ( ! ctx ) {
-					return;
-				}
-
-				ctx.clearRect( 0, 0, canvas.width, canvas.height );
-
-				const imgWidth = img.naturalWidth || img.width;
-				const imgHeight = img.naturalHeight || img.height;
-				const canvasWidth = canvas.width;
-				const canvasHeight = canvas.height;
-
-				const imgRatio = imgWidth / imgHeight;
-				const canvasRatio = canvasWidth / canvasHeight;
-
-				let drawWidth, drawHeight, drawX, drawY;
-
-				if ( canvasRatio > imgRatio ) {
-					drawWidth = canvasWidth;
-					drawHeight = canvasWidth / imgRatio;
-					drawX = 0;
-					drawY = ( canvasHeight - drawHeight ) / 2;
-				} else {
-					drawWidth = canvasHeight * imgRatio;
-					drawHeight = canvasHeight;
-					drawX = ( canvasWidth - drawWidth ) / 2;
-					drawY = 0;
-				}
-
-				ctx.drawImage( img, drawX, drawY, drawWidth, drawHeight );
-			};
-
-			const handleResize = () => {
-				const rect = canvas.parentElement.getBoundingClientRect();
-				const width = rect.width || window.innerWidth;
-				const height = rect.height || window.innerHeight;
-
-				canvas.style.width = `${ width }px`;
-				canvas.style.height = `${ height }px`;
-
-				const dpr = Math.min( window.devicePixelRatio || 1, 2 ); // cap at 2x for cheaper per-frame redraw
-				canvas.width = width * dpr;
-				canvas.height = height * dpr;
-
-				renderFrame( Math.round( sequence.frame ) );
-
-				// Keep pin/scrub bounds aligned with the new canvas size.
-				if ( window.ScrollTrigger ) {
-					window.ScrollTrigger.refresh();
-				}
-			};
-
-			let heroResizeTimer = null;
-			const onHeroResize = () => {
-				window.clearTimeout( heroResizeTimer );
-				heroResizeTimer = window.setTimeout( handleResize, 150 );
-			};
-
-			let gsapRetries = 0;
-			const initGSAPScrollTrigger = () => {
-				if ( prefersReducedMotion ) {
-					// Respect reduced-motion: show a static hero frame with the
-					// overlay text fully visible — no pin, scrub, or parallax.
-					renderFrame( 0 );
-					[ kicker, title, sub, actions, indicator ].forEach( ( el ) => {
-						if ( el ) {
-							el.style.opacity = '1';
-							el.style.transform = 'none';
-						}
-					} );
-					return;
-				}
-				if ( ! window.gsap || ! window.ScrollTrigger ) {
-					// Bounded retry: ~30 × 50ms ≈ 1.5s, then give up gracefully
-					// rather than recursing forever if GSAP never loads.
-					gsapRetries += 1;
-					if ( gsapRetries > 30 ) {
-						// eslint-disable-next-line no-console
-						console.warn(
-							'Cherrystone hero: GSAP/ScrollTrigger did not load; showing static hero.'
-						);
-						renderFrame( 0 );
-						[ kicker, title, sub, actions, indicator ].forEach( ( el ) => {
-							if ( el ) {
-								el.style.opacity = '1';
-								el.style.transform = 'none';
-							}
-						} );
-						return;
-					}
-					setTimeout( initGSAPScrollTrigger, 50 );
-					return;
-				}
-
-				gsap.registerPlugin( ScrollTrigger );
-
-				// Initial staggers
-				gsap.fromTo(
-					[ kicker, title, sub, actions, indicator ],
-					{ opacity: 0, y: 30 },
-					{ opacity: 1, y: 0, duration: 1.0, stagger: 0.15, ease: 'power3.out', delay: 0.2 }
-				);
-
-				// Bind scrollbind timeline
-				const tl = gsap.timeline({
-					scrollTrigger: {
-						trigger: container,
-						start: 'top top',
-						end: '+=150%',
-						pin: true,
-						scrub: 0.5,
-						invalidateOnRefresh: true
-					}
-				});
-
-				// Tween frame progress
-				tl.to( sequence, {
-					frame: frameCount - 1,
-					snap: 'frame',
-					ease: 'none',
-					duration: 1,
-					onUpdate: () => {
-						renderFrame( Math.round( sequence.frame ) );
-					}
-				}, 0 );
-
-				// Camera zoom parallax
-				tl.to( canvas, {
-					scale: 1.0,
-					yPercent: 8,
-					ease: 'none',
-					duration: 1
-				}, 0 );
-
-				// Foreground parallax displacement
-				tl.to( kicker, {
-					yPercent: -180,
-					opacity: 0,
-					ease: 'power1.inOut',
-					duration: 0.25
-				}, 0 );
-
-				tl.to( title, {
-					yPercent: -90,
-					opacity: 0,
-					ease: 'power1.inOut',
-					duration: 0.35
-				}, 0.05 );
-
-				tl.to( sub, {
-					yPercent: -50,
-					opacity: 0,
-					ease: 'power1.inOut',
-					duration: 0.30
-				}, 0.10 );
-
-				tl.to( actions, {
-					yPercent: -30,
-					opacity: 0,
-					ease: 'power1.inOut',
-					duration: 0.25
-				}, 0.15 );
-
-				tl.to( indicator, {
-					opacity: 0,
-					ease: 'power1.in',
-					duration: 0.1
-				}, 0 );
-
-				gsap.set( canvas, { scale: 1.06, yPercent: 0 } );
-			};
-
-			const startPreloading = () => {
-				for ( let i = 0; i < frameCount; i++ ) {
-					const img = new Image();
-					img.src = getFrameUrl( i );
-					img.onload = () => {
-						loadedCount++;
-						const percent = Math.round( ( loadedCount / frameCount ) * 100 );
-						
-						if ( preloaderBar ) {
-							preloaderBar.style.width = `${ percent }%`;
-						}
-						if ( preloaderPct ) {
-							preloaderPct.textContent = `${ percent }%`;
-						}
-
-						if ( loadedCount === frameCount ) {
-							// Finished preloading!
-							handleResize();
-							window.addEventListener( 'resize', onHeroResize, { passive: true } );
-							
-							setTimeout( () => {
-								if ( preloader ) {
-									preloader.classList.add( 'fade-out' );
-								}
-								// Initialize staggers and scroll parallax
-								initGSAPScrollTrigger();
-							}, 800 );
-						}
-					};
-					img.onerror = () => {
-						// Graceful fallback to avoid preloader hanging
-						loadedCount++;
-						const percent = Math.round( ( loadedCount / frameCount ) * 100 );
-						if ( loadedCount === frameCount ) {
-							handleResize();
-							window.addEventListener( 'resize', onHeroResize, { passive: true } );
-							setTimeout( () => {
-								if ( preloader ) {
-									preloader.classList.add( 'fade-out' );
-								}
-								initGSAPScrollTrigger();
-							}, 800 );
-						}
-					};
-					images[ i ] = img;
-				}
-			};
-
-			startPreloading();
-		};
+		// ── Image Sequence Canvas Hero deprecated under Unified Root Canvas Protocol ──
 
 		const initFounderCarousels = () => {
 			const carouselReducedMotion =
@@ -686,7 +422,9 @@
 				.querySelectorAll( '.founder-carousel-container' )
 				.forEach( ( carousel ) => {
 					const slides = Array.from(
-						carousel.querySelectorAll( '.founder-testimonial-slide' )
+						carousel.querySelectorAll(
+							'.founder-testimonial-slide'
+						)
 					);
 					const dots = Array.from(
 						carousel.querySelectorAll( '.carousel-dot-indicator' )
@@ -702,7 +440,10 @@
 					const goTo = ( index ) => {
 						current = ( index + slides.length ) % slides.length;
 						slides.forEach( ( slide, i ) => {
-							slide.classList.toggle( 'is-active', i === current );
+							slide.classList.toggle(
+								'is-active',
+								i === current
+							);
 						} );
 						dots.forEach( ( dot, i ) => {
 							const active = i === current;
@@ -770,10 +511,29 @@
 		const initPitchCalculators = () => {
 			// Transparent, tunable scoring weights — adjust to match Cherrystone's
 			// real thesis. Each dimension is scored 0–100, then weighted.
-			const STAGE_SCORES = { 'Pre-seed': 100, Seed: 100, 'Series A': 55, Late: 20 };
-			const ROOTS_SCORES = { 'New England': 100, Expansion: 60, None: 15 };
-			const SECTOR_SCORES = { LifeSciences: 100, DeepTech: 90, SaaS: 70, Other: 50 };
-			const WEIGHTS = { stage: 0.3, roots: 0.3, sector: 0.25, amount: 0.15 };
+			const STAGE_SCORES = {
+				'Pre-seed': 100,
+				Seed: 100,
+				'Series A': 55,
+				Late: 20,
+			};
+			const ROOTS_SCORES = {
+				'New England': 100,
+				Expansion: 60,
+				None: 15,
+			};
+			const SECTOR_SCORES = {
+				LifeSciences: 100,
+				DeepTech: 90,
+				SaaS: 70,
+				Other: 50,
+			};
+			const WEIGHTS = {
+				stage: 0.3,
+				roots: 0.3,
+				sector: 0.25,
+				amount: 0.15,
+			};
 
 			const amountScore = ( v ) => {
 				if ( v <= 250000 ) {
@@ -824,14 +584,16 @@
 					);
 					const amtDisplay =
 						wrapper.querySelector( '#calc-amt-display' );
-					const scoreDisplay =
-						wrapper.querySelector( '#calc-score-display' );
+					const scoreDisplay = wrapper.querySelector(
+						'#calc-score-display'
+					);
 					const scoreStatus =
 						wrapper.querySelector( '#calc-score-status' );
 					const scoreRing =
 						wrapper.querySelector( '#calc-score-ring' );
-					const feedback =
-						wrapper.querySelector( '#calc-feedback-text' );
+					const feedback = wrapper.querySelector(
+						'#calc-feedback-text'
+					);
 
 					const selectedValue = ( gridId ) => {
 						const grid = wrapper.querySelector( '#' + gridId );
@@ -951,7 +713,7 @@
 				} );
 		};
 
-		const initSponsorCarousels = () => {
+		const initSponsorInfiniteScroll = () => {
 			const reducedMotion =
 				window.matchMedia &&
 				window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches;
@@ -959,234 +721,46 @@
 			document
 				.querySelectorAll( '.sponsor-carousel' )
 				.forEach( ( carousel ) => {
-					const viewport = carousel.querySelector(
-						'.sponsor-carousel-viewport'
-					);
 					const track = carousel.querySelector(
 						'.sponsor-carousel-track'
 					);
-					const dotsWrap = carousel.querySelector(
-						'.sponsor-carousel-dots'
-					);
-					const prevBtn = carousel.querySelector(
-						'.sponsor-carousel-arrow[data-dir="prev"]'
-					);
-					const nextBtn = carousel.querySelector(
-						'.sponsor-carousel-arrow[data-dir="next"]'
-					);
-					if ( ! viewport || ! track ) {
+					if ( ! track ) {
 						return;
 					}
 
-					const cards = Array.from(
-						track.querySelectorAll( '.sponsor-card' )
-					);
-					if ( ! cards.length ) {
-						return;
-					}
-
-					let page = 0;
-					let pages = 1;
-					let perView = 1;
-					let timer = null;
-
-					const stopAutoplay = () => {
-						if ( timer ) {
-							window.clearInterval( timer );
-							timer = null;
-						}
-					};
-
-					const startAutoplay = () => {
-						if ( reducedMotion || pages < 2 ) {
-							return;
-						}
-						stopAutoplay();
-						timer = window.setInterval(
-							() => goToPage( page + 1, true ),
-							5200
-						);
-					};
-
-					// Derive how many cards fit per view from the real card
-					// width + flex gap, so it always matches the CSS breakpoints.
-					const measurePerView = () => {
-						const card = cards[ 0 ];
-						const cardWidth = card.getBoundingClientRect().width;
-						const styles = window.getComputedStyle( track );
-						const gap =
-							parseFloat( styles.columnGap || styles.gap ) || 0;
-						const step = cardWidth + gap;
-						if ( step <= 0 ) {
-							return 1;
-						}
-						return Math.max(
-							1,
-							Math.round(
-								( viewport.clientWidth + gap ) / step
-							)
-						);
-					};
-
-					const buildDots = () => {
-						if ( ! dotsWrap ) {
-							return;
-						}
-						dotsWrap.textContent = '';
-						for ( let i = 0; i < pages; i++ ) {
-							const dot = document.createElement( 'button' );
-							dot.type = 'button';
-							dot.className = 'carousel-dot-indicator';
-							dot.setAttribute(
-								'aria-label',
-								'Go to page ' + ( i + 1 )
-							);
-							dot.addEventListener( 'click', () => {
-								goToPage( i );
-								startAutoplay();
-							} );
-							dotsWrap.appendChild( dot );
-						}
-					};
-
-					const updateControls = () => {
-						const hasPaging = pages > 1;
-						[ prevBtn, nextBtn ].forEach( ( btn ) => {
-							if ( btn ) {
-								btn.hidden = ! hasPaging;
-							}
-						} );
-						if ( dotsWrap ) {
-							dotsWrap.hidden = ! hasPaging;
-						}
-						if ( prevBtn ) {
-							prevBtn.disabled = page <= 0;
-						}
-						if ( nextBtn ) {
-							nextBtn.disabled = page >= pages - 1;
-						}
-						if ( dotsWrap ) {
-							Array.from( dotsWrap.children ).forEach(
-								( dot, i ) => {
-									const active = i === page;
-									dot.classList.toggle( 'is-active', active );
-									if ( active ) {
-										dot.setAttribute(
-											'aria-current',
-											'true'
-										);
-									} else {
-										dot.removeAttribute( 'aria-current' );
-									}
-								}
-							);
-						}
-					};
-
-					const applyTransform = () => {
-						track.style.transform =
-							'translateX(' +
-							-page * viewport.clientWidth +
-							'px)';
-					};
-
-					function goToPage( index, wrap = false ) {
-						if ( wrap ) {
-							page = ( index + pages ) % pages;
-						} else {
-							page = Math.max( 0, Math.min( index, pages - 1 ) );
-						}
-						applyTransform();
-						updateControls();
-					}
-
-					const recompute = () => {
-						perView = measurePerView();
-						pages = Math.max( 1, Math.ceil( cards.length / perView ) );
-						buildDots();
-						if ( page > pages - 1 ) {
-							page = pages - 1;
-						}
-						applyTransform();
-						updateControls();
-						startAutoplay();
-					};
-
+					// CSS handles reduced-motion via @media; reinforce via JS
+					// so the initial computed state is also correct.
 					if ( reducedMotion ) {
-						track.style.transition = 'none';
+						track.style.animationPlayState = 'paused';
+						return;
 					}
 
-					if ( prevBtn ) {
-						prevBtn.addEventListener( 'click', () => {
-							goToPage( page - 1 );
-							startAutoplay();
-						} );
+					// Scale duration to item count: 5 s per card, clamped 20–80 s.
+					const count =
+						parseInt( carousel.getAttribute( 'data-items' ), 10 ) ||
+						0;
+					if ( count ) {
+						const duration = Math.min(
+							80,
+							Math.max( 20, count * 5 )
+						);
+						track.style.setProperty(
+							'--marquee-duration',
+							`${ duration }s`
+						);
 					}
-					if ( nextBtn ) {
-						nextBtn.addEventListener( 'click', () => {
-							goToPage( page + 1 );
-							startAutoplay();
-						} );
-					}
 
-					// Keyboard paging when focus is within the carousel.
-					carousel.addEventListener( 'keydown', ( event ) => {
-						if ( event.key === 'ArrowLeft' ) {
-							event.preventDefault();
-							goToPage( page - 1 );
-							startAutoplay();
-						} else if ( event.key === 'ArrowRight' ) {
-							event.preventDefault();
-							goToPage( page + 1 );
-							startAutoplay();
-						}
-					} );
-
-					carousel.addEventListener( 'mouseenter', stopAutoplay );
-					carousel.addEventListener( 'mouseleave', startAutoplay );
-					carousel.addEventListener( 'focusin', stopAutoplay );
-					carousel.addEventListener( 'focusout', startAutoplay );
-
-					// Pointer / touch swipe.
-					let startX = 0;
-					let dragging = false;
-					viewport.addEventListener(
-						'pointerdown',
-						( event ) => {
-							dragging = true;
-							startX = event.clientX;
-						},
-						{ passive: true }
-					);
-					const endDrag = ( event ) => {
-						if ( ! dragging ) {
-							return;
-						}
-						dragging = false;
-						const delta = event.clientX - startX;
-						if ( Math.abs( delta ) > 40 ) {
-							goToPage( delta < 0 ? page + 1 : page - 1 );
-							startAutoplay();
-						}
+					const pause = () => {
+						track.style.animationPlayState = 'paused';
 					};
-					viewport.addEventListener( 'pointerup', endDrag, {
-						passive: true,
-					} );
-					viewport.addEventListener( 'pointercancel', () => {
-						dragging = false;
-					} );
+					const play = () => {
+						track.style.animationPlayState = 'running';
+					};
 
-					let resizeTimer = null;
-					window.addEventListener(
-						'resize',
-						() => {
-							window.clearTimeout( resizeTimer );
-							resizeTimer = window.setTimeout( recompute, 150 );
-						},
-						{ passive: true }
-					);
-
-					recompute();
+					carousel.addEventListener( 'mouseenter', pause );
+					carousel.addEventListener( 'mouseleave', play );
+					carousel.addEventListener( 'focusin', pause );
+					carousel.addEventListener( 'focusout', play );
 				} );
 		};
 
@@ -1206,7 +780,10 @@
 
 					const setActive = ( activeIndex ) => {
 						steps.forEach( ( step, idx ) => {
-							step.classList.toggle( 'is-active', idx === activeIndex );
+							step.classList.toggle(
+								'is-active',
+								idx === activeIndex
+							);
 						} );
 						if ( trackProgress ) {
 							const percentage =
@@ -1239,13 +816,24 @@
 		};
 
 		const initCardParallax = () => {
+			if (
+				window.matchMedia &&
+				window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches
+			) {
+				return;
+			}
+
 			document
 				.querySelectorAll( '.vertical-showcase-card, .portfolio-card' )
 				.forEach( ( card ) => {
 					const handleMouseMove = ( e ) => {
 						const rect = card.getBoundingClientRect();
-						const x = ( ( e.clientX - rect.left ) / rect.width - 0.5 ) * 2;
-						const y = ( ( e.clientY - rect.top ) / rect.height - 0.5 ) * 2;
+						const x =
+							( ( e.clientX - rect.left ) / rect.width - 0.5 ) *
+							2;
+						const y =
+							( ( e.clientY - rect.top ) / rect.height - 0.5 ) *
+							2;
 						card.style.setProperty( '--px', x.toFixed( 3 ) );
 						card.style.setProperty( '--py', y.toFixed( 3 ) );
 					};
@@ -1260,34 +848,305 @@
 		};
 
 		const initResourceTabs = () => {
-			document.querySelectorAll( '.resource-tabs' ).forEach( ( tabContainer ) => {
-				const chips = tabContainer.querySelectorAll( '.chip' );
-				const section = tabContainer.closest( 'section' );
-				const cards = section ? section.querySelectorAll( '.value-card' ) : [];
+			document
+				.querySelectorAll( '.resource-tabs' )
+				.forEach( ( tabContainer ) => {
+					const chips = tabContainer.querySelectorAll( '.chip' );
+					const section = tabContainer.closest( 'section' );
+					const cards = section
+						? section.querySelectorAll( '.value-card' )
+						: [];
 
-				chips.forEach( ( chip ) => {
-					chip.addEventListener( 'click', () => {
-						chips.forEach( ( c ) => c.classList.remove( 'active' ) );
-						chip.classList.add( 'active' );
+					// Initialise cards for transitions
+					cards.forEach( ( card ) => {
+						card.style.transition = 'opacity 0.22s ease-out, transform 0.22s ease-out';
+					} );
 
-						const filter = chip.getAttribute( 'data-filter' );
-						cards.forEach( ( card ) => {
-							const cardTag = card.getAttribute( 'data-tag' );
-							if ( filter === 'all' || cardTag === filter ) {
-								card.style.display = '';
-							} else {
-								card.style.display = 'none';
-							}
+					chips.forEach( ( chip ) => {
+						chip.addEventListener( 'click', () => {
+							chips.forEach( ( c ) =>
+								c.classList.remove( 'active' )
+							);
+							chip.classList.add( 'active' );
+
+							const filter = chip.getAttribute( 'data-filter' );
+							cards.forEach( ( card ) => {
+								const cardTag = card.getAttribute( 'data-tag' );
+								const shouldShow = filter === 'all' || cardTag === filter;
+								if ( shouldShow ) {
+									card.style.display = '';
+									// Force reflow before transition
+									void card.offsetHeight;
+									card.style.opacity = '1';
+									card.style.transform = 'scale(1)';
+								} else {
+									card.style.opacity = '0';
+									card.style.transform = 'scale(0.95)';
+									setTimeout( () => {
+										if ( card.style.opacity === '0' ) {
+											card.style.display = 'none';
+										}
+									}, 220 );
+								}
+							} );
 						} );
 					} );
 				} );
-			} );
 		};
 
+		const initVideoScrollHero = () => {
+			const hero = document.querySelector( '.sequence-hero-container' );
+			if ( ! hero ) {
+				return;
+			}
+
+			const preloader = document.querySelector( '.preloader-overlay' );
+			const bar       = document.querySelector( '.preloader-bar' );
+			const pctEl     = document.querySelector( '.preloader-percentage' );
+
+			const hidePreloader = () => {
+				if ( preloader ) {
+					preloader.classList.add( 'fade-out' );
+				}
+			};
+
+			const reducedMotion =
+				window.matchMedia &&
+				window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches;
+
+			// ── Mobile path: 1080p canvas frame sequence ──────────────────────
+			// Breakpoint: anything narrower than a full desktop uses the
+			// lighter canvas approach to avoid loading the 4K WebM.
+			const isMobile = window.matchMedia( '(max-width: 1023px)' ).matches;
+
+			if ( isMobile ) {
+				// Stop the video from downloading on mobile — saves bandwidth.
+				const videoContainer = hero.querySelector( '.sequence-video-container' );
+				const videoEl        = hero.querySelector( '.sequence-video' );
+				if ( videoContainer ) {
+					videoContainer.style.display = 'none';
+				}
+				if ( videoEl ) {
+					videoEl.removeAttribute( 'src' );
+					videoEl.load();
+				}
+
+				// Dynamically create the canvas container (mirrors the old markup).
+				let canvasContainer = hero.querySelector( '.sequence-canvas-container' );
+				if ( ! canvasContainer ) {
+					canvasContainer = document.createElement( 'div' );
+					canvasContainer.className = 'sequence-canvas-container';
+					hero.prepend( canvasContainer );
+				}
+				let canvas = canvasContainer.querySelector( '.sequence-canvas' );
+				if ( ! canvas ) {
+					canvas = document.createElement( 'canvas' );
+					canvas.className = 'sequence-canvas';
+					canvasContainer.appendChild( canvas );
+				}
+
+				const context = canvas.getContext( '2d' );
+				if ( ! context ) {
+					document.body.classList.add( 'no-webgl' );
+					hidePreloader();
+					return;
+				}
+
+				// ── Frame sequence settings ────────────────────────────────────
+				const frameStart = 30;
+				const frameEnd   = 120;
+				const frameCount = frameEnd - frameStart + 1;
+				const frameBase  =
+					hero.getAttribute( 'data-frame-base' ) ||
+					'/wp-content/uploads/cherrystone-frames/';
+				// ─────────────────────────────────────────────────────────────
+
+				const frames = new Array( frameCount );
+				let loaded           = 0;
+				let firstDrawable    = null;
+				let currentFrame     = 0;
+				let lastFrameTime    = 0;
+				let firstPassDone    = false;
+				const loopStart      = frameCount - 15;
+
+				const padFrame = ( i ) => String( i ).padStart( 3, '0' );
+				const frameUrl = ( i ) => `${ frameBase }frame_${ padFrame( i ) }.webp`;
+
+				const setProgress = () => {
+					const progress = Math.round( ( loaded / frameCount ) * 100 );
+					if ( bar )   bar.style.width       = `${ progress }%`;
+					if ( pctEl ) pctEl.textContent      = `${ progress }%`;
+				};
+
+				const resize = () => {
+					const rect       = hero.getBoundingClientRect();
+					const pixelRatio = Math.min( window.devicePixelRatio || 1, 2 );
+					const w          = Math.max( 1, Math.round( rect.width ) );
+					const h          = Math.max( 1, Math.round( rect.height ) );
+					canvas.width     = Math.round( w * pixelRatio );
+					canvas.height    = Math.round( h * pixelRatio );
+					canvas.style.width  = `${ w }px`;
+					canvas.style.height = `${ h }px`;
+					context.setTransform( pixelRatio, 0, 0, pixelRatio, 0, 0 );
+					drawFrame( frames[ currentFrame ] || firstDrawable );
+				};
+
+				const drawFrame = ( image ) => {
+					if ( ! image ) return;
+					const w      = canvas.clientWidth;
+					const h      = canvas.clientHeight;
+					const scale  = Math.max( w / image.naturalWidth, h / image.naturalHeight );
+					const dw     = image.naturalWidth  * scale;
+					const dh     = image.naturalHeight * scale;
+					context.clearRect( 0, 0, w, h );
+					context.drawImage( image, ( w - dw ) / 2, ( h - dh ) / 2, dw, dh );
+				};
+
+				const animate = ( timestamp ) => {
+					if ( loaded === 0 ) {
+						window.requestAnimationFrame( animate );
+						return;
+					}
+					if ( timestamp - lastFrameTime >= 1000 / 24 ) {
+						currentFrame += 1;
+						if ( ! firstPassDone ) {
+							if ( currentFrame >= frameCount ) { currentFrame = loopStart; firstPassDone = true; }
+						} else if ( currentFrame >= frameCount ) {
+							currentFrame = loopStart;
+						}
+						drawFrame( frames[ currentFrame ] || firstDrawable );
+						lastFrameTime = timestamp;
+					}
+					window.requestAnimationFrame( animate );
+				};
+
+				window.addEventListener( 'resize', resize, { passive: true } );
+				resize();
+
+				for ( let f = frameStart; f <= frameEnd; f += 1 ) {
+					const img   = new Image();
+					const idx   = f - frameStart;
+					img.decoding = 'async';
+					img.src      = frameUrl( f );
+					img.onload  = () => {
+						frames[ idx ] = img;
+						loaded        += 1;
+						if ( ! firstDrawable ) {
+							firstDrawable = img;
+							currentFrame  = idx;
+							resize();
+							hidePreloader();
+						}
+						setProgress();
+						if ( loaded === frameCount ) hidePreloader();
+					};
+					img.onerror = () => {
+						loaded += 1;
+						setProgress();
+						if ( loaded === frameCount ) hidePreloader();
+					};
+				}
+
+				if ( ! reducedMotion ) {
+					window.requestAnimationFrame( animate );
+				}
+
+				return; // ← mobile path done
+			}
+
+			// ── Desktop path: GSAP ScrollTrigger + 4K WebM ───────────────────
+			if (
+				typeof window.gsap === 'undefined' ||
+				typeof window.ScrollTrigger === 'undefined'
+			) {
+				hidePreloader();
+				return;
+			}
+
+			const video = hero.querySelector( '.sequence-video' );
+			if ( ! video ) {
+				hidePreloader();
+				return;
+			}
+
+			window.gsap.registerPlugin( window.ScrollTrigger );
+
+			// Prevent the browser auto-playing; we control currentTime directly.
+			video.pause();
+			video.currentTime = 0;
+
+			if ( reducedMotion ) {
+				hidePreloader();
+				return;
+			}
+
+			const setupScrollTrigger = () => {
+				const duration = video.duration || 6;
+
+				// ── SCROLL DURATION ────────────────────────────────────────────
+				// Increase the multiplier to make the user scroll further before
+				// the video finishes. 5 ≈ 5 × viewport heights of travel.
+				const scrollLength = window.innerHeight * 5;
+				// ──────────────────────────────────────────────────────────────
+
+				// Tween a proxy so GSAP's built-in scrub lag smoothing applies
+				// to video.currentTime rather than jumping on every rAF tick.
+				const proxy = { t: 0 };
+
+				window.gsap.to( proxy, {
+					t: duration,
+					ease: 'none',
+					onUpdate() {
+						video.currentTime = proxy.t;
+					},
+					scrollTrigger: {
+						trigger: hero,
+						start: 'top top',
+						// ── PIN LENGTH ────────────────────────────────────────
+						// Section stays pinned for this many scroll pixels;
+						// must match scrollLength so the tween ends on unpin.
+						end: `+=${ scrollLength }`,
+						// ─────────────────────────────────────────────────────
+						pin: true,
+						anticipatePin: 1,
+						// ── SCRUB SMOOTHNESS ──────────────────────────────────
+						// scrub: 1 → playhead catches up in ~1 second.
+						// 0.5 = snappier  |  2 = more cinematic / floaty
+						scrub: 1,
+						// ─────────────────────────────────────────────────────
+					},
+				} );
+
+				hidePreloader();
+			};
+
+			// Track download progress in the preloader bar.
+			video.addEventListener( 'progress', () => {
+				if ( ! video.duration || ! video.buffered.length ) return;
+				const pct = Math.round(
+					( video.buffered.end( video.buffered.length - 1 ) / video.duration ) * 100
+				);
+				if ( bar )   bar.style.width  = `${ pct }%`;
+				if ( pctEl ) pctEl.textContent = `${ pct }%`;
+			} );
+
+			video.addEventListener( 'canplaythrough', hidePreloader, { once: true } );
+
+			// Fallback: hide after 4 s on slow connections.
+			const fallback = setTimeout( hidePreloader, 4000 );
+			video.addEventListener( 'canplaythrough', () => clearTimeout( fallback ), { once: true } );
+
+			if ( video.readyState >= /* HAVE_METADATA */ 1 ) {
+				setupScrollTrigger();
+			} else {
+				video.addEventListener( 'loadedmetadata', setupScrollTrigger, { once: true } );
+			}
+		};
+
+		initVideoScrollHero();
 		initFounderCarousels();
 		initPitchCalculators();
-		initImageSequenceHero();
-		initSponsorCarousels();
+		initSponsorInfiniteScroll();
 		initDiligenceTimelines();
 		initCardParallax();
 		initResourceTabs();

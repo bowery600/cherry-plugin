@@ -17,46 +17,79 @@ export default function Edit( { attributes, setAttributes } ) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'Section text', 'cherrystone-blocks' ) } initialOpen>
+				<PanelBody
+					title={ __( 'Section text', 'cherrystone-blocks' ) }
+					initialOpen
+				>
 					<TextControl
 						label={ __( 'Eyebrow', 'cherrystone-blocks' ) }
 						value={ eyebrow }
-						onChange={ ( value ) => setAttributes( { eyebrow: value } ) }
+						onChange={ ( value ) =>
+							setAttributes( { eyebrow: value } )
+						}
 					/>
 					<TextControl
 						label={ __( 'Heading', 'cherrystone-blocks' ) }
 						value={ heading }
-						onChange={ ( value ) => setAttributes( { heading: value } ) }
+						onChange={ ( value ) =>
+							setAttributes( { heading: value } )
+						}
 					/>
 					<TextareaControl
 						label={ __( 'Lede', 'cherrystone-blocks' ) }
 						value={ lede }
-						onChange={ ( value ) => setAttributes( { lede: value } ) }
+						onChange={ ( value ) =>
+							setAttributes( { lede: value } )
+						}
 					/>
 					<ToggleControl
-						label={ __( 'Use warm background', 'cherrystone-blocks' ) }
+						label={ __(
+							'Use warm background',
+							'cherrystone-blocks'
+						) }
 						checked={ warm }
-						onChange={ ( value ) => setAttributes( { warm: value } ) }
+						onChange={ ( value ) =>
+							setAttributes( { warm: value } )
+						}
 					/>
 				</PanelBody>
-				<PanelBody title={ __( 'Display', 'cherrystone-blocks' ) } initialOpen={ false }>
+				<PanelBody
+					title={ __( 'Display', 'cherrystone-blocks' ) }
+					initialOpen={ false }
+				>
 					<NumberControl
-						label={ __( 'Max resources (0 = all)', 'cherrystone-blocks' ) }
+						label={ __(
+							'Max resources (0 = all)',
+							'cherrystone-blocks'
+						) }
 						min={ 0 }
 						value={ maxItems }
 						onChange={ ( value ) =>
-							setAttributes( { maxItems: parseInt( value, 10 ) || 0 } )
+							setAttributes( {
+								maxItems: parseInt( value, 10 ) || 0,
+							} )
 						}
 					/>
 					<TextControl
-						label={ __( 'Filter by audience (optional)', 'cherrystone-blocks' ) }
-						help={ __( 'Exact value, e.g. Investors, Entrepreneurs, Additional. Leave blank for all.', 'cherrystone-blocks' ) }
+						label={ __(
+							'Filter by audience (optional)',
+							'cherrystone-blocks'
+						) }
+						help={ __(
+							'Exact value, e.g. Investors, Entrepreneurs, Additional. Leave blank for all.',
+							'cherrystone-blocks'
+						) }
 						value={ tagFilter }
-						onChange={ ( value ) => setAttributes( { tagFilter: value } ) }
+						onChange={ ( value ) =>
+							setAttributes( { tagFilter: value } )
+						}
 					/>
 					<p>
 						<ExternalLink href="/wp-admin/edit.php?post_type=cherry_resource">
-							{ __( 'Manage Member Resources →', 'cherrystone-blocks' ) }
+							{ __(
+								'Manage Member Resources →',
+								'cherrystone-blocks'
+							) }
 						</ExternalLink>
 					</p>
 				</PanelBody>

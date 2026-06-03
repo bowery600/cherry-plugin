@@ -104,3 +104,17 @@ function cherrystone_theme_register_pattern_category() {
 	}
 }
 add_action( 'init', 'cherrystone_theme_register_pattern_category' );
+
+/**
+ * Inject Unified Root Canvas container immediately after body open.
+ */
+function cherrystone_theme_inject_unified_canvas_container() {
+	if ( is_admin() || is_embed() ) {
+		return;
+	}
+	?>
+	<div id="unified-root-canvas-container" class="unified-root-canvas-container" aria-hidden="true"></div>
+	<?php
+}
+add_action( 'wp_body_open', 'cherrystone_theme_inject_unified_canvas_container', 1 );
+

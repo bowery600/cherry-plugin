@@ -27,9 +27,9 @@
 				{ "slug": "surface", "color": "#ffffff", "name": "Surface" },
 				{ "slug": "line", "color": "#dedbd4", "name": "Line" },
 				{ "slug": "line-soft", "color": "#ebe8e2", "name": "Line Soft" },
-				{ "slug": "accent", "color": "#b5121b", "name": "Cherry Red" },
-				{ "slug": "accent-ink", "color": "#8f1118", "name": "Accent Ink" },
-				{ "slug": "accent-soft", "color": "#f8e4e4", "name": "Accent Soft" },
+				{ "slug": "accent", "color": "#0E4164", "name": "Ocean Blue" },
+				{ "slug": "accent-ink", "color": "#0b3655", "name": "Accent Ink" },
+				{ "slug": "accent-soft", "color": "#e0eaf2", "name": "Accent Soft" },
 				{ "slug": "accent-gold", "color": "#9a7a3d", "name": "Accent Gold" },
 				{ "slug": "sea", "color": "#5f6f73", "name": "Cool Gray" },
 				{ "slug": "success", "color": "#2f6f4e", "name": "Success" }

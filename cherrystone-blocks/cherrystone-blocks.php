@@ -446,21 +446,26 @@ function cherrystone_blocks_enqueue_frontend_interactions() {
 	$utils_path  = CHERRYSTONE_BLOCKS_PATH . 'assets/js/form-utils.js';
 	$script_path = CHERRYSTONE_BLOCKS_PATH . 'assets/js/frontend.js';
 
-	wp_enqueue_script(
-		'gsap-core',
-		'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js',
+	// ── GSAP + ScrollTrigger (desktop scroll-video hero) ──────────────────
+	// Loaded from jsDelivr CDN, deferred to footer. frontend.js depends on
+	// these being present as window.gsap / window.ScrollTrigger globals.
+	wp_register_script(
+		'gsap',
+		'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js',
 		array(),
 		'3.12.5',
 		true
 	);
-
-	wp_enqueue_script(
+	wp_register_script(
 		'gsap-scroll-trigger',
-		'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js',
-		array( 'gsap-core' ),
+		'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js',
+		array( 'gsap' ),
 		'3.12.5',
 		true
 	);
+	wp_enqueue_script( 'gsap' );
+	wp_enqueue_script( 'gsap-scroll-trigger' );
+	// ──────────────────────────────────────────────────────────────────────
 
 	if ( file_exists( $utils_path ) ) {
 		wp_enqueue_script(
@@ -479,24 +484,37 @@ function cherrystone_blocks_enqueue_frontend_interactions() {
 	wp_enqueue_script(
 		'cherrystone-blocks-frontend',
 		CHERRYSTONE_BLOCKS_URL . 'assets/js/frontend.js',
-		array( 'cherrystone-blocks-form-utils', 'gsap-scroll-trigger' ),
+		array( 'cherrystone-blocks-form-utils', 'gsap', 'gsap-scroll-trigger' ),
 		filemtime( $script_path ),
 		true
 	);
-
-	// Load the image-sequence frames from the WordPress uploads directory
-	// instead of bundling them in the plugin to reduce plugin size.
-	$upload_dir = wp_upload_dir();
-	$frames_base_url = trailingslashit( $upload_dir['baseurl'] ) . 'cherrystone-frames/';
-	wp_localize_script(
-		'cherrystone-blocks-frontend',
-		'CherrystoneHero',
-		array(
-			'framesBase' => $frames_base_url,
-		)
-	);
 }
 add_action( 'wp_enqueue_scripts', 'cherrystone_blocks_enqueue_frontend_interactions' );
+
+/**
+ * Enqueue Unified WebGL Canvas script in both frontend and block editor.
+ */
+function cherrystone_blocks_enqueue_unified_canvas() {
+	$canvas_script_path = CHERRYSTONE_BLOCKS_PATH . 'build/unified-canvas.js';
+	$canvas_asset_path  = CHERRYSTONE_BLOCKS_PATH . 'build/unified-canvas.asset.php';
+
+	if ( file_exists( $canvas_script_path ) ) {
+		$canvas_asset = file_exists( $canvas_asset_path )
+			? include $canvas_asset_path
+			: array( 'dependencies' => array( 'wp-element' ), 'version' => filemtime( $canvas_script_path ) );
+
+		wp_enqueue_script(
+			'cherrystone-unified-canvas',
+			CHERRYSTONE_BLOCKS_URL . 'build/unified-canvas.js',
+			$canvas_asset['dependencies'],
+			$canvas_asset['version'],
+			true
+		);
+	}
+}
+add_action( 'enqueue_block_assets', 'cherrystone_blocks_enqueue_unified_canvas' );
+
+
 
 /**
  * Register operational content types for Cherrystone editors.
@@ -688,6 +706,63 @@ function cherrystone_blocks_maybe_upgrade() {
 	update_option( 'cherrystone_blocks_version', CHERRYSTONE_BLOCKS_VERSION );
 }
 add_action( 'admin_init', 'cherrystone_blocks_maybe_upgrade' );
+
+/**
+ * One-time migration: move seeded leadership posts from cherry_member → cherry_leader.
+ *
+ * Seed data incorrectly created leadership members as cherry_member posts. This migration
+ * changes their post_type and renames the cs_member_* meta keys to cs_leader_*.
+ */
+function cherrystone_blocks_migrate_leadership_post_type() {
+	if ( get_option( 'cherrystone_leadership_migration_v1' ) ) {
+		return;
+	}
+
+	global $wpdb;
+
+	$seeded_members = get_posts(
+		array(
+			'post_type'      => 'cherry_member',
+			'post_status'    => 'any',
+			'posts_per_page' => -1,
+			'meta_key'       => '_cs_seeded',
+			'meta_value'     => '1',
+			'fields'         => 'ids',
+		)
+	);
+
+	foreach ( $seeded_members as $post_id ) {
+		// Change post_type to cherry_leader.
+		$wpdb->update(
+			$wpdb->posts,
+			array( 'post_type' => 'cherry_leader' ),
+			array( 'ID' => $post_id ),
+			array( '%s' ),
+			array( '%d' )
+		);
+
+		// Migrate meta keys from cs_member_* to cs_leader_*.
+		$meta_map = array(
+			'cs_member_role'         => 'cs_leader_role',
+			'cs_member_linkedin_url' => 'cs_leader_linkedin_url',
+			'cs_member_photo_url'    => 'cs_leader_photo_url',
+			'cs_member_description'  => 'cs_leader_description',
+		);
+
+		foreach ( $meta_map as $old_key => $new_key ) {
+			$value = get_post_meta( $post_id, $old_key, true );
+			if ( '' !== $value ) {
+				update_post_meta( $post_id, $new_key, $value );
+				delete_post_meta( $post_id, $old_key );
+			}
+		}
+
+		clean_post_cache( $post_id );
+	}
+
+	update_option( 'cherrystone_leadership_migration_v1', '1' );
+}
+add_action( 'admin_init', 'cherrystone_blocks_migrate_leadership_post_type' );
 
 /**
  * Flush permalinks when the plugin deactivates.

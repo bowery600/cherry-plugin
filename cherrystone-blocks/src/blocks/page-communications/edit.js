@@ -11,7 +11,6 @@ const TEMPLATE = [
 			showMeta: false,
 		},
 	],
-	[ 'cherrystone/news-list', {} ],
 	[ 'cherrystone/resource-cards', {} ],
 	[ 'cherrystone/footer-cta', {} ],
 ];

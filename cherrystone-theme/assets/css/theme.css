@@ -4,36 +4,36 @@
    ========================================================================== */
 
 :root {
-	--navy-900: #111111;
-	--navy-800: #1a1a1a;
-	--navy-700: #2b2b2b;
-	--navy-600: #4a4a4a;
-	--navy-100: #e8e6df;
-	--navy-50: #f4f3ef;
+	--navy-900: var(--wp--preset--color--navy-900, #111111);
+	--navy-800: var(--wp--preset--color--navy-800, #1a1a1a);
+	--navy-700: var(--wp--preset--color--navy-700, #2b2b2b);
+	--navy-600: var(--wp--preset--color--navy-600, #4a4a4a);
+	--navy-100: var(--wp--preset--color--navy-100, #e8e6df);
+	--navy-50: var(--wp--preset--color--navy-50, #f4f3ef);
 
 	--paper: var(--wp--preset--color--paper, #fbfaf7);
-	--paper-warm: #f2eee6;
+	--paper-warm: var(--wp--preset--color--paper-warm, #f2eee6);
 	--ink: var(--wp--preset--color--ink, #111111);
-	--ink-muted: #56524d;
-	--line: #dedbd4;
-	--line-soft: #ebe8e2;
-	--surface: #ffffff;
+	--ink-muted: var(--wp--preset--color--ink-muted, #56524d);
+	--line: var(--wp--preset--color--line, #dedbd4);
+	--line-soft: var(--wp--preset--color--line-soft, #ebe8e2);
+	--surface: var(--wp--preset--color--surface, #ffffff);
 
-	--accent: #b5121b;
-	--accent-ink: var(--wp--preset--color--accent-ink, #8f1118);
-	--accent-soft: #f8e4e4;
-	--accent-gold: #9a7a3d;
-	--sea: #5f6f73;
-	--success: #2f6f4e;
+	--accent: var(--wp--preset--color--accent, #0E4164);
+	--accent-ink: var(--wp--preset--color--accent-ink, #0b3655);
+	--accent-soft: var(--wp--preset--color--accent-soft, #e0eaf2);
+	--accent-gold: var(--wp--preset--color--accent-gold, #9a7a3d);
+	--sea: var(--wp--preset--color--sea, #5f6f73);
+	--success: var(--wp--preset--color--success, #2f6f4e);
 
 	--radius-lg: 10px;
 	--shadow-soft: 0 18px 50px rgba(17, 17, 17, 0.08);
 
 	--font-sans: var(--wp--preset--font-family--sans, 'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif);
-	--font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+	--font-mono: var(--wp--preset--font-family--mono, 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace);
 
-	--cs-maxw: 1320px;
-	--cs-gutter: 32px;
+	--cs-maxw: var(--wp--style--global--wide-size, 1320px);
+	--cs-gutter: var(--wp--preset--spacing--40, 32px);
 
 	/* ── Glassmorphism Design Tokens ──────────────────────────────────────── */
 	/* Light Glassmorphism (Warm Frosted theme) */
@@ -473,4 +473,43 @@ body {
 	align-items: center;
 	justify-content: center;
 	padding: 10px;
+}
+
+/* ── Unified Root Canvas Layout ────────────────────────────────────────── */
+.unified-root-canvas-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 0;
+	pointer-events: none;
+	overflow: hidden;
+	background-color: transparent;
+	user-select: none;
+	-webkit-user-select: none;
+}
+.unified-root-canvas-container canvas {
+	display: block;
+	width: 100% !important;
+	height: 100% !important;
+}
+.wp-site-blocks,
+header.wp-block-template-part,
+main#main-content,
+footer.wp-block-template-part {
+	position: relative;
+	z-index: 1;
+}
+
+/* ── WebGL Fallback Liquid Gradients ───────────────────────────────────── */
+.no-webgl .sequence-hero-container {
+	background: linear-gradient(135deg, var(--navy-900), var(--navy-800), var(--accent-ink));
+	background-size: 400% 400%;
+	animation: fallbackLiquidGradient 15s ease infinite;
+}
+@keyframes fallbackLiquidGradient {
+	0% { background-position: 0% 50%; }
+	50% { background-position: 100% 50%; }
+	100% { background-position: 0% 50%; }
 }

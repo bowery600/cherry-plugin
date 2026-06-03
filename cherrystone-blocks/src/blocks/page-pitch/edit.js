@@ -53,7 +53,8 @@ const TEMPLATE = [
 		'cherrystone/footer-cta',
 		{
 			eyebrow: 'Get involved',
-			heading: 'Capital. Judgment. <em>Time.</em><br>Where founders need it.',
+			heading:
+				'Capital. Judgment. <em>Time.</em><br>Where founders need it.',
 			cards: [
 				{
 					label: 'FOR FOUNDERS',

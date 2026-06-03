@@ -3,7 +3,7 @@
  * Server render for the Sponsors block.
  *
  * Renders the live set of cherry_sponsor posts, grouped by their tier,
- * and outputs the clickable logo tickers.
+ * and outputs infinite-scrolling marquee rows with "See All" links.
  *
  * @var array    $attributes Block attributes.
  * @var string   $content    Saved inner content (unused; dynamic block).
@@ -12,8 +12,8 @@
  * @package CherrystoneBlocks
  */
 
-$eyebrow   = isset( $attributes['eyebrow'] ) ? $attributes['eyebrow'] : '';
-$heading   = isset( $attributes['heading'] ) ? $attributes['heading'] : '';
+$eyebrow     = isset( $attributes['eyebrow'] ) ? $attributes['eyebrow'] : '';
+$heading     = isset( $attributes['heading'] ) ? $attributes['heading'] : '';
 $tier_filter = isset( $attributes['tierFilter'] ) ? $attributes['tierFilter'] : '';
 
 $sponsors = get_posts( array(
@@ -47,6 +47,56 @@ if ( in_array( $tier_filter, array( 'Sponsors', 'Partners' ), true ) ) {
 $assets_base = CHERRYSTONE_BLOCKS_URL . 'assets/';
 $on_error    = "if(!this.src.endsWith('.svg')){this.src=this.src.replace('.png','.svg');}else{this.style.display='none';this.nextElementSibling.style.display='flex';}";
 
+/**
+ * Render a single sponsor card article.
+ *
+ * @param WP_Post $post       The sponsor post.
+ * @param string  $assets_base Base URL for fallback logos.
+ * @param string  $on_error   Inline onerror handler.
+ * @param bool    $clone      When true, marks card aria-hidden for screen readers.
+ */
+$render_card = static function ( $post, $assets_base, $on_error, $clone = false ) {
+	$name        = get_the_title( $post );
+	$url         = get_post_meta( $post->ID, 'cs_sponsor_url', true );
+	$description = get_post_meta( $post->ID, 'cs_sponsor_description', true );
+	$logo_alt    = get_post_meta( $post->ID, 'cs_sponsor_logo_alt', true );
+
+	$logo_url = get_the_post_thumbnail_url( $post->ID, 'medium' );
+	if ( ! $logo_url ) {
+		$logo_url = get_post_meta( $post->ID, 'cs_sponsor_logo_url', true );
+	}
+	if ( ! $logo_url ) {
+		$logo_url = $assets_base . 'logos/' . cherrystone_blocks_logo_slug( $name ) . '.png';
+	}
+
+	$aria_attr  = $clone ? ' aria-hidden="true"' : '';
+	$tab_attr   = $clone ? ' tabindex="-1"' : '';
+	$img_alt    = $clone ? '' : esc_attr( $logo_alt ? $logo_alt : $name );
+	?>
+	<article class="sponsor-card"<?php echo $aria_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+		<a class="sponsor-card-link" href="<?php echo esc_url( $url ? $url : '#' ); ?>"<?php echo $aria_attr . $tab_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><?php echo $url ? ' target="_blank" rel="noopener noreferrer"' : ''; ?>>
+			<div class="sponsor-logo-box">
+				<img
+					src="<?php echo esc_url( $logo_url ); ?>"
+					alt="<?php echo $img_alt; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>"
+					loading="lazy"
+					decoding="async"
+					onerror="<?php echo esc_attr( $on_error ); ?>"
+					style="display: block; width: 100%; height: 100%; object-fit: contain; padding: 4px;"
+				>
+				<span class="fallback" style="display: none; align-items: center; justify-content: center; width: 100%; height: 100%;"<?php echo $aria_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+					<?php echo esc_html( strtoupper( substr( $name, 0, 2 ) ) ); ?>
+				</span>
+			</div>
+			<span class="sponsor-card-name"><?php echo esc_html( $name ); ?></span>
+			<?php if ( $description ) : ?>
+				<span class="sponsor-card-desc"><?php echo esc_html( $description ); ?></span>
+			<?php endif; ?>
+		</a>
+	</article>
+	<?php
+};
+
 $wrapper_attributes = get_block_wrapper_attributes( array( 'class' => 'block warm', 'style' => 'padding: 80px 0;' ) );
 ?>
 <section <?php echo $wrapper_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped by get_block_wrapper_attributes(). ?>>
@@ -64,56 +114,33 @@ $wrapper_attributes = get_block_wrapper_attributes( array( 'class' => 'block war
 			<div class="sponsor-groups">
 				<?php foreach ( $groups as $label => $items ) : ?>
 					<?php if ( empty( $items ) ) : continue; endif; ?>
-					<div class="sponsor-carousel" tabindex="0" aria-label="<?php echo esc_attr( sprintf( __( '%s carousel', 'cherrystone-blocks' ), $label ) ); ?>">
+					<?php
+					$see_all_url  = 'Partners' === $label ? home_url( '/partners' ) : home_url( '/sponsors' );
+					$see_all_text = 'Partners' === $label
+						? __( 'See all partners', 'cherrystone-blocks' )
+						: __( 'See all sponsors', 'cherrystone-blocks' );
+					$item_count   = count( $items );
+					?>
+					<div class="sponsor-carousel" data-items="<?php echo esc_attr( $item_count ); ?>" aria-label="<?php echo esc_attr( sprintf( __( '%s carousel', 'cherrystone-blocks' ), $label ) ); ?>">
 						<div class="sponsor-carousel-head">
 							<span class="sponsor-group-label"><?php echo esc_html( $label ); ?></span>
-							<div class="sponsor-carousel-arrows" aria-label="<?php esc_attr_e( 'Carousel controls', 'cherrystone-blocks' ); ?>">
-								<button class="sponsor-carousel-arrow" type="button" data-dir="prev" aria-label="<?php esc_attr_e( 'Previous', 'cherrystone-blocks' ); ?>">&#8592;</button>
-								<button class="sponsor-carousel-arrow" type="button" data-dir="next" aria-label="<?php esc_attr_e( 'Next', 'cherrystone-blocks' ); ?>">&#8594;</button>
-							</div>
 						</div>
-						<div class="sponsor-carousel-viewport">
+						<div class="sponsor-carousel-viewport" aria-live="off">
 							<div class="sponsor-carousel-track">
 								<?php foreach ( $items as $post ) : ?>
-									<?php
-									$name        = get_the_title( $post );
-									$url         = get_post_meta( $post->ID, 'cs_sponsor_url', true );
-									$description = get_post_meta( $post->ID, 'cs_sponsor_description', true );
-									$logo_alt    = get_post_meta( $post->ID, 'cs_sponsor_logo_alt', true );
-									
-									$logo_url = get_the_post_thumbnail_url( $post->ID, 'medium' );
-									if ( ! $logo_url ) {
-										$logo_url = get_post_meta( $post->ID, 'cs_sponsor_logo_url', true );
-									}
-									if ( ! $logo_url ) {
-										$logo_url = $assets_base . 'logos/' . cherrystone_blocks_logo_slug( $name ) . '.png';
-									}
-									?>
-									<article class="sponsor-card">
-										<a class="sponsor-card-link" href="<?php echo esc_url( $url ? $url : '#' ); ?>" <?php echo $url ? 'target="_blank" rel="noopener noreferrer"' : ''; ?>>
-											<div class="sponsor-logo-box">
-												<img
-													src="<?php echo esc_url( $logo_url ); ?>"
-													alt="<?php echo esc_attr( $logo_alt ? $logo_alt : $name ); ?>"
-													loading="lazy"
-													decoding="async"
-													onerror="<?php echo esc_attr( $on_error ); ?>"
-													style="display: block; width: 100%; height: 100%; object-fit: contain; padding: 4px;"
-												>
-												<span class="fallback" style="display: none; align-items: center; justify-content: center; width: 100%; height: 100%;">
-													<?php echo esc_html( strtoupper( substr( $name, 0, 2 ) ) ); ?>
-												</span>
-											</div>
-											<span class="sponsor-card-name"><?php echo esc_html( $name ); ?></span>
-											<?php if ( $description ) : ?>
-												<span class="sponsor-card-desc"><?php echo esc_html( $description ); ?></span>
-											<?php endif; ?>
-										</a>
-									</article>
+									<?php $render_card( $post, $assets_base, $on_error, false ); ?>
+								<?php endforeach; ?>
+								<?php /* Duplicate set for seamless loop — screen-reader hidden */ ?>
+								<?php foreach ( $items as $post ) : ?>
+									<?php $render_card( $post, $assets_base, $on_error, true ); ?>
 								<?php endforeach; ?>
 							</div>
 						</div>
-						<div class="sponsor-carousel-dots" aria-label="<?php esc_attr_e( 'Carousel pages', 'cherrystone-blocks' ); ?>"></div>
+						<div class="sponsor-carousel-footer">
+							<a href="<?php echo esc_url( $see_all_url ); ?>" class="sponsor-see-all-link">
+								<?php echo esc_html( $see_all_text ); ?> <span aria-hidden="true">→</span>
+							</a>
+						</div>
 					</div>
 				<?php endforeach; ?>
 			</div>

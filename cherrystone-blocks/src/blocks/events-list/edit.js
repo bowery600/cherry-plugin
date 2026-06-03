@@ -17,40 +17,65 @@ export default function Edit( { attributes, setAttributes } ) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'Section text', 'cherrystone-blocks' ) } initialOpen>
+				<PanelBody
+					title={ __( 'Section text', 'cherrystone-blocks' ) }
+					initialOpen
+				>
 					<TextControl
 						label={ __( 'Eyebrow', 'cherrystone-blocks' ) }
 						value={ eyebrow }
-						onChange={ ( value ) => setAttributes( { eyebrow: value } ) }
+						onChange={ ( value ) =>
+							setAttributes( { eyebrow: value } )
+						}
 					/>
 					<TextControl
 						label={ __( 'Heading', 'cherrystone-blocks' ) }
 						value={ heading }
-						onChange={ ( value ) => setAttributes( { heading: value } ) }
+						onChange={ ( value ) =>
+							setAttributes( { heading: value } )
+						}
 					/>
 					<TextareaControl
 						label={ __( 'Lede', 'cherrystone-blocks' ) }
 						value={ lede }
-						onChange={ ( value ) => setAttributes( { lede: value } ) }
+						onChange={ ( value ) =>
+							setAttributes( { lede: value } )
+						}
 					/>
 				</PanelBody>
-				<PanelBody title={ __( 'Display', 'cherrystone-blocks' ) } initialOpen={ false }>
+				<PanelBody
+					title={ __( 'Display', 'cherrystone-blocks' ) }
+					initialOpen={ false }
+				>
 					<NumberControl
-						label={ __( 'Max events (0 = all)', 'cherrystone-blocks' ) }
+						label={ __(
+							'Max events (0 = all)',
+							'cherrystone-blocks'
+						) }
 						min={ 0 }
 						value={ maxItems }
 						onChange={ ( value ) =>
-							setAttributes( { maxItems: parseInt( value, 10 ) || 0 } )
+							setAttributes( {
+								maxItems: parseInt( value, 10 ) || 0,
+							} )
 						}
 					/>
 					<ToggleControl
-						label={ __( 'Only show upcoming events', 'cherrystone-blocks' ) }
+						label={ __(
+							'Only show upcoming events',
+							'cherrystone-blocks'
+						) }
 						checked={ upcomingOnly }
-						onChange={ ( value ) => setAttributes( { upcomingOnly: value } ) }
+						onChange={ ( value ) =>
+							setAttributes( { upcomingOnly: value } )
+						}
 					/>
 					<p>
 						<ExternalLink href="/wp-admin/edit.php?post_type=cherry_pitch_event">
-							{ __( 'Manage Pitch Nights →', 'cherrystone-blocks' ) }
+							{ __(
+								'Manage Pitch Nights →',
+								'cherrystone-blocks'
+							) }
 						</ExternalLink>
 					</p>
 				</PanelBody>

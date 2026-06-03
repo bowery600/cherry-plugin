@@ -62,12 +62,19 @@ export default function save( { attributes } ) {
 				{ sidePosts.map( ( post, index ) => {
 					const PostCardTag = post.url ? 'a' : 'div';
 					const postCardProps = post.url
-						? { href: post.url, className: 'sidebar-post-card', key: index }
+						? {
+								href: post.url,
+								className: 'sidebar-post-card',
+								key: index,
+						  }
 						: { className: 'sidebar-post-card', key: index };
 					return (
 						<PostCardTag { ...postCardProps }>
 							<span className="date">{ post.date }</span>
-							<RichText.Content tagName="h4" value={ post.title } />
+							<RichText.Content
+								tagName="h4"
+								value={ post.title }
+							/>
 							<RichText.Content
 								tagName="span"
 								className="cat"

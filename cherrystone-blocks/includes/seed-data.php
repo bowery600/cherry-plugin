@@ -324,11 +324,11 @@ function cherrystone_blocks_seed_content() {
 				continue;
 			}
 
-			$post_id = cherrystone_blocks_find_seeded_post( 'cherry_member', $title );
+			$post_id = cherrystone_blocks_find_seeded_post( 'cherry_leader', $title );
 			if ( ! $post_id ) {
 				$post_id = wp_insert_post(
 					array(
-						'post_type'    => 'cherry_member',
+						'post_type'    => 'cherry_leader',
 						'post_status'  => 'publish',
 						'post_title'   => $title,
 						'post_content' => isset( $member['bio'] ) ? $member['bio'] : '',
@@ -352,9 +352,9 @@ function cherrystone_blocks_seed_content() {
 				);
 			}
 
-			update_post_meta( $post_id, 'cs_member_role', isset( $member['role'] ) ? $member['role'] : '' );
-			update_post_meta( $post_id, 'cs_member_linkedin_url', isset( $member['linkedin'] ) ? $member['linkedin'] : '' );
-			update_post_meta( $post_id, 'cs_member_description', isset( $member['bio'] ) ? $member['bio'] : '' );
+			update_post_meta( $post_id, 'cs_leader_role', isset( $member['role'] ) ? $member['role'] : '' );
+			update_post_meta( $post_id, 'cs_leader_linkedin_url', isset( $member['linkedin'] ) ? $member['linkedin'] : '' );
+			update_post_meta( $post_id, 'cs_leader_description', isset( $member['bio'] ) ? $member['bio'] : '' );
 			update_post_meta( $post_id, 'cs_initials', isset( $member['initials'] ) ? $member['initials'] : '' );
 			update_post_meta( $post_id, '_cs_seeded', '1' );
 		}

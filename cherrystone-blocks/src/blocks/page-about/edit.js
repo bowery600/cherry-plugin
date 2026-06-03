@@ -20,7 +20,7 @@ const TEMPLATE = [
 		'core/html',
 		{
 			content:
-				'<section class="about-rotator-section"><div class="container about-rotator-grid"><p class="about-rotator-copy">Our members bring practical operating judgment to the moments when early-stage companies need capital, sector knowledge, and leadership support in the same room.</p><div class="about-rotator" aria-label="Cherrystone support highlights"><span>Investment capital for founders when they need it most.</span><span>Multi-sector expertise and connections to support growth.</span><span>Executive leadership to help companies scale.</span></div></div></section>',
+				'<section class="about-statement"><div class="container"><div class="about-statement-label"><span></span>What we bring</div><div class="about-statement-rotator" aria-live="polite" aria-label="Cherrystone value propositions"><p class="asr-phrase"><strong>Investment capital</strong> for founders when they need it most.</p><p class="asr-phrase"><strong>Multi-sector expertise</strong> and connections to support growth.</p><p class="asr-phrase"><strong>Executive leadership</strong> to help companies scale.</p></div><div class="about-statement-pips" aria-hidden="true"><span></span><span></span><span></span></div></div></section>',
 		},
 	],
 	[
