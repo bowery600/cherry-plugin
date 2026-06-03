@@ -914,13 +914,10 @@
 				window.matchMedia &&
 				window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches;
 
-			// ── Mobile path: 1080p canvas frame sequence ──────────────────────
-			// Breakpoint: anything narrower than a full desktop uses the
-			// lighter canvas approach to avoid loading the 4K WebM.
 			const isMobile = window.matchMedia( '(max-width: 1023px)' ).matches;
 
 			if ( isMobile ) {
-				// Stop the video from downloading on mobile — saves bandwidth.
+				// ── Mobile Path: Canvas WebP Frame Sequence ──────────────────
 				const videoContainer = hero.querySelector( '.sequence-video-container' );
 				const videoEl        = hero.querySelector( '.sequence-video' );
 				if ( videoContainer ) {
@@ -1023,6 +1020,7 @@
 				window.addEventListener( 'resize', resize, { passive: true } );
 				resize();
 
+				// Load all frames
 				for ( let f = frameStart; f <= frameEnd; f += 1 ) {
 					const img   = new Image();
 					const idx   = f - frameStart;
@@ -1051,10 +1049,10 @@
 					window.requestAnimationFrame( animate );
 				}
 
-				return; // ← mobile path done
+				return; // Mobile path done
 			}
 
-			// ── Desktop path: GSAP ScrollTrigger + 4K WebM ───────────────────
+			// ── Desktop Path: GSAP ScrollTrigger + WebM Video ────────────────
 			if (
 				typeof window.gsap === 'undefined' ||
 				typeof window.ScrollTrigger === 'undefined'
@@ -1067,6 +1065,26 @@
 			if ( ! video ) {
 				hidePreloader();
 				return;
+			}
+
+			// Ensure the video container and element are displayed
+			const videoContainer = hero.querySelector( '.sequence-video-container' );
+			if ( videoContainer ) {
+				videoContainer.style.display = '';
+			}
+
+			// Hide canvas container if it exists
+			const canvasContainer = hero.querySelector( '.sequence-canvas-container' );
+			if ( canvasContainer ) {
+				canvasContainer.style.display = 'none';
+			}
+
+			// Append cache buster to prevent HTTP 416 Range Not Satisfiable caching issues
+			const originalSrc = video.getAttribute( 'src' );
+			if ( originalSrc && ! originalSrc.includes( 'v=' ) ) {
+				const separator = originalSrc.includes( '?' ) ? '&' : '?';
+				video.setAttribute( 'src', `${ originalSrc }${ separator }v=1080p-g1` );
+				video.load();
 			}
 
 			window.gsap.registerPlugin( window.ScrollTrigger );
@@ -1082,58 +1100,21 @@
 
 			const setupScrollTrigger = () => {
 				const duration = video.duration || 6;
-
-				// ── SCROLL DURATION ────────────────────────────────────────────
-				// Increase the multiplier to make the user scroll further before
-				// the video finishes. 5 ≈ 5 × viewport heights of travel.
 				const scrollLength = window.innerHeight * 5;
-				// ──────────────────────────────────────────────────────────────
 
-				// Throttled seeking queue to prevent clogging the video decoder on heavy 4K WebM streams.
-				let isSeeking = false;
-				let pendingSeekTime = null;
-
-				const seekVideo = ( time ) => {
-					if ( isSeeking ) {
-						pendingSeekTime = time;
-					} else {
-						isSeeking = true;
-						video.currentTime = time;
-					}
-				};
-
-				video.addEventListener( 'seeked', () => {
-					isSeeking = false;
-					if ( pendingSeekTime !== null ) {
-						const nextTime = pendingSeekTime;
-						pendingSeekTime = null;
-						seekVideo( nextTime );
-					}
-				} );
-
-				const proxy = { t: 0 };
-
-				window.gsap.to( proxy, {
-					t: duration,
+				// Directly scrub the video's currentTime property.
+				// Since we encoded the video as all keyframes (-g 1) and compressed it,
+				// the browser's hardware video decoder can update instantaneously without lag.
+				window.gsap.to( video, {
+					currentTime: duration,
 					ease: 'none',
-					onUpdate() {
-						seekVideo( proxy.t );
-					},
 					scrollTrigger: {
 						trigger: hero,
 						start: 'top top',
-						// ── PIN LENGTH ────────────────────────────────────────
-						// Section stays pinned for this many scroll pixels;
-						// must match scrollLength so the tween ends on unpin.
 						end: `+=${ scrollLength }`,
-						// ─────────────────────────────────────────────────────
 						pin: true,
 						anticipatePin: 1,
-						// ── SCRUB SMOOTHNESS ──────────────────────────────────
-						// scrub: 1 → playhead catches up in ~1 second.
-						// 0.5 = snappier  |  2 = more cinematic / floaty
-						scrub: 1,
-						// ─────────────────────────────────────────────────────
+						scrub: 0.5,
 					},
 				} );
 
