@@ -1089,15 +1089,35 @@
 				const scrollLength = window.innerHeight * 5;
 				// ──────────────────────────────────────────────────────────────
 
-				// Tween a proxy so GSAP's built-in scrub lag smoothing applies
-				// to video.currentTime rather than jumping on every rAF tick.
+				// Throttled seeking queue to prevent clogging the video decoder on heavy 4K WebM streams.
+				let isSeeking = false;
+				let pendingSeekTime = null;
+
+				const seekVideo = ( time ) => {
+					if ( isSeeking ) {
+						pendingSeekTime = time;
+					} else {
+						isSeeking = true;
+						video.currentTime = time;
+					}
+				};
+
+				video.addEventListener( 'seeked', () => {
+					isSeeking = false;
+					if ( pendingSeekTime !== null ) {
+						const nextTime = pendingSeekTime;
+						pendingSeekTime = null;
+						seekVideo( nextTime );
+					}
+				} );
+
 				const proxy = { t: 0 };
 
 				window.gsap.to( proxy, {
 					t: duration,
 					ease: 'none',
 					onUpdate() {
-						video.currentTime = proxy.t;
+						seekVideo( proxy.t );
 					},
 					scrollTrigger: {
 						trigger: hero,
