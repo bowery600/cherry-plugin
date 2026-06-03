@@ -847,6 +847,39 @@
 				} );
 		};
 
+		const initInvestmentLensReveal = () => {
+			const block = document.querySelector( '.thesis-block' );
+			if ( ! block ) {
+				return;
+			}
+
+			const reducedMotion =
+				window.matchMedia &&
+				window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches;
+
+			if ( reducedMotion ) {
+				block.classList.add( 'is-visible' );
+				return;
+			}
+
+			const observer = new IntersectionObserver(
+				( entries ) => {
+					entries.forEach( ( entry ) => {
+						if ( entry.isIntersecting ) {
+							block.classList.add( 'is-visible' );
+							observer.unobserve( block );
+						}
+					} );
+				},
+				{
+					threshold: 0.15,
+					rootMargin: '0px 0px -10% 0px',
+				}
+			);
+
+			observer.observe( block );
+		};
+
 		const initResourceTabs = () => {
 			document
 				.querySelectorAll( '.resource-tabs' )
@@ -1083,7 +1116,7 @@
 			const originalSrc = video.getAttribute( 'src' );
 			if ( originalSrc && ! originalSrc.includes( 'v=' ) ) {
 				const separator = originalSrc.includes( '?' ) ? '&' : '?';
-				video.setAttribute( 'src', `${ originalSrc }${ separator }v=1080p-g1` );
+				video.setAttribute( 'src', `${ originalSrc }${ separator }v=1440p-g1` );
 				video.load();
 			}
 
@@ -1151,5 +1184,6 @@
 		initDiligenceTimelines();
 		initCardParallax();
 		initResourceTabs();
+		initInvestmentLensReveal();
 	} );
 } )();
