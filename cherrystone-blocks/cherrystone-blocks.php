@@ -762,7 +762,7 @@ function cherrystone_blocks_migrate_leadership_post_type() {
 
 	update_option( 'cherrystone_leadership_migration_v1', '1' );
 }
-add_action( 'admin_init', 'cherrystone_blocks_migrate_leadership_post_type' );
+add_action( 'admin_init', 'cherrystone_blocks_migrate_leadership_post_type', 5 );
 
 /**
  * Flush permalinks when the plugin deactivates.
