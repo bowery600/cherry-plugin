@@ -24,6 +24,10 @@
 		"tierFilter": {
 			"type": "string",
 			"default": ""
+		},
+		"displayMode": {
+			"type": "string",
+			"default": ""
 		}
 	},
 	"render": "file:./render.php"

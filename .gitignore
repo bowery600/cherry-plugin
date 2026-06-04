@@ -5,3 +5,6 @@ test_unzip/
 node_modules/
 graphify-out/
 .playwright-mcp/
+*.webm
+*.png
+motion-audits/

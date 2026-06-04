@@ -1156,6 +1156,107 @@ section.block.warm { background: var(--paper-warm); }
   margin-top: auto;
 }
 
+/* ---------- Portfolio Marquee ---------- */
+.portfolio-marquee-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: hidden;
+  padding: 48px 0;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+.marquee-row { overflow: hidden; }
+.marquee-track {
+  display: flex;
+  gap: 12px;
+  width: max-content;
+  animation: marquee-ltr 75s linear infinite;
+}
+.marquee-row--rtl .marquee-track {
+  animation: marquee-rtl 75s linear infinite;
+}
+@keyframes marquee-ltr {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes marquee-rtl {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+.marquee-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 18px 9px 9px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  text-decoration: none;
+  color: inherit;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.marquee-pill:hover {
+  border-color: var(--ink);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+}
+.marquee-pill__logo {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: var(--navy-100);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.marquee-pill__logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 3px;
+  display: block;
+}
+.marquee-pill__logo .fallback {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ink);
+  display: none;
+}
+.marquee-pill__name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.marquee-pill__sep {
+  color: var(--ink-muted);
+  opacity: 0.4;
+  font-size: 13px;
+}
+.marquee-pill__sector {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-muted);
+  letter-spacing: 0.04em;
+}
+.portfolio-marquee-cta {
+  display: flex;
+  justify-content: center;
+  padding: 8px 0 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+    flex-wrap: wrap;
+    width: auto;
+    justify-content: center;
+  }
+}
+
 .company-hero { padding-bottom: 96px; }
 .company-hero-grid {
   display: grid;
@@ -1546,6 +1647,32 @@ section.block.warm { background: var(--paper-warm); }
     margin-bottom: 20px;
   }
   .about-statement-pips span { animation: none; }
+}
+/* 4-phrase variant (sponsors rotator) */
+.about-statement[data-phrases="4"] .about-statement-rotator {
+  min-height: clamp(100px, 16vw, 188px);
+}
+.about-statement[data-phrases="4"] .asr-phrase {
+  animation-name: asrPhase4;
+  animation-duration: 16s;
+}
+.about-statement[data-phrases="4"] .asr-phrase:nth-child(2) { animation-delay: 4s; }
+.about-statement[data-phrases="4"] .asr-phrase:nth-child(3) { animation-delay: 8s; }
+.about-statement[data-phrases="4"] .asr-phrase:nth-child(4) { animation-delay: 12s; }
+@keyframes asrPhase4 {
+  0%,   6%  { opacity: 0; transform: translateY(30px); }
+  11%,  22% { opacity: 1; transform: translateY(0); }
+  27%, 100% { opacity: 0; transform: translateY(-22px); }
+}
+.about-statement[data-phrases="4"] .about-statement-pips span {
+  animation-name: asrPip4;
+  animation-duration: 16s;
+}
+.about-statement[data-phrases="4"] .about-statement-pips span:nth-child(4) { animation-delay: 12s; }
+@keyframes asrPip4 {
+  0%,   8%  { background: rgba(255, 255, 255, 0.14); }
+  11%,  22% { background: var(--accent); }
+  27%, 100% { background: rgba(255, 255, 255, 0.14); }
 }
 .principles {
   display: grid;
@@ -4560,19 +4687,30 @@ section.block.warm { background: var(--paper-warm); }
 
 /* ── 5b. Sponsor / Partner Infinite Marquee ─────────────────────────────── */
 .sponsors-section-layout {
-  display: grid;
-  grid-template-columns: minmax(220px, 0.32fr) minmax(0, 1fr);
-  gap: clamp(28px, 5vw, 64px);
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 3vw, 36px);
 }
 .sponsors-section-head {
-  position: sticky;
-  top: 112px;
+  /* stacked — no sticky needed */
 }
 .sponsors-section-head h2 {
-  margin-top: 16px;
-  max-width: 12ch;
-  font-size: clamp(30px, 4vw, 48px);
+  margin-top: 12px;
+  font-size: clamp(24px, 3.5vw, 40px);
+}
+/* Card grid mode (sponsors / partners dedicated pages) */
+.sponsor-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+.sponsor-card-grid .sponsor-card {
+  flex: none;
+  width: 100%;
+}
+/* Hide the "View Sponsors" button that follows the sponsors block on the about page */
+.cherrystone-page-about-template .wp-block-cherrystone-sponsors + .wp-block-buttons {
+  display: none;
 }
 .sponsor-groups {
   display: flex;
@@ -4739,16 +4877,13 @@ section.block.warm { background: var(--paper-warm); }
   .about-statement-rotator {
     min-height: clamp(112px, 22vw, 168px);
   }
-  .sponsor-benefits-layout,
-  .sponsors-section-layout {
+  .sponsor-benefits-layout {
     grid-template-columns: 1fr;
   }
-  .sponsor-benefits-intro,
-  .sponsors-section-head {
+  .sponsor-benefits-intro {
     position: static;
   }
-  .sponsor-benefits-intro h2,
-  .sponsors-section-head h2 {
+  .sponsor-benefits-intro h2 {
     max-width: 16ch;
   }
 }

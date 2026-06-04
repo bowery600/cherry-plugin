@@ -189,6 +189,10 @@ body {
 	backdrop-filter: blur(14px);
 	-webkit-backdrop-filter: blur(14px);
 	opacity: 0;
+	visibility: hidden;
+	height: auto !important;
+	width: auto !important;
+	overflow: visible !important;
 	transform: translateX(-50%) translateY(8px) scale(0.98);
 	transform-origin: top center;
 	transition: opacity 0.18s ease-out, transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.18s ease-out;
@@ -196,8 +200,9 @@ body {
 .cs-site-header .wp-block-navigation .wp-block-navigation__container > .has-child:hover > .wp-block-navigation__submenu-container,
 .cs-site-header .wp-block-navigation .wp-block-navigation__container > .has-child:focus-within > .wp-block-navigation__submenu-container,
 .cs-site-header .wp-block-navigation .wp-block-navigation__container > .has-child > .wp-block-navigation__submenu-container[aria-hidden="false"] {
-	opacity: 1;
-	transform: translateX(-50%) translateY(0) scale(1);
+	opacity: 1 !important;
+	visibility: visible !important;
+	transform: translateX(-50%) translateY(0) scale(1) !important;
 }
 .cs-site-header .wp-block-navigation .wp-block-navigation__submenu-container .wp-block-navigation-item__content {
 	display: flex;
@@ -494,22 +499,31 @@ body {
 	width: 100% !important;
 	height: 100% !important;
 }
+/* Subtle engineered dot-grid overlay — sits above the WebGL blobs */
+.unified-root-canvas-container::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+	background-size: 24px 24px;
+	pointer-events: none;
+	z-index: 1;
+}
 .wp-site-blocks,
-header.wp-block-template-part,
 main#main-content,
 footer.wp-block-template-part {
 	position: relative;
 	z-index: 1;
 }
-
-/* ── WebGL Fallback Liquid Gradients ───────────────────────────────────── */
-.no-webgl .sequence-hero-container {
-	background: linear-gradient(135deg, var(--navy-900), var(--navy-800), var(--accent-ink));
-	background-size: 400% 400%;
-	animation: fallbackLiquidGradient 15s ease infinite;
+header.wp-block-template-part {
+	position: relative;
+	z-index: 10 !important;
 }
-@keyframes fallbackLiquidGradient {
-	0% { background-position: 0% 50%; }
-	50% { background-position: 100% 50%; }
-	100% { background-position: 0% 50%; }
+
+/* ── WebGL Fallback Ambient Gradients ──────────────────────────────────── */
+.no-webgl body {
+	background:
+		radial-gradient(ellipse 70% 55% at 18% 22%, rgba(181, 18, 27, 0.06) 0%, transparent 70%),
+		radial-gradient(ellipse 80% 65% at 82% 42%, rgba(14, 65, 100, 0.09) 0%, transparent 70%),
+		radial-gradient(ellipse 60% 50% at 50% 82%, rgba(154, 122, 61, 0.055) 0%, transparent 70%);
 }

@@ -98,24 +98,6 @@ const TEMPLATE = [
 		},
 	],
 	[
-		'core/buttons',
-		{
-			layout: {
-				type: 'flex',
-				justifyContent: 'center',
-			},
-		},
-		[
-			[
-				'core/button',
-				{
-					text: 'View Sponsors',
-					url: '/sponsors',
-				},
-			],
-		],
-	],
-	[
 		'cherrystone/footer-cta',
 		{
 			eyebrow: 'Get started',
@@ -148,8 +130,6 @@ const ALLOWED_BLOCKS = [
 	'core/column',
 	'core/paragraph',
 	'core/html',
-	'core/buttons',
-	'core/button',
 	'cherrystone/page-hero',
 	'cherrystone/verticals-showcase',
 	'cherrystone/entry-cards',

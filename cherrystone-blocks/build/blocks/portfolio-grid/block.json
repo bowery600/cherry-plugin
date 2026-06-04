@@ -47,6 +47,10 @@
     "statusFilter": {
       "type": "string",
       "default": "Active"
+    },
+    "displayMode": {
+      "type": "string",
+      "default": "grid"
     }
   },
   "render": "file:./render.php"

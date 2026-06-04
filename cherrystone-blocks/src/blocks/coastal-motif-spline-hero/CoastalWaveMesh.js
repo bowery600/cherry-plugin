@@ -1,132 +1,79 @@
 /* eslint-disable react/no-unknown-property */
-import React, { useRef, useEffect, useMemo } from 'react';
+import React, { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
-// Inline GLSL Shaders for ease of compilation in wp-scripts
-const vertexShader = `
-  uniform float uTime;
-  uniform float uSpeed;
-  uniform float uNoiseDensity;
-  varying vec2 vUv;
-  varying float vElevation;
-
-  // Simple 2D Noise function
-  float noise(vec2 p) {
-    return sin(p.x * 0.5 + sin(p.y * 0.3)) * cos(p.y * 0.4 + cos(p.x * 0.2));
-  }
-
-  void main() {
-    vUv = uv;
-    
-    // Calculate elevation using sine splines and noise
-    float t = uTime * uSpeed;
-    float e1 = sin(position.x * uNoiseDensity + t) * cos(position.y * uNoiseDensity * 0.8 + t);
-    float e2 = noise(position.xy * uNoiseDensity * 0.5 + vec2(t * 0.3, t * 0.2));
-    float elevation = (e1 * 0.6 + e2 * 0.4) * 1.5;
-    
-    vElevation = elevation;
-    
-    vec3 newPosition = position;
-    newPosition.z += elevation;
-    
-    gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.0);
-  }
+const blobVertexShader = `
+varying vec2 vUv;
+void main() {
+	vUv = uv;
+	gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+}
 `;
 
-const fragmentShader = `
-  uniform vec3 uColor1;
-  uniform vec3 uColor2;
-  uniform vec3 uColor3;
-  varying vec2 vUv;
-  varying float vElevation;
-
-  void main() {
-    // Generate organic ambient gradient based on UV and distorted elevation
-    float mixFactor1 = smoothstep(-1.5, 1.5, vElevation);
-    float mixFactor2 = smoothstep(0.0, 1.0, vUv.x);
-    
-    vec3 c1 = mix(uColor1, uColor2, mixFactor1);
-    vec3 finalColor = mix(c1, uColor3, mixFactor2);
-    
-    gl_FragColor = vec4(finalColor, 0.95);
-  }
+const blobFragmentShader = `
+uniform vec3 uColor;
+uniform float uOpacity;
+varying vec2 vUv;
+void main() {
+	float d = distance(vUv, vec2(0.5));
+	float alpha = uOpacity * exp(-d * d * 14.0);
+	gl_FragColor = vec4(uColor, alpha);
+}
 `;
 
-export default function CoastalWaveMesh( {
-	speed = 1.0,
-	noiseDensity = 2.0,
-	color1 = '#b5121b',
-	color2 = '#5f6f73',
-	color3 = '#0a4266',
-} ) {
-	const materialRef = useRef();
+const BLOB_CONFIGS = [
+	{ color: '#b5121b', opacity: 0.06,  baseX: -2.8, baseY:  1.8, z: -2.0, size: 7, amp: 0.25, freq: 0.11, phase: 0.0 },
+	{ color: '#0E4164', opacity: 0.09,  baseX:  3.2, baseY: -0.8, z: -2.5, size: 8, amp: 0.28, freq: 0.09, phase: 2.1 },
+	{ color: '#9a7a3d', opacity: 0.055, baseX:  0.5, baseY: -2.5, z: -1.5, size: 6, amp: 0.22, freq: 0.13, phase: 4.2 },
+];
 
-	// Parse hex colors safely to THREE.Color (memoized to prevent render thrashing)
-	const { c1, c2, c3 } = useMemo( () => {
-		return {
-			c1: new THREE.Color( color1 ),
-			c2: new THREE.Color( color2 ),
-			c3: new THREE.Color( color3 ),
-		};
-	}, [ color1, color2, color3 ] );
+function BlobMesh( { cfg } ) {
+	const meshRef = useRef();
 
-	// Update uniforms dynamically when props change
-	useEffect( () => {
-		if ( materialRef.current ) {
-			materialRef.current.uniforms.uSpeed.value = speed;
-			materialRef.current.uniforms.uNoiseDensity.value = noiseDensity;
-			materialRef.current.uniforms.uColor1.value.copy( c1 );
-			materialRef.current.uniforms.uColor2.value.copy( c2 );
-			materialRef.current.uniforms.uColor3.value.copy( c3 );
-		}
-	}, [ speed, noiseDensity, c1, c2, c3 ] );
+	const uniforms = useMemo( () => ( {
+		uColor: { value: new THREE.Color( cfg.color ) },
+		uOpacity: { value: cfg.opacity },
+	} ), [] ); // eslint-disable-line react-hooks/exhaustive-deps
 
-	const prefersReducedMotionRef = useRef( false );
+	const prefersReducedMotion = useRef(
+		typeof window !== 'undefined' &&
+		window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches
+	);
 
-	useEffect( () => {
-		const mediaQuery = window.matchMedia(
-			'(prefers-reduced-motion: reduce)'
-		);
-		prefersReducedMotionRef.current = mediaQuery.matches;
-
-		const listener = ( event ) => {
-			prefersReducedMotionRef.current = event.matches;
-		};
-
-		mediaQuery.addEventListener( 'change', listener );
-		return () => mediaQuery.removeEventListener( 'change', listener );
-	}, [] );
-
-	// Animate time uniform
-	useFrame( ( state ) => {
-		if ( materialRef.current && !prefersReducedMotionRef.current ) {
-			materialRef.current.uniforms.uTime.value =
-				state.clock.getElapsedTime();
-		}
+	useFrame( ( { clock } ) => {
+		if ( ! meshRef.current || prefersReducedMotion.current ) return;
+		const t = clock.getElapsedTime();
+		meshRef.current.position.x = cfg.baseX + cfg.amp * Math.sin( t * cfg.freq + cfg.phase );
+		meshRef.current.position.y = cfg.baseY + cfg.amp * Math.cos( t * cfg.freq * 0.7 + cfg.phase * 1.3 );
 	} );
 
 	return (
 		<mesh
-			rotation={ [ -Math.PI / 3.5, 0, -Math.PI / 10 ] }
-			position={ [ 0, -1.5, -3 ] }
+			ref={ meshRef }
+			position={ [ cfg.baseX, cfg.baseY, cfg.z ] }
+			scale={ [ cfg.size, cfg.size, 1 ] }
 		>
-			<planeGeometry args={ [ 16, 12, 128, 128 ] } />
+			<planeGeometry args={ [ 1, 1 ] } />
 			<shaderMaterial
-				ref={ materialRef }
-				vertexShader={ vertexShader }
-				fragmentShader={ fragmentShader }
-				uniforms={ {
-					uTime: { value: 0 },
-					uSpeed: { value: speed },
-					uNoiseDensity: { value: noiseDensity },
-					uColor1: { value: c1 },
-					uColor2: { value: c2 },
-					uColor3: { value: c3 },
-				} }
+				vertexShader={ blobVertexShader }
+				fragmentShader={ blobFragmentShader }
+				uniforms={ uniforms }
 				transparent
 				depthWrite={ false }
 			/>
 		</mesh>
+	);
+}
+
+// Props are accepted but unused — callers (edit.js, unified-scene.js) may still pass
+// legacy wave attributes; the blob design uses fixed brand colours.
+export default function CoastalWaveMesh() {
+	return (
+		<>
+			{ BLOB_CONFIGS.map( ( cfg, i ) => (
+				<BlobMesh key={ i } cfg={ cfg } />
+			) ) }
+		</>
 	);
 }

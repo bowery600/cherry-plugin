@@ -6,7 +6,7 @@ const TEMPLATE = [
 		{
 			eyebrow: 'Sponsors',
 			heading: 'Our Sponsors',
-			lede: 'Our sponsors are highly valued strategic partners that help Cherrystone strengthen the New England innovation ecosystem.',
+			lede: 'Our sponsors are highly valued, strategic partners that enable us to build and further advance the New England innovation ecosystem.',
 			showGraphic: true,
 			showMeta: false,
 		},
@@ -15,7 +15,7 @@ const TEMPLATE = [
 		'core/html',
 		{
 			content:
-				'<section class="sponsor-benefits-section"><div class="container sponsor-benefits-layout"><div class="sponsor-benefits-intro"><span class="eyebrow accent">Why sponsor</span><h2>Visibility, access, and real ecosystem impact.</h2><p class="lede">Sponsorship connects your organization with Cherrystone members, portfolio companies, and the founders shaping the region.</p><a class="btn btn-accent" href="mailto:info@cherrystoneangelgroup.com?subject=Becoming%20a%20Sponsor">Learn more</a></div><div class="sponsor-benefit-grid"><article><span>01</span><h3>Increase visibility.</h3><p>Your organization appears on the website, selected marketing materials, and Cherrystone communications.</p></article><article><span>02</span><h3>Support founders.</h3><p>Help strengthen the startup community that creates jobs, attracts capital, and grows the economy.</p></article><article><span>03</span><h3>See emerging companies.</h3><p>Gain a clearer window into ambitious founders and sectors moving through the angel ecosystem.</p></article><article><span>04</span><h3>Meet the network.</h3><p>Create opportunities to connect with Cherrystone members and portfolio companies at special events.</p></article></div></div></section>',
+				'<section class="about-statement" data-phrases="4"><div class="container"><div class="about-statement-label"><span></span>Becoming a sponsor will</div><div class="about-statement-rotator" aria-live="polite" aria-label="Sponsor benefits"><p class="asr-phrase"><strong>Increase the visibility</strong> of your organization on our website and marketing materials.</p><p class="asr-phrase"><strong>Show your support</strong> to the New England start-up community that creates jobs and grows the economy.</p><p class="asr-phrase"><strong>Provide a window</strong> on emerging companies and talented entrepreneurs.</p><p class="asr-phrase"><strong>Present opportunities</strong> to meet Cherrystone members and portfolio companies at special events.</p></div><div class="about-statement-pips" aria-hidden="true"><span></span><span></span><span></span><span></span></div></div></section>',
 		},
 	],
 	[

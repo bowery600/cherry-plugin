@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'CHERRYSTONE_THEME_VERSION', '1.0.5' );
+define( 'CHERRYSTONE_THEME_VERSION', '1.0.7' );
 
 /**
  * Theme supports. Most block-theme features are opt-in via theme.json,

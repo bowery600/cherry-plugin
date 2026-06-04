@@ -9,7 +9,7 @@ import ServerSideRender from '@wordpress/server-side-render';
 import { __ } from '@wordpress/i18n';
 
 export default function Edit( { attributes, setAttributes } ) {
-	const { eyebrow, heading, tierFilter } = attributes;
+	const { eyebrow, heading, tierFilter, displayMode } = attributes;
 	const blockProps = useBlockProps();
 
 	return (
@@ -61,6 +61,37 @@ export default function Edit( { attributes, setAttributes } ) {
 						] }
 						onChange={ ( value ) =>
 							setAttributes( { tierFilter: value } )
+						}
+					/>
+					<SelectControl
+						label={ __( 'Display mode', 'cherrystone-blocks' ) }
+						help={ __(
+							'Auto: single group → card grid, both groups → carousel.',
+							'cherrystone-blocks'
+						) }
+						value={ displayMode }
+						options={ [
+							{
+								label: __( 'Auto', 'cherrystone-blocks' ),
+								value: '',
+							},
+							{
+								label: __(
+									'Carousel',
+									'cherrystone-blocks'
+								),
+								value: 'carousel',
+							},
+							{
+								label: __(
+									'Card grid',
+									'cherrystone-blocks'
+								),
+								value: 'card-grid',
+							},
+						] }
+						onChange={ ( value ) =>
+							setAttributes( { displayMode: value } )
 						}
 					/>
 					<p>

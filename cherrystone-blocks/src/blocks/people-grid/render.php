@@ -19,7 +19,7 @@ $max_items = isset( $attributes['maxItems'] ) ? (int) $attributes['maxItems'] : 
 $committee = isset( $attributes['committeeFilter'] ) ? trim( $attributes['committeeFilter'] ) : '';
 
 $query_args = array(
-	'post_type'      => 'cherry_member',
+	'post_type'      => 'cherry_leader',
 	'post_status'    => 'publish',
 	'posts_per_page' => $max_items > 0 ? $max_items : -1,
 	'orderby'        => 'menu_order date',
@@ -49,14 +49,14 @@ $wrapper_attributes = get_block_wrapper_attributes( array( 'class' => 'block war
 			<?php foreach ( $members as $member ) : ?>
 				<?php
 				$name      = get_the_title( $member );
-				$role      = get_post_meta( $member->ID, 'cs_member_role', true );
+				$role      = get_post_meta( $member->ID, 'cs_leader_role', true );
 				$expertise = '';
-				$linkedin  = get_post_meta( $member->ID, 'cs_member_linkedin_url', true );
-				$bio       = get_post_meta( $member->ID, 'cs_member_description', true );
+				$linkedin  = get_post_meta( $member->ID, 'cs_leader_linkedin_url', true );
+				$bio       = get_post_meta( $member->ID, 'cs_leader_description', true );
 				if ( ! $bio ) {
 					$bio   = $member->post_content;
 				}
-				
+
 				// Generate initials for fallback
 				$words    = explode( ' ', $name );
 				$initials = '';
@@ -68,7 +68,7 @@ $wrapper_attributes = get_block_wrapper_attributes( array( 'class' => 'block war
 				// Resolve image
 				$photo_url = get_the_post_thumbnail_url( $member->ID, 'medium' );
 				if ( ! $photo_url ) {
-					$photo_url = get_post_meta( $member->ID, 'cs_member_photo_url', true );
+					$photo_url = get_post_meta( $member->ID, 'cs_leader_photo_url', true );
 				}
 				?>
 				<div class="member-card" style="height:100%;">
