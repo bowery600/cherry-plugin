@@ -498,6 +498,13 @@ function cherrystone_blocks_enqueue_unified_canvas() {
 	$canvas_script_path = CHERRYSTONE_BLOCKS_PATH . 'build/unified-canvas.js';
 	$canvas_asset_path  = CHERRYSTONE_BLOCKS_PATH . 'build/unified-canvas.asset.php';
 
+	// The cinematic homepage backdrop is now the scroll-scrubbed hero video
+	// (see assets/js/frontend.js). The legacy WebGL canvas is only needed in
+	// the block editor preview, not on the public front end.
+	if ( ! is_admin() ) {
+		return;
+	}
+
 	if ( file_exists( $canvas_script_path ) ) {
 		$canvas_asset = file_exists( $canvas_asset_path )
 			? include $canvas_asset_path
@@ -592,7 +599,10 @@ function cherrystone_blocks_register_content_types() {
 			'description'  => __( 'News posts, leadership letters, portfolio updates, and Pitch Night announcements.', 'cherrystone-blocks' ),
 			'menu_icon'    => 'dashicons-media-document',
 			'public'       => true,
-			'has_archive'  => true,
+			// Archive disabled so the designed Communications page (cherrystone/page-communications)
+			// owns /communications/. Single posts keep the slug at /communications/<post>/, and the
+			// page's News section lists these posts via the news-list block.
+			'has_archive'  => false,
 			'rewrite'      => array( 'slug' => 'communications' ),
 			'show_in_rest' => true,
 			'supports'     => array( 'title', 'editor', 'excerpt', 'thumbnail' ),
@@ -1891,6 +1901,9 @@ function cherrystone_blocks_handle_import() {
 			'cs_events'       => $created['events'],
 			'cs_leadership'   => isset( $created['leadership'] ) ? $created['leadership'] : 0,
 			'cs_sponsors'     => isset( $created['sponsors'] ) ? $created['sponsors'] : 0,
+			'cs_testimonials' => isset( $created['testimonials'] ) ? $created['testimonials'] : 0,
+			'cs_communications' => isset( $created['communications'] ) ? $created['communications'] : 0,
+			'cs_people'       => isset( $created['people'] ) ? $created['people'] : 0,
 		),
 		admin_url( 'admin.php' )
 	);
@@ -2485,14 +2498,16 @@ function cherrystone_blocks_render_admin_page() {
 				<p>
 					<?php
 					printf(
-						/* translators: 1: portfolio count, 2: resources count, 3: events count, 4: leadership count, 5: sponsors count, 6: testimonials count. */
-						esc_html__( 'Starter content synced. Added %1$d portfolio companies, %2$d member resources, %3$d Pitch Night events, %4$d leadership members, %5$d sponsors, and %6$d testimonials. Existing items were left untouched.', 'cherrystone-blocks' ),
+						/* translators: 1: portfolio count, 2: resources count, 3: events count, 4: leadership count, 5: sponsors count, 6: testimonials count, 7: regular members count, 8: communications count. */
+						esc_html__( 'Starter content synced. Added %1$d portfolio companies, %2$d member resources, %3$d Pitch Night events, %4$d leadership members, %5$d sponsors, %6$d testimonials, %7$d regular members, and %8$d communications. Existing items were left untouched.', 'cherrystone-blocks' ),
 						isset( $_GET['cs_portfolio'] ) ? (int) $_GET['cs_portfolio'] : 0,
 						isset( $_GET['cs_resources'] ) ? (int) $_GET['cs_resources'] : 0,
 						isset( $_GET['cs_events'] ) ? (int) $_GET['cs_events'] : 0,
 						isset( $_GET['cs_leadership'] ) ? (int) $_GET['cs_leadership'] : 0,
 						isset( $_GET['cs_sponsors'] ) ? (int) $_GET['cs_sponsors'] : 0,
-						isset( $_GET['cs_testimonials'] ) ? (int) $_GET['cs_testimonials'] : 0
+						isset( $_GET['cs_testimonials'] ) ? (int) $_GET['cs_testimonials'] : 0,
+						isset( $_GET['cs_people'] ) ? (int) $_GET['cs_people'] : 0,
+						isset( $_GET['cs_communications'] ) ? (int) $_GET['cs_communications'] : 0
 					);
 					?>
 				</p>
