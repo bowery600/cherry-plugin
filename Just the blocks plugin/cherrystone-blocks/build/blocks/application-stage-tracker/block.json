@@ -1,0 +1,75 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "cherrystone/application-stage-tracker",
+  "version": "1.0.0",
+  "title": "Application Stage Tracker",
+  "category": "cherrystone-founders",
+  "icon": "index-card",
+  "description": "Progress tracker showing active and completed stages of a founder's application.",
+  "textdomain": "cherrystone-blocks",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "attributes": {
+    "eyebrow": {
+      "type": "string",
+      "default": "LIVE STATUS"
+    },
+    "heading": {
+      "type": "string",
+      "default": "Track your progress."
+    },
+    "lede": {
+      "type": "string",
+      "default": "Enter your reference details below or check the current active evaluation phase for your venture in our screening funnel."
+    },
+    "applicantName": {
+      "type": "string",
+      "default": "Project Alpha"
+    },
+    "activeStep": {
+      "type": "number",
+      "default": 3
+    },
+    "stages": {
+      "type": "array",
+      "default": [
+        {
+          "num": "01",
+          "name": "Application",
+          "desc": "Submission of executive summary & materials.",
+          "status": "complete"
+        },
+        {
+          "num": "02",
+          "name": "Screening",
+          "desc": "Initial 30-minute committee review session.",
+          "status": "complete"
+        },
+        {
+          "num": "03",
+          "name": "Diligence Deep Dive",
+          "desc": "Active 3-week deep sector analysis.",
+          "status": "active"
+        },
+        {
+          "num": "04",
+          "name": "Providence Pitch",
+          "desc": "Presentation to full member group.",
+          "status": "pending"
+        },
+        {
+          "num": "05",
+          "name": "Term Sheet & Close",
+          "desc": "Final check pooling and engagement.",
+          "status": "pending"
+        }
+      ]
+    }
+  }
+}

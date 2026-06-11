@@ -1,0 +1,85 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "cherrystone/hero",
+  "version": "1.0.0",
+  "title": "Cherrystone Hero",
+  "category": "cherrystone-core",
+  "icon": "cover-image",
+  "description": "Editable Cherrystone home hero with proof points and calls to action.",
+  "textdomain": "cherrystone-blocks",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "attributes": {
+    "kicker": {
+      "type": "string",
+      "default": "Pitch Night 2026 / Providence / October 21"
+    },
+    "kickerCtaLabel": {
+      "type": "string",
+      "default": "Details ->"
+    },
+    "kickerCtaUrl": {
+      "type": "string",
+      "default": "/pitch"
+    },
+    "headlineLine1": {
+      "type": "string",
+      "default": "Investment capital"
+    },
+    "headlineLine2Prefix": {
+      "type": "string",
+      "default": "for founders,"
+    },
+    "headlineAccent": {
+      "type": "string",
+      "default": "when"
+    },
+    "headlineLine3": {
+      "type": "string",
+      "default": "they need it most."
+    },
+    "subheading": {
+      "type": "string",
+      "default": "Cherrystone Angel Group is a community of accredited investors based in Providence, Rhode Island, that has been backing early-stage New England companies since 2004. We invest across six verticals: life sciences, software, consumer, industrial tech, healthcare, and fintech."
+    },
+    "proofItems": {
+      "type": "array",
+      "default": [
+        {
+          "value": "2004",
+          "label": "Founded"
+        },
+        {
+          "value": "25+",
+          "label": "Active companies"
+        },
+        {
+          "value": "6",
+          "label": "Investment sectors"
+        }
+      ]
+    },
+    "primaryCtaLabel": {
+      "type": "string",
+      "default": "Apply for capital"
+    },
+    "primaryCtaUrl": {
+      "type": "string",
+      "default": "/apply"
+    },
+    "secondaryCtaLabel": {
+      "type": "string",
+      "default": "See the portfolio"
+    },
+    "secondaryCtaUrl": {
+      "type": "string",
+      "default": "/portfolio"
+    }
+  }
+}
