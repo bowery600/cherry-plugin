@@ -40,7 +40,10 @@ export default function save( { attributes } ) {
 							></div>
 						</div>
 						<div className="progress-labels">
-							<span className="step-label is-active" data-step-label="1">
+							<span
+								className="step-label is-active"
+								data-step-label="1"
+							>
 								Basic Info
 							</span>
 							<span className="step-label" data-step-label="2">
@@ -59,7 +62,9 @@ export default function save( { attributes } ) {
 						<div className="form-step is-active" data-step="1">
 							<div className="form-grid">
 								<div className="field">
-									<label htmlFor="cs-ap-name">Founder name *</label>
+									<label htmlFor="cs-ap-name">
+										Founder name *
+									</label>
 									<input
 										id="cs-ap-name"
 										name="name"
@@ -89,7 +94,9 @@ export default function save( { attributes } ) {
 									></span>
 								</div>
 								<div className="field">
-									<label htmlFor="cs-ap-company">Company name *</label>
+									<label htmlFor="cs-ap-company">
+										Company name *
+									</label>
 									<input
 										id="cs-ap-company"
 										name="company"
@@ -103,7 +110,9 @@ export default function save( { attributes } ) {
 									></span>
 								</div>
 								<div className="field">
-									<label htmlFor="cs-ap-website">Website</label>
+									<label htmlFor="cs-ap-website">
+										Website
+									</label>
 									<input
 										id="cs-ap-website"
 										name="website"
@@ -113,7 +122,10 @@ export default function save( { attributes } ) {
 								</div>
 							</div>
 							<div className="cherrystone-form-actions step-actions">
-								<button type="button" className="btn btn-accent btn-next">
+								<button
+									type="button"
+									className="btn btn-accent btn-next"
+								>
 									Next Step
 								</button>
 							</div>
@@ -122,8 +134,13 @@ export default function save( { attributes } ) {
 						<div className="form-step" data-step="2" hidden>
 							<div className="form-grid">
 								<fieldset className="field full">
-									<legend>Stage — select all that apply *</legend>
-									<div className="check-group" data-required-group="stages">
+									<legend>
+										Stage — select all that apply *
+									</legend>
+									<div
+										className="check-group"
+										data-required-group="stages"
+									>
 										{ STAGES.map( ( s, index ) => (
 											<label
 												key={ s }
@@ -148,8 +165,13 @@ export default function save( { attributes } ) {
 								</fieldset>
 
 								<fieldset className="field full">
-									<legend>Vertical — select all that apply *</legend>
-									<div className="check-group" data-required-group="sectors">
+									<legend>
+										Vertical — select all that apply *
+									</legend>
+									<div
+										className="check-group"
+										data-required-group="sectors"
+									>
 										{ SECTORS.map( ( s, index ) => (
 											<label
 												key={ s }
@@ -174,10 +196,16 @@ export default function save( { attributes } ) {
 								</fieldset>
 							</div>
 							<div className="cherrystone-form-actions step-actions">
-								<button type="button" className="btn btn-ghost btn-prev">
+								<button
+									type="button"
+									className="btn btn-ghost btn-prev"
+								>
 									Previous
 								</button>
-								<button type="button" className="btn btn-accent btn-next">
+								<button
+									type="button"
+									className="btn btn-accent btn-next"
+								>
 									Next Step
 								</button>
 							</div>
@@ -186,7 +214,9 @@ export default function save( { attributes } ) {
 						<div className="form-step" data-step="3" hidden>
 							<div className="form-grid">
 								<div className="field">
-									<label htmlFor="cs-ap-raising">Amount raising *</label>
+									<label htmlFor="cs-ap-raising">
+										Amount raising *
+									</label>
 									<input
 										id="cs-ap-raising"
 										name="amtRaising"
@@ -213,10 +243,16 @@ export default function save( { attributes } ) {
 								</div>
 							</div>
 							<div className="cherrystone-form-actions step-actions">
-								<button type="button" className="btn btn-ghost btn-prev">
+								<button
+									type="button"
+									className="btn btn-ghost btn-prev"
+								>
 									Previous
 								</button>
-								<button type="button" className="btn btn-accent btn-next">
+								<button
+									type="button"
+									className="btn btn-accent btn-next"
+								>
 									Next Step
 								</button>
 							</div>
@@ -226,7 +262,8 @@ export default function save( { attributes } ) {
 							<div className="form-grid">
 								<div className="field full">
 									<label htmlFor="cs-ap-what">
-										What are you building, and who is it for? *
+										What are you building, and who is it
+										for? *
 									</label>
 									<textarea
 										id="cs-ap-what"
@@ -240,7 +277,9 @@ export default function save( { attributes } ) {
 									></span>
 								</div>
 								<div className="field full">
-									<label htmlFor="cs-ap-why">Why now? Why you? *</label>
+									<label htmlFor="cs-ap-why">
+										Why now? Why you? *
+									</label>
 									<textarea
 										id="cs-ap-why"
 										name="whyNow"
@@ -254,7 +293,9 @@ export default function save( { attributes } ) {
 								</div>
 
 								<div className="field">
-									<label htmlFor="cs-ap-deck">Deck (link)</label>
+									<label htmlFor="cs-ap-deck">
+										Deck (link)
+									</label>
 									<input
 										id="cs-ap-deck"
 										name="deck"
@@ -263,7 +304,9 @@ export default function save( { attributes } ) {
 									/>
 								</div>
 								<div className="field">
-									<label htmlFor="cs-ap-referral">Referred by (optional)</label>
+									<label htmlFor="cs-ap-referral">
+										Referred by (optional)
+									</label>
 									<input
 										id="cs-ap-referral"
 										name="referral"
@@ -273,10 +316,16 @@ export default function save( { attributes } ) {
 								</div>
 							</div>
 							<div className="cherrystone-form-actions step-actions">
-								<button type="button" className="btn btn-ghost btn-prev">
+								<button
+									type="button"
+									className="btn btn-ghost btn-prev"
+								>
 									Previous
 								</button>
-								<button type="submit" className="btn btn-accent">
+								<button
+									type="submit"
+									className="btn btn-accent"
+								>
 									{ submitLabel }
 								</button>
 							</div>
@@ -297,8 +346,9 @@ export default function save( { attributes } ) {
 					</div>
 					<h3>Application email ready</h3>
 					<p>
-						Your email app should open with a prefilled message to Cherrystone.
-						The application is not complete until that email is sent.
+						Your email app should open with a prefilled message to
+						Cherrystone. The application is not complete until that
+						email is sent.
 					</p>
 					<button
 						type="button"

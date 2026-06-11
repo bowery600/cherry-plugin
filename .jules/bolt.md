@@ -1,0 +1,3 @@
+## 2024-06-11 - Missing lazy loading on custom WordPress blocks
+**Learning:** When bypassing WordPress's native image functions (like `wp_get_attachment_image`) in custom block `render.php` files to write manual `<img>` tags, `loading="lazy"` and `decoding="async"` are often forgotten. This causes significant performance bottlenecks on pages with large grids (e.g., `member-committee-grid` rendering all members with `posts_per_page => -1`).
+**Action:** Always manually add `loading="lazy"` and `decoding="async"` to `<img>` tags in custom blocks unless the image is guaranteed to be above the fold.

@@ -95,14 +95,15 @@ const TEMPLATE = [
 		{
 			eyebrow: 'Leadership',
 			heading: 'The people sourcing, screening, and stewarding capital.',
-			lede: 'Twelve members lead Cherrystone\'s investment work. Click any card for the full bio.',
+			lede: "Twelve members lead Cherrystone's investment work. Click any card for the full bio.",
 		},
 	],
 	[
 		'core/html',
 		{
-			content: '<section class="ecosystem-partners-section block warm"><div class="container"><div class="block-head"><div><span class="eyebrow accent">Ecosystem</span><h2 style="margin-top:16px;">Our Partners</h2></div></div><div class="ecosystem-logo-grid"><a href="#" class="partner-logo-link"><img src="/wp-content/plugins/cherrystone-blocks/assets/logos/brown-university-nelson-center-for-entrepreneurship.png" alt="Brown University" loading="lazy"></a><a href="#" class="partner-logo-link"><img src="/wp-content/plugins/cherrystone-blocks/assets/logos/masschallenge.png" alt="MassChallenge" loading="lazy"></a><a href="#" class="partner-logo-link"><img src="/wp-content/plugins/cherrystone-blocks/assets/logos/slater-technology-fund.png" alt="Slater Technology Fund" loading="lazy"></a></div></div></section>'
-		}
+			content:
+				'<section class="ecosystem-partners-section block warm"><div class="container"><div class="block-head"><div><span class="eyebrow accent">Ecosystem</span><h2 style="margin-top:16px;">Our Partners</h2></div></div><div class="ecosystem-logo-grid"><a href="#" class="partner-logo-link"><img src="/wp-content/plugins/cherrystone-blocks/assets/logos/brown-university-nelson-center-for-entrepreneurship.png" alt="Brown University" loading="lazy"></a><a href="#" class="partner-logo-link"><img src="/wp-content/plugins/cherrystone-blocks/assets/logos/masschallenge.png" alt="MassChallenge" loading="lazy"></a><a href="#" class="partner-logo-link"><img src="/wp-content/plugins/cherrystone-blocks/assets/logos/slater-technology-fund.png" alt="Slater Technology Fund" loading="lazy"></a></div></div></section>',
+		},
 	],
 	[
 		'cherrystone/footer-cta',

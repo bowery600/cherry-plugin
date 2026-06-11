@@ -16,11 +16,17 @@
 		"items": {
 			"type": "array",
 			"default": [
-				{ "image": "advanced-silicon-group.svg", "alt": "Advanced Silicon Group" },
+				{
+					"image": "advanced-silicon-group.svg",
+					"alt": "Advanced Silicon Group"
+				},
 				{ "image": "amsel-medical.svg", "alt": "Amsel Medical" },
 				{ "image": "clearlaw.svg", "alt": "Clearlaw" },
 				{ "image": "flourish-care.svg", "alt": "Flourish Care" },
-				{ "image": "hilltop-biosciences.svg", "alt": "Hilltop BioSciences" },
+				{
+					"image": "hilltop-biosciences.svg",
+					"alt": "Hilltop BioSciences"
+				},
 				{ "image": "iq3connect.svg", "alt": "iQ3Connect" },
 				{ "image": "jaia-robotics.svg", "alt": "Jaia Robotics" },
 				{ "image": "nodar.svg", "alt": "NODAR" },

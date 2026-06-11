@@ -67,7 +67,7 @@ function BlobMesh( { cfg } ) {
 			uOpacity: { value: cfg.opacity },
 		} ),
 		[]
-	); // eslint-disable-line react-hooks/exhaustive-deps
+	);
 
 	const prefersReducedMotion = useRef(
 		typeof window !== 'undefined' &&
@@ -75,7 +75,9 @@ function BlobMesh( { cfg } ) {
 	);
 
 	useFrame( ( { clock } ) => {
-		if ( ! meshRef.current || prefersReducedMotion.current ) return;
+		if ( ! meshRef.current || prefersReducedMotion.current ) {
+			return;
+		}
 		const t = clock.getElapsedTime();
 		meshRef.current.position.x =
 			cfg.baseX + cfg.amp * Math.sin( t * cfg.freq + cfg.phase );

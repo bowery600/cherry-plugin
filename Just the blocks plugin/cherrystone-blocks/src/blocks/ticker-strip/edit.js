@@ -1,7 +1,4 @@
-import {
-	InspectorControls,
-	useBlockProps,
-} from '@wordpress/block-editor';
+import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
 
 import { RepeaterControls } from '../../shared/editor-controls';
 
@@ -19,9 +16,9 @@ export default function Edit( { attributes, setAttributes } ) {
 					title="Ticker Logos"
 					items={ items }
 					setItems={ ( value ) => setAttributes( { items: value } ) }
-					fields={ [ 
+					fields={ [
 						{ key: 'image', label: 'Image filename' },
-						{ key: 'alt', label: 'Alt text' }
+						{ key: 'alt', label: 'Alt text' },
 					] }
 					newItem={ NEW_ITEM }
 					getItemLabel={ ( item, index ) =>
@@ -34,10 +31,17 @@ export default function Edit( { attributes, setAttributes } ) {
 				<div className="ticker-track">
 					{ trackItems.map( ( item, index ) => (
 						<span className="ticker-item" key={ `item-${ index }` }>
-							<img 
-								src={ `/wp-content/plugins/cherrystone-blocks/assets/logos/${ item.image }` } 
-								alt={ item.alt } 
-								style={ { height: '36px', width: 'auto', opacity: 0.6, filter: 'grayscale(100%) contrast(120%)' } } 
+							<img
+								src={ `/wp-content/plugins/cherrystone-blocks/assets/logos/${ item.image }` }
+								alt={ item.alt }
+								loading="lazy"
+								decoding="async"
+								style={ {
+									height: '36px',
+									width: 'auto',
+									opacity: 0.6,
+									filter: 'grayscale(100%) contrast(120%)',
+								} }
 							/>
 						</span>
 					) ) }

@@ -115,7 +115,7 @@ $wrapper_attributes = get_block_wrapper_attributes( array( 'class' => 'block war
 						</button>
 						<div class="cs-bio-drawer-header">
 							<?php if ( $photo_url ) : ?>
-								<img src="<?php echo esc_url( $photo_url ); ?>" alt="" class="cs-bio-drawer-avatar">
+								<img src="<?php echo esc_url( $photo_url ); ?>" alt="" loading="lazy" decoding="async" class="cs-bio-drawer-avatar">
 							<?php endif; ?>
 							<div>
 								<h2 id="drawer-title-<?php echo esc_attr( $member->ID ); ?>"><?php echo esc_html( $name ); ?></h2>

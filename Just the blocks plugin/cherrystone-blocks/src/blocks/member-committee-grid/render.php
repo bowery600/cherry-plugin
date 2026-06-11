@@ -64,7 +64,7 @@ $wrapper_attributes = get_block_wrapper_attributes( array( 'class' => 'block mem
 					<div class="member-profile-header">
 						<div class="member-profile-circle-avatar" style="display:flex;align-items:center;justify-content:center;overflow:hidden;">
 							<?php if ( $photo_url ) : ?>
-								<img src="<?php echo esc_url( $photo_url ); ?>" alt="<?php echo esc_attr( $name ); ?>" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+								<img src="<?php echo esc_url( $photo_url ); ?>" alt="<?php echo esc_attr( $name ); ?>" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
 							<?php else : ?>
 								<span><?php echo esc_html( $initial ); ?></span>
 							<?php endif; ?>

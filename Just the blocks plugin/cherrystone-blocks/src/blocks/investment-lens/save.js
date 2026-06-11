@@ -43,12 +43,21 @@ export default function save( { attributes } ) {
 						) ) }
 					</div>
 					<a className="lens-link" href={ ctaUrl }>
-						<RichText.Content
-							tagName="span"
-							value={ ctaLabel }
-						/>
-						<svg className="arr" width="16" height="16" viewBox="0 0 16 16" fill="none">
-							<path d="M3 8h9M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+						<RichText.Content tagName="span" value={ ctaLabel } />
+						<svg
+							className="arr"
+							width="16"
+							height="16"
+							viewBox="0 0 16 16"
+							fill="none"
+						>
+							<path
+								d="M3 8h9M9 4l4 4-4 4"
+								stroke="currentColor"
+								strokeWidth="1.6"
+								strokeLinecap="round"
+								strokeLinejoin="round"
+							/>
 						</svg>
 					</a>
 				</div>
@@ -67,13 +76,26 @@ export default function save( { attributes } ) {
 										value={ item.sector }
 									/>
 									<div className="sector-sample">
-										e.g. <RichText.Content tagName="span" value={ item.sample } />
+										e.g.{ ' ' }
+										<RichText.Content
+											tagName="span"
+											value={ item.sample }
+										/>
 									</div>
 								</div>
 								<div className="sector-meter">
 									<div className="sector-bars">
-										{ Array.from( { length: MAX_BARS } ).map( ( _, i ) => (
-											<i key={ i } className={ i < Number( item.count ) ? 'on' : '' }></i>
+										{ Array.from( {
+											length: MAX_BARS,
+										} ).map( ( _, i ) => (
+											<i
+												key={ i }
+												className={
+													i < Number( item.count )
+														? 'on'
+														: ''
+												}
+											></i>
 										) ) }
 									</div>
 									<RichText.Content

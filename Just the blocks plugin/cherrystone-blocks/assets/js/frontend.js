@@ -232,25 +232,34 @@
 		};
 
 		const validateApply = ( form ) => {
-			return validateStep( form, 1 ) && validateStep( form, 2 ) && validateStep( form, 3 ) && validateStep( form, 4 );
+			return (
+				validateStep( form, 1 ) &&
+				validateStep( form, 2 ) &&
+				validateStep( form, 3 ) &&
+				validateStep( form, 4 )
+			);
 		};
 
 		const validateStep = ( form, stepIndex ) => {
 			let ok = true;
-			const stepEl = form.querySelector(`.form-step[data-step="${stepIndex}"]`);
-			if (!stepEl) return true;
+			const stepEl = form.querySelector(
+				`.form-step[data-step="${ stepIndex }"]`
+			);
+			if ( ! stepEl ) {
+				return true;
+			}
 
-			const requiredFields = stepEl.querySelectorAll('[data-required]');
-			requiredFields.forEach((field) => {
-				const name = field.getAttribute('name');
-				if (name) {
+			const requiredFields = stepEl.querySelectorAll( '[data-required]' );
+			requiredFields.forEach( ( field ) => {
+				const name = field.getAttribute( 'name' );
+				if ( name ) {
 					const valid = !! fieldVal( form, name );
 					setFieldError( form, name, valid ? '' : 'Required' );
 					ok = ok && valid;
 				}
-			});
+			} );
 
-			if (stepIndex === 1) {
+			if ( stepIndex === 1 ) {
 				const emailOk = EMAIL_RE.test( fieldVal( form, 'email' ) );
 				setFieldError(
 					form,
@@ -258,7 +267,7 @@
 					emailOk ? '' : 'Valid email required'
 				);
 				ok = ok && emailOk;
-			} else if (stepIndex === 2) {
+			} else if ( stepIndex === 2 ) {
 				const stagesOk = checkedValues( form, 'stages' ).length > 0;
 				setFieldError(
 					form,
@@ -335,47 +344,76 @@
 			if ( kind === 'founder-application' ) {
 				let currentStep = 1;
 				const totalSteps = 4;
-				const steps = form.querySelectorAll('.form-step');
-				const labels = form.querySelectorAll('.step-label');
-				const progressBar = form.querySelector('[data-cherry-progress-bar]');
+				const steps = form.querySelectorAll( '.form-step' );
+				const labels = form.querySelectorAll( '.step-label' );
+				const progressBar = form.querySelector(
+					'[data-cherry-progress-bar]'
+				);
 
-				const showStep = (stepIndex) => {
-					steps.forEach(s => s.hidden = parseInt(s.dataset.step) !== stepIndex);
-					steps.forEach(s => s.classList.toggle('is-active', parseInt(s.dataset.step) === stepIndex));
-					labels.forEach(l => l.classList.toggle('is-active', parseInt(l.dataset.stepLabel) === stepIndex));
-					if (progressBar) {
-						progressBar.style.width = `${(stepIndex / totalSteps) * 100}%`;
+				const showStep = ( stepIndex ) => {
+					steps.forEach(
+						( s ) =>
+							( s.hidden =
+								parseInt( s.dataset.step ) !== stepIndex )
+					);
+					steps.forEach( ( s ) =>
+						s.classList.toggle(
+							'is-active',
+							parseInt( s.dataset.step ) === stepIndex
+						)
+					);
+					labels.forEach( ( l ) =>
+						l.classList.toggle(
+							'is-active',
+							parseInt( l.dataset.stepLabel ) === stepIndex
+						)
+					);
+					if ( progressBar ) {
+						progressBar.style.width = `${
+							( stepIndex / totalSteps ) * 100
+						}%`;
 					}
-					const firstInput = form.querySelector(`.form-step[data-step="${stepIndex}"] input, .form-step[data-step="${stepIndex}"] textarea`);
-					if (firstInput) firstInput.focus();
+					const firstInput = form.querySelector(
+						`.form-step[data-step="${ stepIndex }"] input, .form-step[data-step="${ stepIndex }"] textarea`
+					);
+					if ( firstInput ) {
+						firstInput.focus();
+					}
 				};
 
-				form.querySelectorAll('.btn-next').forEach(btn => {
-					btn.addEventListener('click', () => {
-						if (validateStep(form, currentStep)) {
+				form.querySelectorAll( '.btn-next' ).forEach( ( btn ) => {
+					btn.addEventListener( 'click', () => {
+						if ( validateStep( form, currentStep ) ) {
 							currentStep++;
-							showStep(currentStep);
+							showStep( currentStep );
 						} else {
-							const firstError = form.querySelector(`.form-step[data-step="${currentStep}"] .field-error-msg:not([hidden])`);
-							if (firstError) {
-								const name = firstError.getAttribute( 'data-error-for' );
-								const target = name ? form.querySelector( `[name="${ name }"]` ) : null;
-								if (target) target.focus();
+							const firstError = form.querySelector(
+								`.form-step[data-step="${ currentStep }"] .field-error-msg:not([hidden])`
+							);
+							if ( firstError ) {
+								const name =
+									firstError.getAttribute( 'data-error-for' );
+								const target = name
+									? form.querySelector( `[name="${ name }"]` )
+									: null;
+								if ( target ) {
+									target.focus();
+								}
 							}
 						}
-					});
-				});
+					} );
+				} );
 
-				form.querySelectorAll('.btn-prev').forEach(btn => {
-					btn.addEventListener('click', () => {
-						if (currentStep > 1) {
+				form.querySelectorAll( '.btn-prev' ).forEach( ( btn ) => {
+					btn.addEventListener( 'click', () => {
+						if ( currentStep > 1 ) {
 							currentStep--;
-							showStep(currentStep);
+							showStep( currentStep );
 						}
-					});
-				});
+					} );
+				} );
 
-				showStep(1);
+				showStep( 1 );
 			}
 
 			form.addEventListener( 'submit', ( event ) => {
@@ -908,8 +946,12 @@
 					const progress = Math.round(
 						( loaded / frameCount ) * 100
 					);
-					if ( bar ) bar.style.width = `${ progress }%`;
-					if ( pctEl ) pctEl.textContent = `${ progress }%`;
+					if ( bar ) {
+						bar.style.width = `${ progress }%`;
+					}
+					if ( pctEl ) {
+						pctEl.textContent = `${ progress }%`;
+					}
 				};
 
 				const resize = () => {
@@ -929,7 +971,9 @@
 				};
 
 				const drawFrame = ( image ) => {
-					if ( ! image ) return;
+					if ( ! image ) {
+						return;
+					}
 					const w = canvas.clientWidth;
 					const h = canvas.clientHeight;
 					const scale = Math.max(
@@ -988,24 +1032,31 @@
 							hidePreloader();
 						}
 						setProgress();
-						if ( loaded === frameCount ) hidePreloader();
+						if ( loaded === frameCount ) {
+							hidePreloader();
+						}
 					};
 					img.onerror = () => {
 						loaded += 1;
 						setProgress();
-						if ( loaded === frameCount ) hidePreloader();
+						if ( loaded === frameCount ) {
+							hidePreloader();
+						}
 					};
 				}
 
 				if ( ! reducedMotion ) {
-					if ( typeof window.gsap !== 'undefined' && typeof window.ScrollTrigger !== 'undefined' ) {
+					if (
+						typeof window.gsap !== 'undefined' &&
+						typeof window.ScrollTrigger !== 'undefined'
+					) {
 						window.gsap.registerPlugin( window.ScrollTrigger );
 						const scrollLength = window.innerHeight * 5;
 						const animObj = { frame: 0 };
 						window.gsap.to( animObj, {
 							frame: frameCount - 1,
-							snap: "frame",
-							ease: "none",
+							snap: 'frame',
+							ease: 'none',
 							scrollTrigger: {
 								trigger: hero,
 								start: 'top top',
@@ -1015,9 +1066,9 @@
 								scrub: 0.5,
 							},
 							onUpdate: () => {
-								const f = Math.round(animObj.frame);
-								drawFrame( frames[f] || firstDrawable );
-							}
+								const f = Math.round( animObj.frame );
+								drawFrame( frames[ f ] || firstDrawable );
+							},
 						} );
 					} else {
 						window.requestAnimationFrame( animate );
@@ -1105,14 +1156,20 @@
 
 			// Track download progress in the preloader bar.
 			video.addEventListener( 'progress', () => {
-				if ( ! video.duration || ! video.buffered.length ) return;
+				if ( ! video.duration || ! video.buffered.length ) {
+					return;
+				}
 				const pct = Math.round(
 					( video.buffered.end( video.buffered.length - 1 ) /
 						video.duration ) *
 						100
 				);
-				if ( bar ) bar.style.width = `${ pct }%`;
-				if ( pctEl ) pctEl.textContent = `${ pct }%`;
+				if ( bar ) {
+					bar.style.width = `${ pct }%`;
+				}
+				if ( pctEl ) {
+					pctEl.textContent = `${ pct }%`;
+				}
 			} );
 
 			video.addEventListener( 'canplaythrough', hidePreloader, {
@@ -1137,97 +1194,135 @@
 		};
 
 		const initBioDrawers = () => {
-			document.querySelectorAll('.cs-bio-drawers-container').forEach(container => {
-				const triggers = Array.from(document.querySelectorAll('.cs-bio-trigger'));
-				const drawers = Array.from(container.querySelectorAll('.cs-bio-drawer'));
-				const backdrop = container.querySelector('.cs-bio-backdrop');
+			document
+				.querySelectorAll( '.cs-bio-drawers-container' )
+				.forEach( ( container ) => {
+					const triggers = Array.from(
+						document.querySelectorAll( '.cs-bio-trigger' )
+					);
+					const drawers = Array.from(
+						container.querySelectorAll( '.cs-bio-drawer' )
+					);
+					const backdrop =
+						container.querySelector( '.cs-bio-backdrop' );
 
-				if (!triggers.length || !drawers.length || !backdrop) return;
-
-				const closeAll = () => {
-					drawers.forEach(drawer => {
-						drawer.hidden = true;
-					});
-					container.setAttribute('aria-hidden', 'true');
-					document.body.style.overflow = '';
-					triggers.forEach(t => t.setAttribute('aria-expanded', 'false'));
-				};
-
-				const openDrawer = (drawerId, triggerBtn) => {
-					const drawer = document.getElementById(drawerId);
-					if (!drawer) return;
-					
-					closeAll();
-					
-					drawer.hidden = false;
-					container.setAttribute('aria-hidden', 'false');
-					document.body.style.overflow = 'hidden'; // lock scroll
-					if (triggerBtn) {
-						triggerBtn.setAttribute('aria-expanded', 'true');
+					if ( ! triggers.length || ! drawers.length || ! backdrop ) {
+						return;
 					}
 
-					// Focus management
-					const closeBtn = drawer.querySelector('.cs-bio-close');
-					if (closeBtn) {
-						setTimeout(() => closeBtn.focus(), 50);
-					}
-				};
+					const closeAll = () => {
+						drawers.forEach( ( drawer ) => {
+							drawer.hidden = true;
+						} );
+						container.setAttribute( 'aria-hidden', 'true' );
+						document.body.style.overflow = '';
+						triggers.forEach( ( t ) =>
+							t.setAttribute( 'aria-expanded', 'false' )
+						);
+					};
 
-				triggers.forEach(trigger => {
-					trigger.addEventListener('click', (e) => {
-						e.preventDefault();
-						const targetId = trigger.getAttribute('aria-controls');
-						openDrawer(targetId, trigger);
-					});
-				});
+					const openDrawer = ( drawerId, triggerBtn ) => {
+						const drawer = document.getElementById( drawerId );
+						if ( ! drawer ) {
+							return;
+						}
 
-				drawers.forEach(drawer => {
-					const closeBtn = drawer.querySelector('.cs-bio-close');
-					if (closeBtn) {
-						closeBtn.addEventListener('click', closeAll);
-					}
-				});
-
-				backdrop.addEventListener('click', closeAll);
-
-				document.addEventListener('keydown', (e) => {
-					if (e.key === 'Escape' && container.getAttribute('aria-hidden') === 'false') {
-						// capture before closeAll resets aria-expanded
-						const activeTrigger = triggers.find(t => t.getAttribute('aria-expanded') === 'true');
 						closeAll();
-						if (activeTrigger) activeTrigger.focus();
-					}
-				});
 
-				// Start hidden so closed drawers stay out of the
-				// accessibility tree and tab order until opened.
-				closeAll();
-			});
+						drawer.hidden = false;
+						container.setAttribute( 'aria-hidden', 'false' );
+						document.body.style.overflow = 'hidden'; // lock scroll
+						if ( triggerBtn ) {
+							triggerBtn.setAttribute( 'aria-expanded', 'true' );
+						}
+
+						// Focus management
+						const closeBtn =
+							drawer.querySelector( '.cs-bio-close' );
+						if ( closeBtn ) {
+							setTimeout( () => closeBtn.focus(), 50 );
+						}
+					};
+
+					triggers.forEach( ( trigger ) => {
+						trigger.addEventListener( 'click', ( e ) => {
+							e.preventDefault();
+							const targetId =
+								trigger.getAttribute( 'aria-controls' );
+							openDrawer( targetId, trigger );
+						} );
+					} );
+
+					drawers.forEach( ( drawer ) => {
+						const closeBtn =
+							drawer.querySelector( '.cs-bio-close' );
+						if ( closeBtn ) {
+							closeBtn.addEventListener( 'click', closeAll );
+						}
+					} );
+
+					backdrop.addEventListener( 'click', closeAll );
+
+					document.addEventListener( 'keydown', ( e ) => {
+						if (
+							e.key === 'Escape' &&
+							container.getAttribute( 'aria-hidden' ) === 'false'
+						) {
+							// capture before closeAll resets aria-expanded
+							const activeTrigger = triggers.find(
+								( t ) =>
+									t.getAttribute( 'aria-expanded' ) === 'true'
+							);
+							closeAll();
+							if ( activeTrigger ) {
+								activeTrigger.focus();
+							}
+						}
+					} );
+
+					// Start hidden so closed drawers stay out of the
+					// accessibility tree and tab order until opened.
+					closeAll();
+				} );
 		};
 
 		// Hydrate the static pitch-night spotlight countdown from the
 		// human-readable event date rendered in its DATE / TIME field.
 		const initSpotlightCountdowns = () => {
-			document.querySelectorAll('.pitch-spotlight-card').forEach(card => {
-				const units = card.querySelectorAll('.countdown-time-unit strong');
-				const dateEl = card.querySelector('.detail-row-val-text');
-				if (units.length < 3 || !dateEl) return;
+			document
+				.querySelectorAll( '.pitch-spotlight-card' )
+				.forEach( ( card ) => {
+					const units = card.querySelectorAll(
+						'.countdown-time-unit strong'
+					);
+					const dateEl = card.querySelector( '.detail-row-val-text' );
+					if ( units.length < 3 || ! dateEl ) {
+						return;
+					}
 
-				const target = new Date(dateEl.textContent.trim() + ' 18:00:00');
-				if (isNaN(target.getTime())) return;
+					const target = new Date(
+						dateEl.textContent.trim() + ' 18:00:00'
+					);
+					if ( isNaN( target.getTime() ) ) {
+						return;
+					}
 
-				const pad = (n) => String(n).padStart(2, '0');
-				const update = () => {
-					const ms = Math.max(0, target.getTime() - Date.now());
-					const mins = Math.floor(ms / 60000);
-					units[0].textContent = pad(Math.floor(mins / 1440));
-					units[1].textContent = pad(Math.floor((mins % 1440) / 60));
-					units[2].textContent = pad(mins % 60);
-				};
+					const pad = ( n ) => String( n ).padStart( 2, '0' );
+					const update = () => {
+						const ms = Math.max( 0, target.getTime() - Date.now() );
+						const mins = Math.floor( ms / 60000 );
+						units[ 0 ].textContent = pad(
+							Math.floor( mins / 1440 )
+						);
+						units[ 1 ].textContent = pad(
+							Math.floor( ( mins % 1440 ) / 60 )
+						);
+						units[ 2 ].textContent = pad( mins % 60 );
+					};
 
-				update();
-				setInterval(update, 30000);
-			});
+					update();
+					setInterval( update, 30000 );
+				} );
 		};
 
 		initBioDrawers();

@@ -76,7 +76,7 @@ $wrapper_attributes = get_block_wrapper_attributes( array( 'class' => 'block fou
 							<div class="founder-author-footer">
 								<div class="founder-avatar-placeholder" style="display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:50%;">
 									<?php if ( $photo_url ) : ?>
-										<img src="<?php echo esc_url( $photo_url ); ?>" alt="<?php echo esc_attr( $name ); ?>" style="width:100%;height:100%;object-fit:cover;">
+										<img src="<?php echo esc_url( $photo_url ); ?>" alt="<?php echo esc_attr( $name ); ?>" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;">
 									<?php else : ?>
 										<span><?php echo esc_html( $initial ); ?></span>
 									<?php endif; ?>
