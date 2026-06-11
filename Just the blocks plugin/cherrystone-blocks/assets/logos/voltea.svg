@@ -1,0 +1,8 @@
+<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M 50,15 Q 80,50 50,85 Q 20,50 50,15 Z" fill="#1f7a8c" opacity="0.15" />
+      <path d="M 50,15 Q 80,50 50,85 Q 20,50 50,15" stroke="#1f7a8c" stroke-width="2.5" />
+      <line x1="38" y1="44" x2="62" y2="44" stroke="#0a4266" stroke-width="2.5" />
+      <line x1="38" y1="56" x2="62" y2="56" stroke="#0a4266" stroke-width="2.5" />
+      <text x="47" y="38" font-size="12" font-family="monospace" font-weight="bold" fill="#ff6a4d">+</text>
+      <text x="47" y="74" font-size="12" font-family="monospace" font-weight="bold" fill="#0a4266">-</text>
+    </svg>

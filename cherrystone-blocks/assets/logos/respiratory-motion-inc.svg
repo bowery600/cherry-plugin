@@ -1,9 +1,0 @@
-<svg viewBox="0 0 240 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <g transform="translate(10, 8)" fill="none" stroke="#2563eb" stroke-width="2">
-    <path d="M12,4 C4,4 2,12 2,20 C2,28 8,30 14,28 C14,24 16,14 16,10 Z" fill="#dbeafe"/>
-    <path d="M22,4 C30,4 32,12 32,20 C32,28 26,30 20,28 C20,24 18,14 18,10 Z" fill="#dbeafe"/>
-    <path d="M2,34 L10,34 L13,28 L17,40 L21,30 L24,36 L32,34" fill="none" stroke="#3b82f6" stroke-width="1.5" stroke-linecap="round"/>
-  </g>
-  <text x="55" y="28" font-family="'Inter Tight', 'Inter', sans-serif" font-weight="700" font-size="13" fill="#0b2233">Respiratory Motion Inc.</text>
-  <text x="55" y="42" font-family="'Inter Tight', 'Inter', sans-serif" font-weight="500" font-size="9" fill="#6b7280" letter-spacing="1">INSPIRED INNOVATION</text>
-</svg>

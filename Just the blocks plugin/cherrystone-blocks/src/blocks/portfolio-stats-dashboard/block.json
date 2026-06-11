@@ -1,0 +1,62 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "cherrystone/portfolio-stats-dashboard",
+	"version": "1.0.0",
+	"title": "Portfolio Stats Dashboard",
+	"category": "cherrystone-investors",
+	"icon": "dashboard",
+	"description": "Grid-based counter dashboard highlighting active and deployed venture capital statistics.",
+	"textdomain": "cherrystone-blocks",
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ]
+	},
+	"attributes": {
+		"eyebrow": {
+			"type": "string",
+			"default": "IMPACT & SCALE"
+		},
+		"heading": {
+			"type": "string",
+			"default": "Cherrystone by the numbers."
+		},
+		"lede": {
+			"type": "string",
+			"default": "Our active New England portfolio spans enterprise software, medical devices, deeptech, and green logistics."
+		},
+		"stats": {
+			"type": "array",
+			"default": [
+				{
+					"num": "18.5",
+					"suffix": "M+",
+					"label": "Capital Invested",
+					"desc": "Pooled angel funding from member checks.",
+					"icon": "trending-up"
+				},
+				{
+					"num": "45",
+					"suffix": "",
+					"label": "Active Portfolio",
+					"desc": "High-growth startups across New England.",
+					"icon": "briefcase"
+				},
+				{
+					"num": "12",
+					"suffix": "x",
+					"label": "Strategic Exits",
+					"desc": "M&A events returning capital to members.",
+					"icon": "award"
+				},
+				{
+					"num": "650",
+					"suffix": "+",
+					"label": "Jobs Created",
+					"desc": "Full time employees hired in region.",
+					"icon": "users"
+				}
+			]
+		}
+	}
+}

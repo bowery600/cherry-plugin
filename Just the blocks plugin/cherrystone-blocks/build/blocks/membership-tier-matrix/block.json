@@ -1,0 +1,53 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "cherrystone/membership-tier-matrix",
+  "version": "1.0.0",
+  "title": "Membership Tier Matrix",
+  "category": "cherrystone-investors",
+  "icon": "awards",
+  "description": "Comparison matrix showcasing membership levels, fees, commitments, and syndicate benefits.",
+  "textdomain": "cherrystone-blocks",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "attributes": {
+    "eyebrow": {
+      "type": "string",
+      "default": "ENGAGEMENT TIERS"
+    },
+    "heading": {
+      "type": "string",
+      "default": "Join our syndicate."
+    },
+    "lede": {
+      "type": "string",
+      "default": "Select the participation level that aligns with your investment strategy and availability."
+    },
+    "tiers": {
+      "type": "array",
+      "default": [
+        {
+          "name": "Individual Angel",
+          "fee": "$1,500/yr",
+          "commitment": "Active diligence lead & checks",
+          "benefits": "Full voting rights, access to Dealum platform, invites to all Providence Pitch Nights, co-investment rights.",
+          "ctaText": "APPLY AS ANGEL",
+          "ctaLink": "/member-interest"
+        },
+        {
+          "name": "Syndicate Partner",
+          "fee": "$3,000/yr",
+          "commitment": "Co-lead investments & network integration",
+          "benefits": "All Angel benefits, corporate branding on Cherrystone site, priority access to screening dealflow, shared diligence materials.",
+          "ctaText": "APPLY AS PARTNER",
+          "ctaLink": "/member-interest"
+        }
+      ]
+    }
+  }
+}

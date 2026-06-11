@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "graphify": {
+      "command": "C:\\Python314\\python.exe",
+      "args": [
+        "-m",
+        "graphify.serve",
+        "c:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\graphify-out\\graph.json"
+      ]
+    }
+  }
+}

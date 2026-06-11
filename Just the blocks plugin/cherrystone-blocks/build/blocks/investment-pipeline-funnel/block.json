@@ -1,0 +1,76 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "cherrystone/investment-pipeline-funnel",
+  "version": "1.0.0",
+  "title": "Investment Pipeline Funnel",
+  "category": "cherrystone-investors",
+  "icon": "filter",
+  "description": "Visual cascading funnel displaying deal flow pipeline and conversion ratios.",
+  "textdomain": "cherrystone-blocks",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "attributes": {
+    "eyebrow": {
+      "type": "string",
+      "default": "DEAL FLOW METRICS"
+    },
+    "heading": {
+      "type": "string",
+      "default": "Our screening funnel."
+    },
+    "lede": {
+      "type": "string",
+      "default": "A transparent look at how deals move from sourcing to check deployment. We hold rigorous standards to safeguard capital."
+    },
+    "kpiTotal": {
+      "type": "string",
+      "default": "$18M+ Invested"
+    },
+    "stages": {
+      "type": "array",
+      "default": [
+        {
+          "num": "150+",
+          "label": "Sourced Annually",
+          "desc": "Applications received from New England founders.",
+          "width": "100%",
+          "color": "var(--navy-900)"
+        },
+        {
+          "num": "48",
+          "label": "Committee Screening",
+          "desc": "Startups invited to present to our screening committee.",
+          "width": "75%",
+          "color": "var(--navy-800)"
+        },
+        {
+          "num": "18",
+          "label": "Active Diligence",
+          "desc": "Deep dive member reviews of technology and market.",
+          "width": "50%",
+          "color": "var(--navy-700)"
+        },
+        {
+          "num": "8",
+          "label": "Pitch Presentation",
+          "desc": "Startups presenting to the full Cherrystone membership.",
+          "width": "30%",
+          "color": "var(--navy-600)"
+        },
+        {
+          "num": "4",
+          "label": "Funded Portfolio",
+          "desc": "Pooled angel investment and board support.",
+          "width": "18%",
+          "color": "var(--accent)"
+        }
+      ]
+    }
+  }
+}

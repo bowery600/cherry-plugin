@@ -1,0 +1,21 @@
+/*
+Theme Name:        Cherrystone
+Theme URI:         https://cherrystoneangelgroup.com
+Author:            Cherrystone Angel Group
+Author URI:        https://cherrystoneangelgroup.com
+Description:       A full-site-editing block theme built as the host shell for the Cherrystone Blocks plugin. Provides a sticky brand navbar, matching footer, and a full-width canvas tuned to the Cherrystone design system (navy + coral, Inter Tight / JetBrains Mono). Install the Cherrystone Blocks plugin alongside this theme for the complete layout library.
+Requires at least: 6.5
+Tested up to:      6.7
+Requires PHP:      7.4
+Version:           1.0.2
+License:           GNU General Public License v2 or later
+License URI:       https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain:       cherrystone
+Tags:              full-site-editing, block-patterns, custom-colors, custom-logo, custom-menu, editor-style, sticky-post, threaded-comments, wide-blocks, block-styles
+*/
+
+/*
+ * Block themes load their visual styles from theme.json and the
+ * theme stylesheet enqueued in functions.php (assets/css/theme.css).
+ * This file only needs the header above to register the theme.
+ */

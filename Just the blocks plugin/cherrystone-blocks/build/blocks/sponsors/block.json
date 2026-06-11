@@ -1,0 +1,37 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "cherrystone/sponsors",
+  "version": "1.1.0",
+  "title": "Partners & Sponsors",
+  "category": "cherrystone",
+  "icon": "groups",
+  "description": "Dynamic sponsors and ecosystem partners strip driven by wp-admin.",
+  "textdomain": "cherrystone-blocks",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "attributes": {
+    "eyebrow": {
+      "type": "string",
+      "default": "Partners & sponsors"
+    },
+    "heading": {
+      "type": "string",
+      "default": "Twenty-one years of New England partners."
+    },
+    "tierFilter": {
+      "type": "string",
+      "default": ""
+    },
+    "displayMode": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "render": "file:./render.php"
+}

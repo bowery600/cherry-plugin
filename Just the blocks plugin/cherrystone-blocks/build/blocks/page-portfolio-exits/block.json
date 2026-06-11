@@ -1,0 +1,18 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "cherrystone/page-portfolio-exits",
+  "version": "1.0.0",
+  "title": "Portfolio Exits Page Template",
+  "category": "cherrystone-pages",
+  "icon": "layout",
+  "description": "Locked full Portfolio Exits page layout composed from Cherrystone section blocks.",
+  "textdomain": "cherrystone-blocks",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ]
+  }
+}

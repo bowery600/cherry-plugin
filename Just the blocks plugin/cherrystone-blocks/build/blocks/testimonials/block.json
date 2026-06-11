@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "cherrystone/testimonials",
+  "version": "1.1.0",
+  "title": "Testimonials",
+  "category": "cherrystone",
+  "icon": "format-quote",
+  "description": "Dynamic founder quotes in a three-card grid driven by wp-admin.",
+  "textdomain": "cherrystone-blocks",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "attributes": {
+    "eyebrow": {
+      "type": "string",
+      "default": "In their words"
+    },
+    "heading": {
+      "type": "string",
+      "default": "From founders we've backed."
+    },
+    "lede": {
+      "type": "string",
+      "default": "Real quotes from CEOs at Advanced Silicon Group, Egal Pads, and Flourish Care."
+    }
+  },
+  "render": "file:./render.php"
+}

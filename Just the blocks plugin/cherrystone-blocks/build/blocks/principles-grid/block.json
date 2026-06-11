@@ -1,0 +1,57 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "cherrystone/principles-grid",
+  "version": "1.0.0",
+  "title": "Principles Grid",
+  "category": "cherrystone",
+  "icon": "grid-view",
+  "description": "Two-column editorial grid for principles, verticals, process steps, or service areas.",
+  "textdomain": "cherrystone-blocks",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "attributes": {
+    "eyebrow": {
+      "type": "string",
+      "default": "Principles"
+    },
+    "heading": {
+      "type": "string",
+      "default": "A clear framework for the page."
+    },
+    "lede": {
+      "type": "string",
+      "default": "Use this grid to explain the categories, beliefs, criteria, or steps that structure the page."
+    },
+    "items": {
+      "type": "array",
+      "default": [
+        {
+          "num": "",
+          "title": "Operator context",
+          "body": "Explain what makes this area important and how Cherrystone evaluates it."
+        },
+        {
+          "num": "",
+          "title": "Regional focus",
+          "body": "Give readers a practical sense of geography, fit, and expected readiness."
+        },
+        {
+          "num": "",
+          "title": "Member judgment",
+          "body": "Show how members contribute pattern recognition, diligence, and follow-on support."
+        },
+        {
+          "num": "",
+          "title": "Long-term support",
+          "body": "Describe what happens after the first conversation, meeting, or investment."
+        }
+      ]
+    }
+  }
+}
