@@ -235,8 +235,8 @@ h3 { font-size: clamp(23px, 2vw, 30px); line-height: 1.2; letter-spacing: -0.01e
 .btn-accent:hover { background: var(--accent-ink); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
 .btn-ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
 .btn-ghost:hover { background: var(--ink); color: var(--paper); }
-.btn-light { background: var(--surface); color: var(--ink); border-color: var(--ink); }
-.btn-light:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.btn-light { background: rgba(255,255,255,0.12); color: white; border-color: rgba(255,255,255,0.3); }
+.btn-light:hover { background: white; color: var(--ink); border-color: white; }
 .text-link {
   border: 0;
   background: transparent;
@@ -1246,25 +1246,23 @@ section.block.warm { background: var(--paper-warm); }
 }
 
 /* ---------- Footer / Apply CTA ---------- */
+/* The navy wave-decorated closing CTA — deliberately kept dark (user choice,
+   June 2026) as the one navy accent region; the rest of the site is light. */
 .footer-cta {
-  background: var(--paper-warm);
-  color: var(--ink);
+  background: var(--navy-900);
+  color: white;
   padding: 120px 0 0;
   position: relative;
   overflow: hidden;
-  border-top: 1px solid var(--line);
   margin-bottom: 0 !important;
   margin-top: 0 !important;
 }
-/* !important: older saved footer-cta markup bakes a white inline color on the eyebrow. */
-.footer-cta .eyebrow { color: var(--ink-muted) !important; }
-.footer-cta .eyebrow.accent { color: var(--accent) !important; }
 .footer-cta-inner {
   position: relative;
   z-index: 2;
 }
 .footer-cta h2 {
-  color: var(--ink);
+  color: white;
   font-size: clamp(48px, 7vw, 96px);
   letter-spacing: -0.04em;
   font-weight: 500;
@@ -1284,8 +1282,7 @@ section.block.warm { background: var(--paper-warm); }
   padding-bottom: 100px;
 }
 .footer-card {
-  border: 1px solid var(--line);
-  background: var(--surface);
+  border: 1px solid rgba(255,255,255,0.18);
   padding: 36px;
   border-radius: var(--radius-lg);
   display: flex;
@@ -1293,33 +1290,34 @@ section.block.warm { background: var(--paper-warm); }
   gap: 24px;
   position: relative;
   overflow: hidden;
-  transition: border-color 0.15s ease;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
 }
 .footer-card:hover {
-  border-color: var(--accent);
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.4);
 }
 .footer-card h3 {
-  color: var(--ink);
+  color: white;
   font-size: 26px;
 }
 .footer-card p {
-  color: var(--ink-muted);
+  color: rgba(255,255,255,0.7);
   margin: 0;
   font-size: 15px;
   line-height: 1.55;
 }
 
 .footer-bottom {
-  border-top: 1px solid var(--line);
+  border-top: 1px solid rgba(255,255,255,0.12);
   padding: 36px 0;
   display: grid;
   grid-template-columns: 1.4fr 1fr 1fr 1fr;
   gap: 40px;
   font-size: 13px;
-  color: var(--ink-muted);
+  color: rgba(255,255,255,0.6);
 }
 .footer-bottom h5 {
-  color: var(--ink);
+  color: white;
   font-size: 12px;
   letter-spacing: 0.14em;
 
@@ -1336,13 +1334,13 @@ section.block.warm { background: var(--paper-warm); }
 }
 .footer-bottom li { list-style: none; }
 .footer-meta {
-  border-top: 1px solid var(--line-soft);
+  border-top: 1px solid rgba(255,255,255,0.08);
   padding: 24px 0;
   display: flex;
   justify-content: space-between;
   font-family: var(--font-mono);
   font-size: 11px;
-  color: var(--ink-muted);
+  color: rgba(255,255,255,0.65);
   letter-spacing: 0.04em;
 }
 
@@ -1598,12 +1596,12 @@ section.block.warm { background: var(--paper-warm); }
   border-radius: var(--radius-lg);
 }
 .member-avatar {
-  width: 56px; height: 56px;
+  width: 96px; height: 96px;
   border-radius: 50%;
   background: var(--navy-800);
   color: white;
   display: flex; align-items: center; justify-content: center;
-  font-size: 16px;
+  font-size: 24px;
   font-weight: 600;
   letter-spacing: -0.01em;
 }
@@ -1893,7 +1891,7 @@ section.block.warm { background: var(--paper-warm); }
   margin-top: 0;
 }
 .pitch-footer-cta .eyebrow {
-  color: var(--ink-muted);
+  color: rgba(255,255,255,0.62);
 }
 .pitch-footer-cta .footer-card .mono {
   color: var(--accent);
@@ -4436,13 +4434,13 @@ section.block.warm { background: var(--paper-warm); }
   gap: 16px;
 }
 .member-profile-circle-avatar {
-  width: 52px;
-  height: 52px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   background: var(--navy-50);
   color: var(--navy-900);
   font-weight: 600;
-  font-size: 18px;
+  font-size: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -5886,15 +5884,15 @@ section.block.warm { background: var(--paper-warm); }
 }
 
 .cherrystone-page-member-directory-template .member-avatar {
-  width: 64px !important;
-  height: 64px !important;
+  width: 96px !important;
+  height: 96px !important;
   border-radius: 50% !important;
   background: var(--navy-800) !important;
   color: white !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  font-size: 18px !important;
+  font-size: 24px !important;
   font-weight: 600 !important;
 }
 
