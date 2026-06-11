@@ -1,0 +1,41 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "cherrystone/pitch-eligibility-calculator",
+	"version": "1.0.0",
+	"title": "Pitch Eligibility Calculator",
+	"category": "cherrystone-founders",
+	"icon": "calculator",
+	"description": "Interactive sliders and selector block for founders to self-assess Cherrystone alignment.",
+	"textdomain": "cherrystone-blocks",
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ]
+	},
+	"attributes": {
+		"eyebrow": {
+			"type": "string",
+			"default": "FIT ASSESSMENT"
+		},
+		"heading": {
+			"type": "string",
+			"default": "Are you a Cherrystone fit?"
+		},
+		"lede": {
+			"type": "string",
+			"default": "Select your round size, industry sector, and regional roots to instantly calculate how closely your startup aligns with our active investment criteria."
+		},
+		"defaultSector": {
+			"type": "string",
+			"default": "SaaS"
+		},
+		"defaultStage": {
+			"type": "string",
+			"default": "Seed"
+		},
+		"defaultRoots": {
+			"type": "string",
+			"default": "New England"
+		}
+	}
+}

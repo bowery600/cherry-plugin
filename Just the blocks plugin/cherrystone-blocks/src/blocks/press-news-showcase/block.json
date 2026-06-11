@@ -1,0 +1,52 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "cherrystone/press-news-showcase",
+	"version": "1.0.0",
+	"title": "Press News Showcase",
+	"category": "cherrystone-content",
+	"icon": "welcome-widgets-menus",
+	"description": "Asymmetrical magazine-style showcase for media announcements and press releases.",
+	"textdomain": "cherrystone-blocks",
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ]
+	},
+	"attributes": {
+		"eyebrow": {
+			"type": "string",
+			"default": "MEDIA COVERAGE"
+		},
+		"heading": {
+			"type": "string",
+			"default": "Cherrystone in the press."
+		},
+		"lede": {
+			"type": "string",
+			"default": "Read about our exits, leadership announcements, and the founders breaking boundaries across New England."
+		},
+		"articles": {
+			"type": "array",
+			"default": [
+				{
+					"title": "Cherrystone Angels lead $1.5M financing for Visiomed therapeutics.",
+					"source": "Boston Business Journal",
+					"date": "May 12, 2026",
+					"isFeatured": true
+				},
+				{
+					"title": "Rhode Island venture syndicate names new Diligence Committee chairs.",
+					"source": "Providence Journal",
+					"date": "April 28, 2026",
+					"isFeatured": false
+				},
+				{
+					"title": "EcoCharge completes pilot deployment across regional delivery channels.",
+					"source": "CleanTech News",
+					"date": "March 15, 2026",
+					"isFeatured": false
+				}
+			]
+		}
+	}
+}

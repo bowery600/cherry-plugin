@@ -1,7 +1,0 @@
-<svg viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect x="5" y="5" width="190" height="50" rx="6" fill="#ea580c" />
-  <g transform="translate(15, 12)">
-    <path d="M18,3 C9.7,3 3,9.7 3,18 C3,26.3 9.7,33 18,33 C26.3,33 33,26.3 33,18 C33,12 28.5,6.5 22.5,4.5 L20.5,7 C24.5,8.5 28,13 28,18 C28,23.5 23.5,28 18,28 C12.5,28 8,23.5 8,18 C8,12.5 12.5,8 18,8 C20.5,8 23,9.5 24.5,11.5 L27,9.5 C25,6.5 21.5,4.5 18,4.5 Z" fill="#ffffff" />
-  </g>
-  <text x="62" y="36" font-family="'Inter Tight', 'Inter', sans-serif" font-weight="700" font-size="18" fill="#ffffff">SmartCells</text>
-</svg>

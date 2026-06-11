@@ -1,0 +1,929 @@
+/* ==========================================================================
+   Cherrystone theme — host chrome (header + footer) and base tokens.
+   Section/page styling is owned by the Cherrystone Blocks plugin.
+   ========================================================================== */
+
+:root {
+	--navy-900: var(--wp--preset--color--navy-900, #0B1B2B);
+	--navy-800: var(--wp--preset--color--navy-800, #0E243A);
+	--navy-700: var(--wp--preset--color--navy-700, #12304C);
+	--navy-600: var(--wp--preset--color--navy-600, #174169);
+	--navy-100: var(--wp--preset--color--navy-100, #EAF0F6);
+	--navy-50: var(--wp--preset--color--navy-50, #F3F7FA);
+
+	--paper: var(--wp--preset--color--paper, #F8F9FA);
+	--paper-warm: var(--wp--preset--color--paper-warm, #F0F4F8);
+	--ink: var(--wp--preset--color--ink, #0B1B2B);
+	--ink-muted: var(--wp--preset--color--ink-muted, #3A5A78);
+	--line: var(--wp--preset--color--line, #DDE4EB);
+	--line-soft: var(--wp--preset--color--line-soft, #EBF0F5);
+	--surface: var(--wp--preset--color--surface, #FFFFFF);
+
+	--accent: var(--wp--preset--color--accent, #D95C41);
+	--accent-ink: var(--wp--preset--color--accent-ink, #1A5B7A);
+	--accent-soft: var(--wp--preset--color--accent-soft, #E3EEF4);
+	--accent-gold: var(--wp--preset--color--accent-gold, #E8A365);
+	--sea: var(--wp--preset--color--sea, #5F8B9C);
+	--success: var(--wp--preset--color--success, #2F6F4E);
+
+	--radius-lg: 10px;
+	--shadow-soft: 0 18px 50px rgba(11, 27, 43, 0.08);
+
+	--font-sans: var(--wp--preset--font-family--sans, 'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif);
+	--font-mono: var(--wp--preset--font-family--mono, 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace);
+
+	--cs-maxw: var(--wp--style--global--wide-size, 1320px);
+	--cs-gutter: var(--wp--preset--spacing--40, 32px);
+}
+
+body {
+	font-family: var(--font-sans);
+	color: var(--ink);
+	background: var(--paper);
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+	font-feature-settings: 'ss01', 'cv11';
+}
+
+/* Typography & Readability Refinements */
+p {
+	max-width: 65ch;
+	text-wrap: pretty;
+}
+h1, h2, h3, h4, h5, h6 {
+	max-width: 30ch;
+}
+h1, h2, h3 {
+	text-wrap: balance;
+}
+.tabular-nums {
+	font-variant-numeric: tabular-nums;
+}
+
+/* Ensure focus states are accessible and premium */
+*:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 2px;
+	border-radius: 2px;
+}
+
+/* Keep block-driven sections truly edge-to-edge. */
+.wp-site-blocks { margin: 0; padding: 0; }
+.wp-site-blocks > main { 
+	overflow-x: clip; 
+	margin: 0 !important; 
+	padding: 0 !important; 
+}
+.wp-site-blocks > main + * {
+	margin-top: 0 !important;
+}
+.wp-site-blocks > footer,
+.cs-site-footer {
+	margin-top: 0 !important;
+}
+.wp-block-post-content {
+	margin: 0 !important;
+	padding: 0 !important;
+}
+.wp-block-post-content > *:last-child {
+	margin-bottom: 0 !important;
+}
+
+/* Skip link parity with the original site. */
+.skip-link {
+	position: absolute;
+	left: -999px;
+	top: 0;
+	z-index: 200;
+	padding: 10px 18px;
+	background: var(--ink);
+	color: var(--paper);
+	border-radius: 0 0 8px 0;
+	font-size: 13px;
+	font-weight: 600;
+}
+.skip-link:focus { left: 0; }
+
+/* ==========================================================================
+   Site header — sticky translucent brand navbar
+   ========================================================================== */
+.cs-site-header {
+	position: sticky;
+	top: 0;
+	z-index: 50;
+	background: var(--paper);
+	border-bottom: 1px solid var(--line-soft);
+}
+.cs-site-header .cs-nav-inner {
+	max-width: var(--cs-maxw);
+	margin: 0 auto;
+	padding: 14px var(--cs-gutter);
+	display: flex;
+	align-items: center;
+	gap: 40px;
+}
+
+/* Brand / logo. Brand and actions get equal flex so the menu sits dead-center. */
+.cs-site-header .cs-brand { flex: 1 1 0; display: flex; align-items: center; gap: 12px; }
+.cs-site-header .cs-nav-actions { flex: 1 1 0; display: flex; justify-content: flex-end; align-items: center; gap: 12px; }
+.cs-site-header .cs-brand-link {
+	display: inline-flex;
+	align-items: center;
+	line-height: 0;
+	text-decoration: none;
+}
+.cs-site-header .cs-brand img,
+.cs-site-header .custom-logo {
+	height: 38px;
+	width: auto;
+	display: block;
+	max-width: min(220px, 42vw);
+	object-fit: contain;
+}
+.cs-site-header .wp-block-site-title {
+	font-family: var(--font-sans);
+	font-size: 16px;
+	font-weight: 600;
+	letter-spacing: -0.01em;
+}
+.cs-site-header .wp-block-site-title a { color: var(--ink); }
+
+/* Navigation block, styled to the brand */
+.cs-site-header .wp-block-navigation {
+	flex: 0 1 auto;
+	display: flex;
+	justify-content: center;
+	font-size: 14px;
+	font-weight: 500;
+}
+
+/* When the nav collapses to the overlay hamburger, keep it pinned next to
+   the actions on the right instead of floating mid-bar. */
+@media (max-width: 600px) {
+	.cs-site-header .cs-brand { flex: 1 1 auto; }
+	.cs-site-header .cs-nav-actions { flex: 0 0 auto; }
+	.cs-site-header .wp-block-navigation { flex: 0 0 auto; }
+	.cs-site-header .cs-nav-inner { gap: 16px; }
+}
+.cs-site-header .wp-block-navigation .wp-block-navigation-item__content {
+	color: inherit;
+	padding: 11px 0;
+	transition: opacity 0.18s ease;
+}
+.cs-site-header .wp-block-navigation .wp-block-navigation-item__content:hover,
+.cs-site-header .wp-block-navigation .current-menu-item .wp-block-navigation-item__content {
+	opacity: 0.7;
+}
+.cs-site-header .wp-block-navigation .wp-block-navigation-item.current-menu-item {
+	position: relative;
+}
+.cs-site-header .wp-block-navigation .has-child {
+	position: relative;
+}
+.cs-site-header .wp-block-navigation .wp-block-navigation__submenu-icon {
+	margin-left: 6px;
+	width: 10px;
+	height: 10px;
+	transition: transform 0.2s ease;
+}
+.cs-site-header .wp-block-navigation .has-child:hover > .wp-block-navigation-submenu__toggle .wp-block-navigation__submenu-icon,
+.cs-site-header .wp-block-navigation .has-child:focus-within > .wp-block-navigation-submenu__toggle .wp-block-navigation__submenu-icon {
+	transform: rotate(180deg);
+}
+
+@media (min-width: 901px) {
+	.cs-site-header .wp-block-navigation .wp-block-navigation__container > .has-child > .wp-block-navigation__submenu-container {
+		min-width: 220px !important;
+		left: 50% !important;
+		right: auto !important;
+		padding: 8px !important;
+		border: 1px solid var(--line) !important;
+		border-radius: 8px !important;
+		background: var(--surface) !important;
+		box-shadow: 0 4px 16px rgba(11, 27, 43, 0.08);
+		opacity: 0;
+		visibility: hidden;
+		height: auto !important;
+		width: auto !important;
+		overflow: visible !important;
+		transform: translateX(-50%);
+		transition: opacity 0.15s ease, visibility 0.15s ease;
+	}
+	.cs-site-header .wp-block-navigation .wp-block-navigation__container > .has-child:hover > .wp-block-navigation__submenu-container,
+	.cs-site-header .wp-block-navigation .wp-block-navigation__container > .has-child:focus-within > .wp-block-navigation__submenu-container,
+	.cs-site-header .wp-block-navigation .wp-block-navigation__container > .has-child > .wp-block-navigation__submenu-container[aria-hidden="false"] {
+		opacity: 1 !important;
+		visibility: visible !important;
+		transform: translateX(-50%) !important;
+	}
+	.cs-site-header .wp-block-navigation .wp-block-navigation__submenu-container .wp-block-navigation-item__content {
+		display: flex;
+		justify-content: center;
+		text-align: center;
+		width: 100%;
+		padding: 10px 12px !important;
+		border-radius: 6px;
+		color: var(--ink) !important;
+		transition: background-color 0.18s ease, color 0.18s ease;
+	}
+	.cs-site-header .wp-block-navigation .wp-block-navigation__submenu-container .wp-block-navigation-item__content:hover,
+	.cs-site-header .wp-block-navigation .wp-block-navigation__submenu-container .wp-block-navigation-item__content:focus {
+		background: var(--navy-50);
+		color: var(--accent-ink) !important;
+	}
+}
+
+.cs-site-header .wp-block-navigation__container > .wp-block-navigation-item > .wp-block-navigation-item__content[href*="apply"] {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	padding: 11px 20px;
+	border: 1px solid transparent;
+	border-radius: 999px;
+	background: var(--accent);
+	color: #fff !important;
+	font-size: 14px;
+	font-weight: 600;
+	letter-spacing: -0.005em;
+	line-height: 1.2;
+	white-space: nowrap;
+	transition: background-color 0.15s ease, color 0.15s ease;
+}
+.cs-site-header .wp-block-navigation__container > .wp-block-navigation-item > .wp-block-navigation-item__content[href*="apply"]:hover,
+.cs-site-header .wp-block-navigation__container > .wp-block-navigation-item > .wp-block-navigation-item__content[href*="apply"]:focus {
+	background: var(--accent-ink);
+	color: #fff !important;
+}
+
+/* General Header Buttons & CTA pill */
+.cs-site-header .wp-block-button__link,
+.cs-cta-pill {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	padding: 11px 20px;
+	border-radius: 999px;
+	font-size: 14px;
+	font-weight: 600;
+	letter-spacing: -0.005em;
+	white-space: nowrap;
+	transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+.cs-cta-pill {
+	background: var(--ink);
+	color: var(--paper);
+	border: 1px solid transparent;
+}
+.cs-cta-pill:hover {
+	background: var(--accent-ink);
+	color: #fff;
+}
+
+/* Secondary Button (Member Login) */
+.cs-site-header .cs-btn-secondary .wp-block-button__link {
+	background: transparent;
+	color: var(--ink);
+	border: 1px solid var(--line);
+}
+.cs-site-header .cs-btn-secondary .wp-block-button__link:hover {
+	background: var(--navy-50);
+	color: var(--accent-ink);
+	border-color: var(--ink-muted);
+}
+
+/* Primary Button (Apply for Funding) */
+.cs-site-header .cs-btn-primary .wp-block-button__link {
+	background: var(--accent);
+	color: #fff !important;
+	border: 1px solid transparent;
+}
+.cs-site-header .cs-btn-primary .wp-block-button__link:hover {
+	background: var(--accent-ink);
+	color: #fff !important;
+}
+
+/* ==========================================================================
+   Site footer — compact brand footer (the big CTA is a block)
+   ========================================================================== */
+.cs-site-footer {
+	background: var(--paper-warm, #f2eee6);
+	color: var(--ink-muted, #56524d);
+	border-top: 1px solid var(--line, #dedbd4);
+}
+.cs-site-footer .cs-footer-inner {
+	max-width: var(--cs-maxw);
+	margin: 0 auto;
+	padding: 64px var(--cs-gutter) 0;
+}
+.cs-site-footer .cs-footer-grid {
+	display: grid;
+	grid-template-columns: 1.6fr 1fr 1fr 1fr;
+	gap: 40px;
+	padding-bottom: 48px;
+}
+.cs-site-footer img { height: 30px; width: auto; }
+.cs-site-footer p { color: var(--ink-muted, #56524d); line-height: 1.55; font-size: 14px; margin: 16px 0 0; max-width: 34ch; }
+.cs-site-footer h2,
+.cs-site-footer h5 {
+	color: var(--ink, #111111);
+	font-size: 12px;
+	letter-spacing: 0.14em;
+
+	font-weight: 600;
+	margin: 0 0 16px;
+}
+.cs-site-footer .wp-block-navigation {
+	flex-direction: column;
+	gap: 10px;
+	font-size: 13px;
+}
+.cs-site-footer .wp-block-navigation .wp-block-navigation-item__content { color: var(--ink-muted, #56524d); }
+.cs-site-footer .wp-block-navigation .wp-block-navigation-item__content:hover { color: var(--ink, #111111); }
+.cs-site-footer .cs-footer-meta {
+	border-top: 1px solid var(--line, #dedbd4);
+	padding: 24px 0;
+	display: flex;
+	justify-content: space-between;
+	gap: 16px;
+	flex-wrap: wrap;
+	font-family: var(--font-mono);
+	font-size: 11px;
+	letter-spacing: 0.04em;
+	color: var(--ink-muted, #56524d);
+}
+.cs-site-footer .cs-footer-meta a { color: var(--ink-muted, #56524d); }
+.cs-site-footer .cs-footer-meta a:hover { color: var(--ink, #111111); }
+
+/* Match the parent Cherrystone footer layout. */
+.cs-site-footer .cs-footer-inner {
+	padding: 0 var(--cs-gutter);
+}
+.cs-site-footer .cs-footer-bottom {
+	padding: 36px 0;
+	display: grid;
+	grid-template-columns: 1.4fr 1fr 1fr 1fr;
+	gap: 40px;
+	font-size: 13px;
+	color: var(--ink-muted, #56524d);
+}
+.cs-site-footer .cs-footer-bottom > * {
+	margin: 0;
+}
+.cs-site-footer .cs-footer-logo {
+	display: flex;
+	align-items: center;
+	margin: 0 0 18px;
+}
+.cs-site-footer .cs-footer-logo img {
+	display: block;
+	width: auto;
+	height: 48px;
+}
+.cs-site-footer .cs-footer-brand p {
+	max-width: 30ch;
+	margin: 0;
+	line-height: 1.55;
+	font-size: 13px;
+	color: var(--ink-muted, #56524d);
+}
+.cs-site-footer .cs-footer-brand a {
+	color: var(--ink, #111111);
+}
+.cs-site-footer .cs-footer-brand a:hover {
+	color: var(--accent, #0E4164);
+}
+.cs-site-footer .cs-aca-member {
+	margin-top: 18px;
+	display: inline-flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 8px;
+}
+.cs-site-footer .cs-aca-logo {
+	margin: 0;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 8px 10px;
+	background: #ffffff;
+	border: 1px solid var(--line, #dedbd4);
+	border-radius: 6px;
+}
+.cs-site-footer .cs-aca-logo img {
+	display: block;
+	width: auto;
+	height: 32px;
+}
+.cs-site-footer .cs-aca-label {
+	margin: 0;
+	font-family: var(--font-mono);
+	font-size: 11px;
+	letter-spacing: 0.08em;
+
+	color: var(--ink-muted, #56524d);
+}
+.cs-site-footer h5 {
+	color: var(--ink, #111111);
+	font-size: 12px;
+	letter-spacing: 0.14em;
+
+	font-weight: 600;
+	margin: 0 0 16px;
+}
+.cs-site-footer ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+	font-size: 13px;
+}
+.cs-site-footer li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.cs-site-footer li a {
+	color: var(--ink-muted, #56524d);
+	text-decoration: none;
+	display: inline-block;
+	padding: 5px 0;
+}
+.cs-site-footer li a:hover {
+	color: var(--ink, #111111);
+}
+.cs-site-footer .cs-footer-meta {
+	border-top: 1px solid var(--line, #dedbd4);
+	gap: 8px;
+}
+.cs-site-footer .cs-footer-meta p {
+	margin: 0;
+	font-size: inherit;
+	line-height: 1.45;
+	color: inherit;
+}
+
+/* ==========================================================================
+   Generic single/archive content (non-block pages) — keep readable
+   ========================================================================== */
+.cs-content-shell {
+	max-width: var(--cs-maxw);
+	margin: 0 auto;
+	padding: 80px var(--cs-gutter);
+}
+.cs-content-shell .wp-block-post-content { font-size: 18px; line-height: 1.6; }
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+/* Force FSE post-content to not constrain custom page templates */
+.wp-block-post-content.is-layout-constrained > [class*="wp-block-cherrystone-page-"],
+.wp-block-post-content.is-layout-constrained > .wp-block-cherrystone-member-portal {
+    max-width: none !important;
+    width: 100vw !important;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+}
+@media (max-width: 900px) {
+	.cs-site-header .cs-nav-inner { gap: 16px; padding: 12px var(--cs-gutter); flex-wrap: wrap; }
+	.cs-site-header .cs-brand { flex: 1 1 auto; }
+	.cs-site-header .cs-nav-actions { display: none; }
+	.cs-site-header .wp-block-navigation { flex: 0 1 auto; margin-left: auto; justify-content: flex-end; }
+	/* Impeccable Mobile Navigation Styling */
+	.wp-block-navigation__responsive-container.is-menu-open {
+		background: rgba(248, 249, 250, 0.95) !important;
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+	}
+	.wp-block-navigation__responsive-container-content {
+		padding-top: 15vh !important;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 24px;
+	}
+	.cs-site-header .wp-block-navigation .wp-block-navigation-item__content {
+		font-size: 24px;
+		font-weight: 500;
+		letter-spacing: -0.02em;
+		transition: color 0.2s ease, transform 0.2s ease;
+	}
+	.cs-site-header .wp-block-navigation .wp-block-navigation-item__content:hover {
+		transform: translateX(4px);
+		color: var(--accent);
+	}
+	.cs-site-footer .cs-footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+	.cs-site-footer .cs-footer-bottom { grid-template-columns: 1fr 1fr; gap: 28px; }
+}
+@media (max-width: 600px) {
+	:root {
+		--cs-gutter: 16px;
+	}
+	.cs-site-footer .cs-footer-grid { grid-template-columns: 1fr; }
+	.cs-site-footer .cs-footer-bottom { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.cs-site-header .wp-block-button__link,
+	.cs-cta-pill,
+	.cs-site-header .wp-block-navigation .wp-block-navigation__submenu-container,
+	.cs-site-header .wp-block-navigation .wp-block-navigation-item__content,
+	.cs-site-header .wp-block-navigation .wp-block-navigation__submenu-icon { transition: none; }
+}
+
+/* A11y: mobile nav toggle must meet the 44px minimum touch target. */
+.wp-block-navigation__responsive-container-open,
+.wp-block-navigation__responsive-container-close {
+	min-width: 44px;
+	min-height: 44px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px;
+}
+
+.wp-site-blocks,
+main#main-content,
+footer.wp-block-template-part {
+	position: relative;
+	z-index: 1;
+}
+header.wp-block-template-part {
+	position: relative;
+	z-index: 10 !important;
+}
+
+		inset: 0;
+		z-index: 1000;
+		pointer-events: none;
+	}
+	.cs-bio-drawers-container[aria-hidden="false"] {
+		pointer-events: auto;
+	}
+
+	.cs-bio-backdrop {
+		position: absolute;
+		inset: 0;
+		background: rgba(11, 27, 43, 0.4);
+		opacity: 0;
+		transition: opacity 0.3s ease;
+	}
+	.cs-bio-drawers-container[aria-hidden="false"] .cs-bio-backdrop {
+		opacity: 1;
+	}
+
+	.cs-bio-drawer {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		width: 100%;
+		max-width: 480px;
+		background: var(--surface);
+		box-shadow: -10px 0 40px rgba(0, 0, 0, 0.1);
+		transform: translateX(100%);
+		transition: transform 0.25s ease;
+		display: flex;
+		flex-direction: column;
+		overflow-y: auto;
+	}
+	.cs-bio-drawer:not([hidden]) {
+		transform: translateX(0);
+	}
+
+	.cs-bio-drawer-inner {
+		padding: 40px;
+		position: relative;
+	}
+
+	.cs-bio-close {
+		position: absolute;
+		top: 24px;
+		right: 24px;
+		background: var(--paper-warm);
+		border: none;
+		border-radius: 50%;
+		width: 40px;
+		height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		color: var(--ink);
+		transition: background 0.15s ease;
+	}
+	.cs-bio-close:hover {
+		background: var(--line);
+	}
+
+	.cs-bio-drawer-header {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		margin-bottom: 32px;
+		padding-bottom: 32px;
+		border-bottom: 1px solid var(--line);
+	}
+
+	.cs-bio-drawer-avatar {
+		width: 120px;
+		height: 120px;
+		border-radius: 50%;
+		object-fit: cover;
+	}
+
+	.cs-bio-drawer-header h2 {
+		margin: 0 0 8px 0;
+		font-size: 28px;
+	}
+
+	.cs-bio-drawer-role {
+		font-family: var(--font-mono);
+		font-size: 13px;
+		letter-spacing: 0.05em;
+
+		color: var(--accent);
+		margin-bottom: 16px;
+	}
+
+	.cs-bio-drawer-linkedin {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		font-size: 14px;
+		font-weight: 500;
+		color: var(--accent-ink);
+		text-decoration: none;
+	}
+	.cs-bio-drawer-linkedin:hover {
+		color: var(--ink);
+	}
+
+	.cs-bio-drawer-content {
+		font-size: 16px;
+		line-height: 1.7;
+		color: var(--ink-muted);
+	}
+
+	.cs-bio-trigger .member-link-cta {
+		transition: color 0.15s ease;
+	}
+	.cs-bio-trigger:hover .member-link-cta {
+		color: var(--accent);
+	}
+
+	/* ── Ecosystem Partners Grid ────────────────────────────────────────────── */
+	.ecosystem-partners-section {
+		padding: 80px 0;
+	}
+
+	.ecosystem-logo-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 40px;
+		align-items: center;
+		margin-top: 48px;
+	}
+
+	.partner-logo-link {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 24px;
+		background: var(--surface);
+		border-radius: var(--radius-lg);
+		box-shadow: 0 1px 2px rgba(17, 17, 17, 0.04);
+	}
+
+	.partner-logo-link img {
+		max-width: 100%;
+		height: auto;
+		max-height: 80px;
+		filter: grayscale(100%) opacity(0.5);
+		transition: filter 0.2s ease;
+	}
+
+	.partner-logo-link:hover img {
+		filter: grayscale(0%) opacity(1);
+	}
+
+	@media (max-width: 600px) {
+		.cs-bio-drawer {
+			max-width: 100%;
+		}
+		.cs-bio-drawer-inner {
+			padding: 24px;
+		}
+	}
+
+/* ==========================================================================
+   Member Dropdown (Impeccable Impl)
+   ========================================================================== */
+.cs-member-dropdown-container {
+    position: relative;
+    display: inline-block;
+}
+
+.cs-member-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 8px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(11, 27, 43, 0.08);
+    min-width: 200px;
+    padding: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.15s ease, visibility 0.15s ease;
+    z-index: 100;
+}
+
+.cs-member-dropdown-container:hover .cs-member-dropdown-menu,
+.cs-member-dropdown-container:focus-within .cs-member-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+}
+
+.cs-dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 14px;
+    color: var(--ink);
+    text-decoration: none;
+    border-radius: 6px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.cs-dropdown-item:hover, .cs-dropdown-item:focus {
+    background-color: var(--navy-50);
+    color: var(--accent);
+}
+
+.cs-dropdown-item.lock-item {
+    color: var(--ink);
+}
+.cs-dropdown-item.lock-item:hover {
+    color: var(--accent);
+}
+
+.cs-dropdown-item .lock-icon {
+    margin-right: 8px;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.cs-dropdown-item.lock-item:hover .lock-icon {
+    opacity: 1;
+}
+
+.cs-member-dropdown-toggle {
+    display: inline-flex;
+    align-items: center;
+}
+
+/* ==========================================================================
+   Member Portal Slider Toggle (Impeccable Impl)
+   ========================================================================== */
+
+.cs-portal-slider-wrapper {
+	max-width: 600px;
+	margin: 0 auto 48px;
+}
+
+.cs-slider-toggle {
+	display: flex;
+	position: relative;
+	background: var(--navy-50);
+	border: 1px solid rgba(17, 17, 17, 0.05);
+	border-radius: 9999px;
+	padding: 6px;
+	z-index: 1;
+}
+
+.cs-slider-bg {
+	position: absolute;
+	top: 6px;
+	bottom: 6px;
+	left: 6px;
+	width: calc(50% - 6px);
+	background: var(--paper);
+	border-radius: 9999px;
+	box-shadow: 0 4px 12px rgba(17, 17, 17, 0.05);
+	transition: transform 0.2s ease;
+	z-index: -1;
+}
+
+.cs-slider-toggle.active-right .cs-slider-bg {
+	transform: translateX(100%);
+}
+
+.cs-slide.cs-slider-btn[aria-selected="true"] {
+	color: var(--ink);
+}
+
+.cs-portal-content-section {X(100%);
+}
+
+.cs-slider-btn {
+	flex: 1;
+	background: transparent;
+	border: none;
+	padding: 12px 24px;
+	font-family: var(--font-sans);
+	font-weight: 600;
+	font-size: 1rem;
+	color: var(--ink-muted);
+	cursor: pointer;
+	border-radius: 9999px;
+	transition: color 0.3s ease;
+	text-align: center;
+}
+
+.cs-slider-btn[aria-selected="true"] {
+	color: var(--ink);
+}
+
+.cs-portal-content-section {
+	display: none;
+}
+
+.cs-portal-content-section.active {
+	display: block;
+}
+
+/* ==========================================================================
+   WP Navigation Lock Icon for Member Portal
+   ========================================================================== */
+.cs-site-header .wp-block-navigation .lock-item .wp-block-navigation-item__content::before {
+    content: "";
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-right: 8px;
+    background-color: currentColor;
+    mask-image: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>');
+    -webkit-mask-image: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>');
+    mask-size: contain;
+    -webkit-mask-size: contain;
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-position: center;
+    opacity: 0.7;
+    vertical-align: text-top;
+}
+.cs-site-header .wp-block-navigation .lock-item .wp-block-navigation-item__content:hover::before,
+.cs-site-header .wp-block-navigation .lock-item .wp-block-navigation-item__content:focus::before {
+    opacity: 1;
+}
+
+/* Member Portal Tabs */
+.member-portal-tabs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+.member-portal-tab-list {
+    display: inline-flex;
+    align-items: center;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 6px;
+}
+.member-portal-tab {
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ink-muted);
+    text-decoration: none;
+    border-radius: 999px;
+    transition: all 0.3s ease;
+}
+.member-portal-tab:hover {
+    color: var(--ink);
+}
+.member-portal-tab.is-active {
+    color: var(--ink);
+    background: var(--surface);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.member-portal-signout {
+    font-size: 13px;
+    color: var(--ink-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.member-portal-signout:hover {
+    color: var(--accent-ink);
+}

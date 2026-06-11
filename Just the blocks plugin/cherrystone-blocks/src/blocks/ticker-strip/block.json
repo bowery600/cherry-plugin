@@ -1,0 +1,31 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "cherrystone/ticker-strip",
+	"version": "1.0.0",
+	"title": "Ticker Strip",
+	"category": "cherrystone",
+	"icon": "ellipsis",
+	"description": "Animated portfolio logo ticker strip.",
+	"textdomain": "cherrystone-blocks",
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ]
+	},
+	"attributes": {
+		"items": {
+			"type": "array",
+			"default": [
+				{ "image": "advanced-silicon-group.svg", "alt": "Advanced Silicon Group" },
+				{ "image": "amsel-medical.svg", "alt": "Amsel Medical" },
+				{ "image": "clearlaw.svg", "alt": "Clearlaw" },
+				{ "image": "flourish-care.svg", "alt": "Flourish Care" },
+				{ "image": "hilltop-biosciences.svg", "alt": "Hilltop BioSciences" },
+				{ "image": "iq3connect.svg", "alt": "iQ3Connect" },
+				{ "image": "jaia-robotics.svg", "alt": "Jaia Robotics" },
+				{ "image": "nodar.svg", "alt": "NODAR" },
+				{ "image": "rellevate.svg", "alt": "Rellevate" }
+			]
+		}
+	}
+}
