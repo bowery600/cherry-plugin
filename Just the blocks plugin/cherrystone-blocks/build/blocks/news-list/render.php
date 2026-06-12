@@ -83,7 +83,7 @@ $wrapper_attributes = get_block_wrapper_attributes( array( 'class' => 'block war
 				<a class="news-row" href="<?php echo esc_url( $url ); ?>" <?php echo $source_url ? 'target="_blank" rel="noopener noreferrer"' : ''; ?>>
 					<span class="date"><?php echo esc_html( $date_val ); ?></span>
 					<div>
-						<h4><?php echo esc_html( $title ); ?></h4>
+						<h3><?php echo esc_html( $title ); ?></h3>
 						<div class="byline"><?php echo esc_html( $author ); ?></div>
 					</div>
 					<span class="cat"><?php echo esc_html( $category_val ); ?></span>

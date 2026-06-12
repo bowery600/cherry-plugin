@@ -23,7 +23,6 @@ import './blocks/page-member-portal';
 import './blocks/page-about';
 import './blocks/page-leadership';
 import './blocks/page-portfolio';
-import './blocks/page-portfolio-exits';
 import './blocks/page-network';
 import './blocks/page-communications';
 import './blocks/page-members';

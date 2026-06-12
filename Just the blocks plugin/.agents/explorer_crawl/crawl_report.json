@@ -1,0 +1,792 @@
+[
+  {
+    "url": "https://cherrystone.vc/",
+    "title": "Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc__desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc__mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/about",
+    "title": "About – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_about_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_about_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/leadership",
+    "title": "Leadership – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_leadership_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_leadership_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/communications",
+    "title": "Communications – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_communications_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_communications_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/sponsors",
+    "title": "Sponsors – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_sponsors_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_sponsors_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/portfolio",
+    "title": "Portfolio – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_portfolio_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_portfolio_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/pitch-night",
+    "title": "Pitch Night – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_pitch_night_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_pitch_night_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/members",
+    "title": "Members – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [
+      {
+        "type": "log",
+        "text": "JQMIGRATE: Migrate is installed, version 3.4.1",
+        "location": {
+          "url": "https://cherrystone.vc/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1",
+          "lineNumber": 1,
+          "columnNumber": 980
+        }
+      }
+    ],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_members_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_members_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/member-portal",
+    "title": "Member Portal – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_member_portal_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_member_portal_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/apply",
+    "title": "Apply – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [
+      {
+        "type": "log",
+        "text": "JQMIGRATE: Migrate is installed, version 3.4.1",
+        "location": {
+          "url": "https://cherrystone.vc/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1",
+          "lineNumber": 1,
+          "columnNumber": 980
+        }
+      }
+    ],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_apply_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_apply_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/portfolio-company/advanced-image-enhancement",
+    "title": "Advanced Image Enhancement – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_portfolio_company_advanced_image_enhancement_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_portfolio_company_advanced_image_enhancement_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/portfolio-company/horizontal-systems",
+    "title": "Horizontal Systems – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_portfolio_company_horizontal_systems_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_portfolio_company_horizontal_systems_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/portfolio-company/smartcells-inc",
+    "title": "SmartCells, Inc. – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_portfolio_company_smartcells_inc_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_portfolio_company_smartcells_inc_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/partners",
+    "title": "Partners – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_partners_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_partners_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/apply-for-capital",
+    "title": "Apply for Capital – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [
+      {
+        "type": "log",
+        "text": "JQMIGRATE: Migrate is installed, version 3.4.1",
+        "location": {
+          "url": "https://cherrystone.vc/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1",
+          "lineNumber": 1,
+          "columnNumber": 980
+        }
+      }
+    ],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_apply_for_capital_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_apply_for_capital_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/news/cherrystone-chairman-stephen-schweich-featured-on-the-wicked-pissah-podcast",
+    "title": "Page not found – Cherrystone Angel Group",
+    "status": 404,
+    "consoleLogs": [
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 404 ()",
+        "location": {
+          "url": "https://cherrystone.vc/news/cherrystone-chairman-stephen-schweich-featured-on-the-wicked-pissah-podcast",
+          "lineNumber": 0,
+          "columnNumber": 0
+        }
+      }
+    ],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_cherrystone_chairman_stephen_schweich_featured_on_the_wicked_pissah_podcast_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_cherrystone_chairman_stephen_schweich_featured_on_the_wicked_pissah_podcast_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/news/lenoss-medical-closes-series-a-funding-round",
+    "title": "Lenoss Medical closes Series A funding round – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_lenoss_medical_closes_series_a_funding_round_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_lenoss_medical_closes_series_a_funding_round_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/news/cherrystone-welcomes-3-new-portfolio-companies-in-early-2024",
+    "title": "Cherrystone welcomes 3 new portfolio companies in early 2024 – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_cherrystone_welcomes_3_new_portfolio_companies_in_early_2024_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_cherrystone_welcomes_3_new_portfolio_companies_in_early_2024_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/news/vrychawqm8pg4rzwnujb6sct70qkb0",
+    "title": "Page not found – Cherrystone Angel Group",
+    "status": 404,
+    "consoleLogs": [
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 404 ()",
+        "location": {
+          "url": "https://cherrystone.vc/news/vrychawqm8pg4rzwnujb6sct70qkb0",
+          "lineNumber": 0,
+          "columnNumber": 0
+        }
+      }
+    ],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_vrychawqm8pg4rzwnujb6sct70qkb0_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_vrychawqm8pg4rzwnujb6sct70qkb0_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/news/a44c0jufcgxfa2hq0wptpnlssy8cek",
+    "title": "Page not found – Cherrystone Angel Group",
+    "status": 404,
+    "consoleLogs": [
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 404 ()",
+        "location": {
+          "url": "https://cherrystone.vc/news/a44c0jufcgxfa2hq0wptpnlssy8cek",
+          "lineNumber": 0,
+          "columnNumber": 0
+        }
+      }
+    ],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_a44c0jufcgxfa2hq0wptpnlssy8cek_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_a44c0jufcgxfa2hq0wptpnlssy8cek_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/news/66zzxw7zxrggjmfyuhzd7yt20u92ss",
+    "title": "Page not found – Cherrystone Angel Group",
+    "status": 404,
+    "consoleLogs": [
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 404 ()",
+        "location": {
+          "url": "https://cherrystone.vc/news/66zzxw7zxrggjmfyuhzd7yt20u92ss",
+          "lineNumber": 0,
+          "columnNumber": 0
+        }
+      }
+    ],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_66zzxw7zxrggjmfyuhzd7yt20u92ss_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_66zzxw7zxrggjmfyuhzd7yt20u92ss_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/news/canadas-cfia-approves-knipbio-meal-as-a-salmon-feed-ingredient",
+    "title": "Page not found – Cherrystone Angel Group",
+    "status": 404,
+    "consoleLogs": [
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 404 ()",
+        "location": {
+          "url": "https://cherrystone.vc/news/canadas-cfia-approves-knipbio-meal-as-a-salmon-feed-ingredient",
+          "lineNumber": 0,
+          "columnNumber": 0
+        }
+      }
+    ],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_canadas_cfia_approves_knipbio_meal_as_a_salmon_feed_ingredient_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_canadas_cfia_approves_knipbio_meal_as_a_salmon_feed_ingredient_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/news/senzime-has-entered-into-an-agreement-to-acquire-the-us-company-respiratory-motion",
+    "title": "Senzime has entered into an agreement to acquire the US company Respiratory Motion – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_senzime_has_entered_into_an_agreement_to_acquire_the_us_company_respiratory_motion_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_senzime_has_entered_into_an_agreement_to_acquire_the_us_company_respiratory_motion_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/news/jaia-robotics-closes-seed-funding-round-with-more-than-1-million",
+    "title": "Jaia Robotics closes Seed funding round with more than $1 million – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_jaia_robotics_closes_seed_funding_round_with_more_than_1_million_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_jaia_robotics_closes_seed_funding_round_with_more_than_1_million_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/news/rellevate-closed-on-4-million-round",
+    "title": "Rellevate closed on $4 million round – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_rellevate_closed_on_4_million_round_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_rellevate_closed_on_4_million_round_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/news/nodar-secures-funding-to-drive-automation",
+    "title": "NODAR secures funding to drive automation – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_nodar_secures_funding_to_drive_automation_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_nodar_secures_funding_to_drive_automation_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/news/narragansett-brewery-ranked-32-largest-craft-brewery-in-america",
+    "title": "Narragansett Brewery ranked #32 Largest Craft Brewery in America – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_narragansett_brewery_ranked_32_largest_craft_brewery_in_america_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_narragansett_brewery_ranked_32_largest_craft_brewery_in_america_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/news/board-on-track-is-acquired-by-to-transact-communications",
+    "title": "Page not found – Cherrystone Angel Group",
+    "status": 404,
+    "consoleLogs": [
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 404 ()",
+        "location": {
+          "url": "https://cherrystone.vc/news/board-on-track-is-acquired-by-to-transact-communications",
+          "lineNumber": 0,
+          "columnNumber": 0
+        }
+      }
+    ],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_board_on_track_is_acquired_by_to_transact_communications_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_board_on_track_is_acquired_by_to_transact_communications_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/news/nodar-awarded-patent-for-multi-camera-3d-vision-technology",
+    "title": "NODAR awarded patent for multi-camera 3D vision technology – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_nodar_awarded_patent_for_multi_camera_3d_vision_technology_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_nodar_awarded_patent_for_multi_camera_3d_vision_technology_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/news/nodar-supports-a-fusion-of-sensing-technologies",
+    "title": "NODAR supports a fusion of sensing technologies – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_nodar_supports_a_fusion_of_sensing_technologies_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_nodar_supports_a_fusion_of_sensing_technologies_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/news/windgap-closes-on-39m",
+    "title": "Windgap closes on $39M – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_windgap_closes_on_39m_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_windgap_closes_on_39m_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/news/laurent-pharmaceuticals-announces-phase-2-clinical-trial-results",
+    "title": "Laurent Pharmaceuticals announces Phase 2 clinical trial results – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_laurent_pharmaceuticals_announces_phase_2_clinical_trial_results_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_laurent_pharmaceuticals_announces_phase_2_clinical_trial_results_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/news/pitch-night-winners",
+    "title": "Page not found – Cherrystone Angel Group",
+    "status": 404,
+    "consoleLogs": [
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 404 ()",
+        "location": {
+          "url": "https://cherrystone.vc/news/pitch-night-winners",
+          "lineNumber": 0,
+          "columnNumber": 0
+        }
+      }
+    ],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_pitch_night_winners_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_pitch_night_winners_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/news/windgap-medical-inc-closes-significant-series-b-round",
+    "title": "Page not found – Cherrystone Angel Group",
+    "status": 404,
+    "consoleLogs": [
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 404 ()",
+        "location": {
+          "url": "https://cherrystone.vc/news/windgap-medical-inc-closes-significant-series-b-round",
+          "lineNumber": 0,
+          "columnNumber": 0
+        }
+      }
+    ],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_windgap_medical_inc_closes_significant_series_b_round_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_windgap_medical_inc_closes_significant_series_b_round_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/news/pitch-night",
+    "title": "Pitch Night – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_pitch_night_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_pitch_night_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/news/laurent-pharmaceuticals-provides-clinical-development-update",
+    "title": "Laurent Pharmaceuticals provides clinical development update – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_laurent_pharmaceuticals_provides_clinical_development_update_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_laurent_pharmaceuticals_provides_clinical_development_update_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/news/unruly-released-new-research-about-connected-tv-vs-linear-tv",
+    "title": "Unruly released new research about Connected TV vs. Linear TV – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_unruly_released_new_research_about_connected_tv_vs_linear_tv_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_unruly_released_new_research_about_connected_tv_vs_linear_tv_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/news/rellevate-joins-ukg-technology-partner-network",
+    "title": "Rellevate joins UKG Technology partner network – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_rellevate_joins_ukg_technology_partner_network_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_rellevate_joins_ukg_technology_partner_network_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/news/unruly-was-featured-as-the-first-stem-learning-tool-that-combines-coding-for-kids-with-active-play",
+    "title": "Page not found – Cherrystone Angel Group",
+    "status": 404,
+    "consoleLogs": [
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 404 ()",
+        "location": {
+          "url": "https://cherrystone.vc/news/unruly-was-featured-as-the-first-stem-learning-tool-that-combines-coding-for-kids-with-active-play",
+          "lineNumber": 0,
+          "columnNumber": 0
+        }
+      }
+    ],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_unruly_was_featured_as_the_first_stem_learning_tool_that_combines_coding_for_kids_with_active_play_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_unruly_was_featured_as_the_first_stem_learning_tool_that_combines_coding_for_kids_with_active_play_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/news/premama-releases-one-guide-to-prenatal-vitamins-in-vogue-magazine",
+    "title": "Premama releases one guide to prenatal vitamins in Vogue magazine – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_premama_releases_one_guide_to_prenatal_vitamins_in_vogue_magazine_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_premama_releases_one_guide_to_prenatal_vitamins_in_vogue_magazine_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/news/kalion-inc-teams-with-agile-biofoundry-to-win-doe-grant-to-advance-bio-based-glucaric-acid",
+    "title": "Kalion Inc. teams with Agile Biofoundry to win DOE grant to advance bio-based glucaric acid – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_kalion_inc_teams_with_agile_biofoundry_to_win_doe_grant_to_advance_bio_based_glucaric_acid_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_kalion_inc_teams_with_agile_biofoundry_to_win_doe_grant_to_advance_bio_based_glucaric_acid_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/news/narragansett-beer-gives-an-update-on-providence-brewery-opening-and-anniversary",
+    "title": "Narragansett Beer gives an update on Providence brewery opening and anniversary – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_narragansett_beer_gives_an_update_on_providence_brewery_opening_and_anniversary_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_narragansett_beer_gives_an_update_on_providence_brewery_opening_and_anniversary_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/news/premama-wellness-raises-35m-in-first-institutional-funding-round",
+    "title": "Page not found – Cherrystone Angel Group",
+    "status": 404,
+    "consoleLogs": [
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 404 ()",
+        "location": {
+          "url": "https://cherrystone.vc/news/premama-wellness-raises-35m-in-first-institutional-funding-round",
+          "lineNumber": 0,
+          "columnNumber": 0
+        }
+      }
+    ],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_premama_wellness_raises_35m_in_first_institutional_funding_round_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_premama_wellness_raises_35m_in_first_institutional_funding_round_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/news/laurent-pharmaceuticals-receives-health-canadas-approval-to-initiate-covid-19-clinical-trial",
+    "title": "Page not found – Cherrystone Angel Group",
+    "status": 404,
+    "consoleLogs": [
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 404 ()",
+        "location": {
+          "url": "https://cherrystone.vc/news/laurent-pharmaceuticals-receives-health-canadas-approval-to-initiate-covid-19-clinical-trial",
+          "lineNumber": 0,
+          "columnNumber": 0
+        }
+      }
+    ],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_laurent_pharmaceuticals_receives_health_canadas_approval_to_initiate_covid_19_clinical_trial_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_news_laurent_pharmaceuticals_receives_health_canadas_approval_to_initiate_covid_19_clinical_trial_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/pitch-night/pitch-night-2026-annual",
+    "title": "Pitch Night 2026 — Annual – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_pitch_night_pitch_night_2026_annual_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_pitch_night_pitch_night_2026_annual_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/pitch-night/general-meeting",
+    "title": "General Meeting – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_pitch_night_general_meeting_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_pitch_night_general_meeting_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/pitch-night/holiday-party",
+    "title": "Holiday Party – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_pitch_night_holiday_party_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_pitch_night_holiday_party_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/member-interest",
+    "title": "Member Interest – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_member_interest_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_member_interest_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/communications/lenoss-medical-closes-series-a-funding-round",
+    "title": "Lenoss Medical closes Series A funding round – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_communications_lenoss_medical_closes_series_a_funding_round_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_communications_lenoss_medical_closes_series_a_funding_round_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/communications/cherrystone-welcomes-3-new-portfolio-companies-in-early-2024",
+    "title": "Cherrystone welcomes 3 new portfolio companies in early 2024 – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_communications_cherrystone_welcomes_3_new_portfolio_companies_in_early_2024_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_communications_cherrystone_welcomes_3_new_portfolio_companies_in_early_2024_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/communications/senzime-has-entered-into-an-agreement-to-acquire-the-us-company-respiratory-motion",
+    "title": "Senzime has entered into an agreement to acquire the US company Respiratory Motion – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_communications_senzime_has_entered_into_an_agreement_to_acquire_the_us_company_respiratory_motion_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_communications_senzime_has_entered_into_an_agreement_to_acquire_the_us_company_respiratory_motion_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/communications/jaia-robotics-closes-seed-funding-round-with-more-than-1-million",
+    "title": "Jaia Robotics closes Seed funding round with more than $1 million – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_communications_jaia_robotics_closes_seed_funding_round_with_more_than_1_million_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_communications_jaia_robotics_closes_seed_funding_round_with_more_than_1_million_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/communications/rellevate-closed-on-4-million-round",
+    "title": "Rellevate closed on $4 million round – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_communications_rellevate_closed_on_4_million_round_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_communications_rellevate_closed_on_4_million_round_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/communications/nodar-secures-funding-to-drive-automation",
+    "title": "NODAR secures funding to drive automation – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_communications_nodar_secures_funding_to_drive_automation_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_communications_nodar_secures_funding_to_drive_automation_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/communications/narragansett-brewery-ranked-32-largest-craft-brewery-in-america",
+    "title": "Narragansett Brewery ranked #32 Largest Craft Brewery in America – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_communications_narragansett_brewery_ranked_32_largest_craft_brewery_in_america_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_communications_narragansett_brewery_ranked_32_largest_craft_brewery_in_america_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/communications/nodar-awarded-patent-for-multi-camera-3d-vision-technology",
+    "title": "NODAR awarded patent for multi-camera 3D vision technology – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_communications_nodar_awarded_patent_for_multi_camera_3d_vision_technology_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_communications_nodar_awarded_patent_for_multi_camera_3d_vision_technology_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/communications/nodar-supports-a-fusion-of-sensing-technologies",
+    "title": "NODAR supports a fusion of sensing technologies – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_communications_nodar_supports_a_fusion_of_sensing_technologies_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_communications_nodar_supports_a_fusion_of_sensing_technologies_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/communications/windgap-closes-on-39m",
+    "title": "Windgap closes on $39M – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_communications_windgap_closes_on_39m_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_communications_windgap_closes_on_39m_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/communications/laurent-pharmaceuticals-announces-phase-2-clinical-trial-results",
+    "title": "Laurent Pharmaceuticals announces Phase 2 clinical trial results – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_communications_laurent_pharmaceuticals_announces_phase_2_clinical_trial_results_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_communications_laurent_pharmaceuticals_announces_phase_2_clinical_trial_results_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/communications/laurent-pharmaceuticals-provides-clinical-development-update",
+    "title": "Laurent Pharmaceuticals provides clinical development update – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_communications_laurent_pharmaceuticals_provides_clinical_development_update_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_communications_laurent_pharmaceuticals_provides_clinical_development_update_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/communications/unruly-released-new-research-about-connected-tv-vs-linear-tv",
+    "title": "Unruly released new research about Connected TV vs. Linear TV – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_communications_unruly_released_new_research_about_connected_tv_vs_linear_tv_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_communications_unruly_released_new_research_about_connected_tv_vs_linear_tv_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/communications/rellevate-joins-ukg-technology-partner-network",
+    "title": "Rellevate joins UKG Technology partner network – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_communications_rellevate_joins_ukg_technology_partner_network_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_communications_rellevate_joins_ukg_technology_partner_network_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/communications/premama-releases-one-guide-to-prenatal-vitamins-in-vogue-magazine",
+    "title": "Premama releases one guide to prenatal vitamins in Vogue magazine – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_communications_premama_releases_one_guide_to_prenatal_vitamins_in_vogue_magazine_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_communications_premama_releases_one_guide_to_prenatal_vitamins_in_vogue_magazine_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/communications/kalion-inc-teams-with-agile-biofoundry-to-win-doe-grant-to-advance-bio-based-glucaric-acid",
+    "title": "Kalion Inc. teams with Agile Biofoundry to win DOE grant to advance bio-based glucaric acid – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_communications_kalion_inc_teams_with_agile_biofoundry_to_win_doe_grant_to_advance_bio_based_glucaric_acid_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_communications_kalion_inc_teams_with_agile_biofoundry_to_win_doe_grant_to_advance_bio_based_glucaric_acid_mobile.png",
+    "links": [],
+    "error": null
+  },
+  {
+    "url": "https://cherrystone.vc/communications/narragansett-beer-gives-an-update-on-providence-brewery-opening-and-anniversary",
+    "title": "Narragansett Beer gives an update on Providence brewery opening and anniversary – Cherrystone Angel Group",
+    "status": 200,
+    "consoleLogs": [],
+    "desktopScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_communications_narragansett_beer_gives_an_update_on_providence_brewery_opening_and_anniversary_desktop.png",
+    "mobileScreenshot": "C:\\Users\\Ethan\\OneDrive - Vanderbilt\\Desktop\\Cherrystone\\Cherrystone New Site\\wordpress\\Just the blocks plugin\\.agents\\explorer_crawl\\screenshots\\cherrystone_vc_communications_narragansett_beer_gives_an_update_on_providence_brewery_opening_and_anniversary_mobile.png",
+    "links": [],
+    "error": null
+  }
+]

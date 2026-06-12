@@ -20,6 +20,7 @@ $lede      = isset( $attributes['lede'] ) ? $attributes['lede'] : '';
 $warm      = ! empty( $attributes['warm'] );
 $max_items = isset( $attributes['maxItems'] ) ? (int) $attributes['maxItems'] : 0;
 $tag       = isset( $attributes['tagFilter'] ) ? trim( $attributes['tagFilter'] ) : '';
+$collapse  = isset( $attributes['collapseAfter'] ) ? (int) $attributes['collapseAfter'] : 0;
 
 $query_args = array(
 	'post_type'      => 'cherry_resource',
@@ -92,7 +93,7 @@ $wrapper_attributes = get_block_wrapper_attributes(
 			</div>
 		<?php endif; ?>
 
-		<div class="value-grid">
+		<div class="value-grid"<?php echo $collapse > 0 ? ' data-collapse-after="' . esc_attr( $collapse ) . '"' : ''; ?>>
 			<?php foreach ( $resources as $resource ) : ?>
 				<?php
 				$audience    = get_post_meta( $resource->ID, 'cs_resource_type', true );

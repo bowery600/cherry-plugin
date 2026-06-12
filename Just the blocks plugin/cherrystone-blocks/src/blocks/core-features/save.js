@@ -25,10 +25,7 @@ export default function save( { attributes } ) {
 						className="eyebrow"
 						value={ eyebrow }
 					/>
-					<RichText.Content
-						tagName="h2"
-						value={ heading }
-					/>
+					<RichText.Content tagName="h2" value={ heading } />
 					<RichText.Content
 						tagName="p"
 						className="lede"
@@ -37,8 +34,10 @@ export default function save( { attributes } ) {
 				</div>
 				<div className="features">
 					{ cards.map( ( card, index ) => (
-						<div className={ `feature reveal d${ index }` } key={ index }>
-
+						<div
+							className={ `feature reveal d${ index }` }
+							key={ index }
+						>
 							<div className="feature-mark">
 								<Icon name={ card.icon } />
 							</div>

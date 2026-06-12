@@ -551,7 +551,7 @@ function cherrystone_blocks_seed_content() {
 		}
 	}
 
-	// Seed page templates (Home, About, Apply, Communications, Leadership, Member Interest, Member Portal, Members, Pitch, Portfolio, Portfolio Exits)
+	// Seed page templates (Home, About, Apply, Communications, Leadership, Member Interest, Member Portal, Members, Pitch, Portfolio)
 	$pages_to_seed = array(
 		'home'            => array(
 			'title'   => 'Home',
@@ -596,10 +596,6 @@ function cherrystone_blocks_seed_content() {
 		'portfolio'       => array(
 			'title'   => 'Portfolio',
 			'content' => '<!-- wp:cherrystone/page-portfolio /-->',
-		),
-		'portfolio-exits' => array(
-			'title'   => 'Portfolio Exits',
-			'content' => '<!-- wp:cherrystone/page-portfolio-exits /-->',
 		),
 		// Static page compositions stored as block markup files; a bare
 		// self-closing wp:cherrystone/page-* comment renders nothing because

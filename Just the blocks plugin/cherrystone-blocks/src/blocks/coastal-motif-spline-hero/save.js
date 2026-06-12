@@ -45,7 +45,7 @@ export default function save( { attributes } ) {
 			{ /* Pinned Scroll Sequence Section */ }
 			<section { ...blockProps }>
 				<div className="sequence-video-container">
-					{ /* eslint-disable-next-line jsx-a11y/media-has-caption */ }
+					{  }
 					<video
 						className="sequence-video"
 						src={ videoSrc }

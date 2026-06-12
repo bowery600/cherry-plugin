@@ -18,14 +18,10 @@ const NEW_CARD = {
 };
 
 export default function Edit( { attributes, setAttributes } ) {
-	const {
-		dividerLabel,
-		headingLevel = 3,
-		cards = [],
-	} = attributes;
+	const { dividerLabel, headingLevel = 3, cards = [] } = attributes;
 	const blockProps = useBlockProps( {
 		className: 'section entry-section',
-		style: { paddingTop: 'clamp(40px,6vh,80px)' }
+		style: { paddingTop: 'clamp(40px,6vh,80px)' },
 	} );
 
 	return (
@@ -70,7 +66,9 @@ export default function Edit( { attributes, setAttributes } ) {
 					<div className="entry">
 						{ cards.map( ( card, index ) => (
 							<div
-								className={ `entry-card reveal ${ index % 2 !== 0 ? 'alt d1' : '' }` }
+								className={ `entry-card reveal ${
+									index % 2 !== 0 ? 'alt d1' : ''
+								}` }
 								key={ index }
 								style={ { cursor: 'pointer' } }
 							>
@@ -134,8 +132,20 @@ export default function Edit( { attributes, setAttributes } ) {
 											} )
 										}
 									/>
-									<svg className="arr" width="16" height="16" viewBox="0 0 16 16" fill="none">
-										<path d="M3 8h9M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+									<svg
+										className="arr"
+										width="16"
+										height="16"
+										viewBox="0 0 16 16"
+										fill="none"
+									>
+										<path
+											d="M3 8h9M9 4l4 4-4 4"
+											stroke="currentColor"
+											strokeWidth="1.6"
+											strokeLinecap="round"
+											strokeLinejoin="round"
+										/>
 									</svg>
 								</span>
 							</div>

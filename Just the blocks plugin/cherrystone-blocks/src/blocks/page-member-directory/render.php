@@ -8,6 +8,112 @@
  * @package CherrystoneBlocks
  */
 
+if ( ! function_exists( 'cherrystone_member_network_graphic' ) ) {
+	/**
+	 * Abstract member-network constellation: interconnected nodes and lines.
+	 *
+	 * @param string $color Stroke/fill color.
+	 * @return string SVG markup.
+	 */
+	function cherrystone_member_network_graphic( $color = 'var(--accent)' ) {
+		// x, y, radius, opacity, type (fill|ring|hub|hub2).
+		$nodes = array(
+			array( 150, 396, 3, 0.35, 'fill' ),
+			array( 226, 322, 4, 0.5, 'fill' ),
+			array( 306, 388, 5, 0.5, 'ring' ),
+			array( 364, 296, 3, 0.4, 'fill' ),
+			array( 436, 352, 5, 0.85, 'hub' ),
+			array( 502, 424, 3.5, 0.45, 'fill' ),
+			array( 566, 326, 4.5, 0.5, 'ring' ),
+			array( 472, 236, 3, 0.5, 'fill' ),
+			array( 544, 176, 3.5, 0.6, 'hub2' ),
+			array( 420, 148, 3.5, 0.4, 'fill' ),
+			array( 326, 200, 4, 0.45, 'ring' ),
+			array( 248, 242, 3, 0.35, 'fill' ),
+			array( 178, 178, 2.5, 0.3, 'fill' ),
+			array( 604, 248, 3, 0.4, 'fill' ),
+			array( 382, 466, 3, 0.35, 'fill' ),
+			array( 282, 462, 2.5, 0.3, 'fill' ),
+			array( 600, 458, 4, 0.45, 'ring' ),
+			array( 252, 118, 3, 0.35, 'fill' ),
+			array( 482, 82, 2.5, 0.3, 'fill' ),
+			array( 562, 92, 3.5, 0.45, 'fill' ),
+		);
+
+		// node a, node b, line opacity.
+		$edges = array(
+			array( 0, 1, 0.18 ),
+			array( 1, 2, 0.22 ),
+			array( 1, 11, 0.2 ),
+			array( 2, 3, 0.25 ),
+			array( 2, 4, 0.3 ),
+			array( 2, 14, 0.18 ),
+			array( 3, 4, 0.32 ),
+			array( 3, 10, 0.22 ),
+			array( 4, 5, 0.3 ),
+			array( 4, 6, 0.28 ),
+			array( 4, 7, 0.32 ),
+			array( 5, 6, 0.25 ),
+			array( 5, 16, 0.2 ),
+			array( 6, 8, 0.25 ),
+			array( 6, 13, 0.22 ),
+			array( 7, 8, 0.28 ),
+			array( 7, 9, 0.25 ),
+			array( 8, 13, 0.2 ),
+			array( 8, 19, 0.25 ),
+			array( 9, 10, 0.22 ),
+			array( 9, 18, 0.18 ),
+			array( 10, 11, 0.2 ),
+			array( 10, 17, 0.18 ),
+			array( 11, 12, 0.16 ),
+			array( 12, 17, 0.15 ),
+			array( 14, 15, 0.15 ),
+			array( 18, 19, 0.2 ),
+		);
+
+		$lines = '';
+		foreach ( $edges as $edge ) {
+			$a      = $nodes[ $edge[0] ];
+			$b      = $nodes[ $edge[1] ];
+			$lines .= sprintf(
+				'<line x1="%s" y1="%s" x2="%s" y2="%s" opacity="%s" />',
+				$a[0],
+				$a[1],
+				$b[0],
+				$b[1],
+				$edge[2]
+			);
+		}
+
+		$dots = '';
+		foreach ( $nodes as $i => $node ) {
+			list( $x, $y, $r, $o, $type ) = $node;
+
+			if ( 'ring' === $type ) {
+				$dots .= sprintf( '<circle cx="%1$s" cy="%2$s" r="%3$s" fill="none" stroke-width="1.25" opacity="%4$s" />', $x, $y, $r, $o );
+				continue;
+			}
+
+			if ( 'hub' === $type ) {
+				$dots .= sprintf( '<circle class="nn-pulse" cx="%1$s" cy="%2$s" r="16" fill="none" stroke-width="1" opacity="0.18" />', $x, $y );
+				$dots .= sprintf( '<circle cx="%1$s" cy="%2$s" r="10" fill="none" stroke-width="1" opacity="0.4" />', $x, $y );
+			} elseif ( 'hub2' === $type ) {
+				$dots .= sprintf( '<circle class="nn-pulse nn-pulse-2" cx="%1$s" cy="%2$s" r="8" fill="none" stroke-width="1" opacity="0.3" />', $x, $y );
+			}
+
+			$pulse = ( 1 === $i || 19 === $i ) ? ' class="nn-pulse nn-pulse-3"' : '';
+			$dots .= sprintf( '<circle%6$s cx="%1$s" cy="%2$s" r="%3$s" fill="%4$s" stroke="none" opacity="%5$s" />', $x, $y, $r, esc_attr( $color ), $o, $pulse );
+		}
+
+		return sprintf(
+			'<svg class="member-network-svg" viewBox="0 0 640 520" preserveAspectRatio="xMidYMid meet" style="width:100%%;height:100%%;" aria-hidden="true" focusable="false"><g stroke="%1$s" stroke-width="1" fill="none">%2$s</g><g stroke="%1$s">%3$s</g></svg>',
+			esc_attr( $color ),
+			$lines,
+			$dots
+		);
+	}
+}
+
 if ( function_exists( 'cherrystone_blocks_member_portal_is_authenticated' ) && ! cherrystone_blocks_member_portal_is_authenticated() ) {
 	$failed      = isset( $_GET['cs_member_login'] ) && 'failed' === sanitize_key( wp_unslash( $_GET['cs_member_login'] ) );
 	$form_action = remove_query_arg( array( 'cs_member_login', 'cs_member_logout' ) );
@@ -19,7 +125,8 @@ if ( function_exists( 'cherrystone_blocks_member_portal_is_authenticated' ) && !
 	nocache_headers();
 
 	?>
-	<section class="page-hero cherrystone-member-gate" style="padding-bottom:140px;">
+	<section class="page-hero with-graphic cherrystone-member-gate" style="padding-bottom:140px;">
+		<div class="page-hero-graphic" aria-hidden="true"><?php echo cherrystone_member_network_graphic(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
 		<div class="container" style="max-width:560px;">
 			<span class="eyebrow accent"><?php esc_html_e( 'Members only', 'cherrystone-blocks' ); ?></span>
 			<h1 style="margin-top:24px;font-size:clamp(40px, 5vw, 64px);"><?php esc_html_e( 'Sign in to continue.', 'cherrystone-blocks' ); ?></h1>
@@ -72,7 +179,8 @@ sort( $member_roles, SORT_NATURAL | SORT_FLAG_CASE );
 
 ?>
 <div class="cherrystone-page-template cherrystone-page-member-directory-template" data-member-directory>
-	<section class="page-hero">
+	<section class="page-hero with-graphic">
+		<div class="page-hero-graphic" aria-hidden="true"><?php echo cherrystone_member_network_graphic(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
 		<div class="container">
 			<div class="member-portal-tabs">
 				<div class="member-portal-tab-list" aria-label="<?php esc_attr_e( 'Member portal sections', 'cherrystone-blocks' ); ?>">

@@ -4,11 +4,12 @@
  *
  * The Communications page is composed entirely in code so the layout stays in
  * sync with the plugin without re-saving the page in the editor or re-importing
- * content. Static section blocks (page hero, press showcase, featured letters,
- * newsletter, footer CTA) are reproduced here as markup; content-managed
- * sections (announcements, pitch nights, resources) are delegated to their own
- * dynamic blocks via do_blocks(), and are only included when their custom post
- * type has matching published content so the page never shows an empty section.
+ * content. The page is a single calm record of fund activity: a quiet hero with
+ * live counts, one filterable feed of every published communication, upcoming
+ * pitch nights, the resource library, a one-line digest signup, and the
+ * site-wide footer CTA. Content-managed sections (pitch nights, resources)
+ * are delegated to their own dynamic blocks via do_blocks() and only included
+ * when their custom post type has matching published content.
  *
  * @var array    $attributes Block attributes (unused).
  * @var string   $content    Saved inner content (ignored; dynamic block).
@@ -102,110 +103,26 @@ if ( ! function_exists( 'cherrystone_comms_has_posts' ) ) {
 }
 
 /* ---------------------------------------------------------------------------
- * Section 1 — Page hero
+ * Gather live content up front so the hero and the feed share one query.
  * ------------------------------------------------------------------------- */
-$hero  = '<section class="page-hero with-graphic">';
-$hero .= '<div class="page-hero-graphic">' . cherrystone_comms_shell_arcs( 'var(--accent)', '0.32' ) . '</div>';
-$hero .= '<div class="container">';
-$hero .= '<span class="eyebrow accent">Communications</span>';
-$hero .= '<h1 style="margin-top:24px;">News, letters,<br>and resources.</h1>';
-$hero .= '<p class="lede">Portfolio milestones, letters from leadership, press coverage, and Pitch Night announcements &mdash; collected in one place for founders, members, and co-investors.</p>';
-$hero .= '</div></section>';
-
-/* ---------------------------------------------------------------------------
- * Section 2 — Press / media coverage (static showcase)
- * ------------------------------------------------------------------------- */
-$press_articles = array(
+$communications = get_posts(
 	array(
-		'title'    => 'Cherrystone Angels lead $1.5M financing for Visiomed Therapeutics.',
-		'source'   => 'Boston Business Journal',
-		'date'     => 'May 12, 2026',
-		'featured' => true,
-	),
-	array(
-		'title'    => 'Rhode Island venture syndicate names new Diligence Committee chairs.',
-		'source'   => 'Providence Journal',
-		'date'     => 'April 28, 2026',
-		'featured' => false,
-	),
-	array(
-		'title'    => 'EcoCharge completes pilot deployment across regional delivery channels.',
-		'source'   => 'CleanTech News',
-		'date'     => 'March 15, 2026',
-		'featured' => false,
-	),
+		'post_type'      => 'cherry_communication',
+		'post_status'    => 'publish',
+		'posts_per_page' => -1,
+		'orderby'        => 'date',
+		'order'          => 'DESC',
+	)
 );
 
-$press  = '<section class="block press-showcase-section"><div class="container">';
-$press .= '<div class="block-head"><div>';
-$press .= '<span class="eyebrow accent">Media coverage</span>';
-$press .= '<h2 style="margin-top:24px;">Cherrystone in the press.</h2>';
-$press .= '</div><p class="lede">Coverage of our exits, leadership announcements, and the founders breaking boundaries across New England.</p></div>';
-$press .= '<div class="press-showcase-grid-layout">';
-foreach ( $press_articles as $art ) {
-	$press .= '<div class="press-news-card' . ( $art['featured'] ? ' is-featured-news' : '' ) . '"><div class="press-news-card-inner">';
-	$press .= '<div class="press-news-meta mono">';
-	$press .= '<span class="press-news-source">' . esc_html( $art['source'] ) . '</span>';
-	$press .= '<span class="dot"></span>';
-	$press .= '<span class="press-news-date">' . esc_html( $art['date'] ) . '</span>';
-	$press .= '</div>';
-	$press .= '<h3 class="press-news-title">' . esc_html( $art['title'] ) . '</h3>';
-	$press .= '<div class="press-news-action-link"><span class="mono text-link">Read article</span></div>';
-	$press .= '</div></div>';
-}
-$press .= '</div></div></section>';
-
-/* ---------------------------------------------------------------------------
- * Section 3 — Letters from leadership (static editorial feature)
- * ------------------------------------------------------------------------- */
-$side_posts = array(
+$upcoming_events = get_posts(
 	array(
-		'date'  => 'May 12, 2026',
-		'title' => 'Advanced Silicon Group raises priced seed round led by members',
-		'cat'   => 'Portfolio News',
-	),
-	array(
-		'date'  => 'April 28, 2026',
-		'title' => 'Narragansett Brewery recapitalization secures regional growth',
-		'cat'   => 'Portfolio News',
-	),
-);
-
-$letters  = '<section class="block"><div class="container"><div class="featured-news-row">';
-$letters .= '<div class="featured-editorial-card">';
-$letters .= '<div class="featured-editorial-image-pane"><span class="featured-editorial-badge">Featured Story</span>';
-$letters .= '<div class="featured-editorial-graphic-wrap">' . cherrystone_comms_wave( 'rgba(255, 255, 255, 0.15)', '0.8' ) . cherrystone_comms_mesh( '0.35' ) . '</div></div>';
-$letters .= '<div class="featured-editorial-content">';
-$letters .= '<div class="featured-editorial-meta"><span>Featured Letter</span><span class="dot"></span><span>May 30, 2026</span></div>';
-$letters .= '<h3>Annual Letter to New England Founders &amp; Co-Investors</h3>';
-$letters .= '<p>Reflecting on two decades of patient, operator-led capital. A deep dive into the current state of early-stage software, healthcare tech, and life sciences across Providence and Boston.</p>';
-$letters .= '<span class="featured-editorial-cta">Read full letter &rarr;</span>';
-$letters .= '</div></div>';
-$letters .= '<div class="featured-news-sidebar"><h4 class="featured-sidebar-title">Recent Letters</h4>';
-foreach ( $side_posts as $post ) {
-	$letters .= '<div class="sidebar-post-card">';
-	$letters .= '<span class="date">' . esc_html( $post['date'] ) . '</span>';
-	$letters .= '<h4>' . esc_html( $post['title'] ) . '</h4>';
-	$letters .= '<span class="cat">' . esc_html( $post['cat'] ) . '</span>';
-	$letters .= '</div>';
-}
-$letters .= '</div></div></div></section>';
-
-/* ---------------------------------------------------------------------------
- * Section 4 — Latest announcements (dynamic: cherry_communication)
- * Section 5 — Upcoming pitch nights (dynamic: cherry_pitch_event)
- * Section 6 — Resources & letters (dynamic: cherry_resource)
- * ------------------------------------------------------------------------- */
-$news = '';
-if ( cherrystone_comms_has_posts( 'cherry_communication' ) ) {
-	$news = do_blocks( '<!-- wp:cherrystone/news-list {"eyebrow":"Latest updates","heading":"Announcements & member notes.","lede":"Portfolio milestones, member spotlights, and program updates from across the Cherrystone network.","maxItems":6} /-->' );
-}
-
-$events = '';
-if ( cherrystone_comms_has_posts(
-	'cherry_pitch_event',
-	array(
-		'meta_query' => array(
+		'post_type'      => 'cherry_pitch_event',
+		'post_status'    => 'publish',
+		'posts_per_page' => -1,
+		'fields'         => 'ids',
+		'no_found_rows'  => true,
+		'meta_query'     => array(
 			array(
 				'key'     => 'cs_event_date',
 				'value'   => gmdate( 'Y-m-d' ),
@@ -214,34 +131,153 @@ if ( cherrystone_comms_has_posts(
 			),
 		),
 	)
-) ) {
-	$events = do_blocks( '<!-- wp:cherrystone/events-list {"eyebrow":"Calendar","heading":"Upcoming Pitch Nights.","lede":"Where founders present to our members. Add these to your calendar or request an invitation.","upcomingOnly":true} /-->' );
+);
+
+$resource_count = 0;
+$resource_ids   = get_posts(
+	array(
+		'post_type'      => 'cherry_resource',
+		'post_status'    => 'publish',
+		'posts_per_page' => -1,
+		'fields'         => 'ids',
+		'no_found_rows'  => true,
+	)
+);
+$resource_count = count( $resource_ids );
+
+/* Distinct categories across the feed, ordered by frequency. */
+$category_counts = array();
+foreach ( $communications as $comm ) {
+	$cat = get_post_meta( $comm->ID, 'cs_communication_category', true );
+	if ( ! $cat ) {
+		$cat = 'News';
+	}
+	if ( ! isset( $category_counts[ $cat ] ) ) {
+		$category_counts[ $cat ] = 0;
+	}
+	$category_counts[ $cat ]++;
+}
+arsort( $category_counts );
+
+/* ---------------------------------------------------------------------------
+ * Section 1 — Page hero (quiet, with a live ledger line)
+ * ------------------------------------------------------------------------- */
+$meta_bits = array();
+if ( count( $communications ) > 0 ) {
+	/* translators: %d: number of published updates. */
+	$meta_bits[] = sprintf( _n( '%d update', '%d updates', count( $communications ), 'cherrystone-blocks' ), count( $communications ) );
+}
+if ( count( $upcoming_events ) > 0 ) {
+	/* translators: %d: number of upcoming pitch nights. */
+	$meta_bits[] = sprintf( _n( '%d upcoming pitch night', '%d upcoming pitch nights', count( $upcoming_events ), 'cherrystone-blocks' ), count( $upcoming_events ) );
+}
+if ( $resource_count > 0 ) {
+	/* translators: %d: number of published resources. */
+	$meta_bits[] = sprintf( _n( '%d resource', '%d resources', $resource_count, 'cherrystone-blocks' ), $resource_count );
 }
 
-$resources = do_blocks( '<!-- wp:cherrystone/resource-cards {"eyebrow":"Resources","heading":"Letters, decks, and member resources.","lede":"Curated documents and links for founders and members — updated as new material is published.","warm":true} /-->' );
+$hero  = '<section class="page-hero with-graphic">';
+$hero .= '<div class="page-hero-graphic">' . cherrystone_comms_shell_arcs( 'var(--accent)', '0.32' ) . '</div>';
+$hero .= '<div class="container">';
+$hero .= '<span class="eyebrow accent">Communications</span>';
+$hero .= '<h1 style="margin-top:24px;">From the fund,<br>to our network.</h1>';
+$hero .= '<p class="lede">Announcements, letters, and resources from Cherrystone &mdash; kept simple and kept current for our members, founders, and co-investors.</p>';
+if ( ! empty( $meta_bits ) ) {
+	$hero .= '<div class="comms-hero-meta mono">' . esc_html( implode( '  ·  ', $meta_bits ) ) . '</div>';
+}
+$hero .= '</div></section>';
 
 /* ---------------------------------------------------------------------------
- * Section 7 — Newsletter signup (static)
+ * Section 2 — The feed: every communication, filterable by category.
+ * All rows are server-rendered (SEO / no-JS); frontend.js collapses the list
+ * to a first page and wires the category chips and "show more" control.
  * ------------------------------------------------------------------------- */
-$newsletter  = '<section class="block newsletter-section"><div class="container">';
-$newsletter .= '<div class="block-head"><div>';
-$newsletter .= '<span class="eyebrow accent">Stay connected</span>';
-$newsletter .= '<h2 style="margin-top:24px;">Get the Cherrystone digest.</h2>';
-$newsletter .= '</div><p class="lede">Monthly updates on dealflow, portfolio wins, pitch night recaps, and insights from our members &mdash; delivered straight to your inbox.</p></div>';
-$newsletter .= '<div class="newsletter-signup-card">';
-$newsletter .= '<div class="newsletter-stats">';
-$newsletter .= '<div class="newsletter-stat-item"><span class="mono" style="font-size:32px;font-weight:700;color:var(--accent);line-height:1;">2,400+</span><span class="mono" style="font-size:11px;letter-spacing:0.08em;opacity:0.6;margin-top:4px;">Subscribers</span></div>';
-$newsletter .= '<div class="newsletter-stat-item"><span class="mono" style="font-size:32px;font-weight:700;color:var(--accent);line-height:1;">12</span><span class="mono" style="font-size:11px;letter-spacing:0.08em;opacity:0.6;margin-top:4px;">Monthly editions</span></div>';
-$newsletter .= '</div>';
-$newsletter .= '<div class="newsletter-form-area"><form class="newsletter-input-row" aria-label="Newsletter signup">';
-$newsletter .= '<label class="sr-only" for="newsletter-email-input">Email address</label>';
-$newsletter .= '<input type="email" id="newsletter-email-input" class="newsletter-email-input" placeholder="Enter your email address" aria-describedby="newsletter-privacy-note" />';
-$newsletter .= '<button type="submit" class="btn btn-accent"><span>Subscribe</span></button>';
-$newsletter .= '</form><p id="newsletter-privacy-note" class="newsletter-privacy-note">We respect your privacy. Unsubscribe anytime.</p>';
-$newsletter .= '</div></div></div></section>';
+$feed = '';
+if ( ! empty( $communications ) ) {
+	$feed  = '<section class="block warm comms-feed-section"><div class="container">';
+	$feed .= '<div class="block-head"><div>';
+	$feed .= '<span class="eyebrow accent">Updates</span>';
+	$feed .= '<h2 style="margin-top:24px;">The latest from Cherrystone.</h2>';
+	$feed .= '</div><p class="lede">Portfolio milestones, exits, pitch night news, and notes from leadership &mdash; the full record, in one place.</p></div>';
+
+	if ( count( $category_counts ) > 1 ) {
+		$feed .= '<div class="portfolio-controls comms-feed-tabs" role="group" aria-label="' . esc_attr__( 'Filter updates by category', 'cherrystone-blocks' ) . '">';
+		$feed .= '<button class="chip active" data-filter="all">' . esc_html__( 'All', 'cherrystone-blocks' ) . '<span class="chip-count mono">' . esc_html( count( $communications ) ) . '</span></button>';
+		foreach ( $category_counts as $cat_name => $cat_count ) {
+			$filter_val = strtolower( str_replace( ' ', '-', $cat_name ) );
+			$feed      .= '<button class="chip" data-filter="' . esc_attr( $filter_val ) . '">' . esc_html( $cat_name ) . '<span class="chip-count mono">' . esc_html( $cat_count ) . '</span></button>';
+		}
+		$feed .= '</div>';
+	}
+
+	$feed .= '<div class="comms-feed" data-comms-feed data-visible-rows="8">';
+	foreach ( $communications as $comm ) {
+		$title        = get_the_title( $comm );
+		$date_val     = get_post_meta( $comm->ID, 'cs_communication_date', true );
+		$author       = get_post_meta( $comm->ID, 'cs_communication_author', true );
+		$category_val = get_post_meta( $comm->ID, 'cs_communication_category', true );
+		$source_url   = get_post_meta( $comm->ID, 'cs_communication_source_url', true );
+
+		if ( ! $date_val ) {
+			$date_val = get_the_date( 'M d, Y', $comm );
+		}
+		if ( ! $author ) {
+			$author = 'Cherrystone Angel Group';
+		}
+		if ( ! $category_val ) {
+			$category_val = 'News';
+		}
+
+		$url      = $source_url ? $source_url : get_permalink( $comm );
+		$cat_slug = strtolower( str_replace( ' ', '-', $category_val ) );
+
+		$feed .= '<a class="news-row" data-cat="' . esc_attr( $cat_slug ) . '" href="' . esc_url( $url ) . '"' . ( $source_url ? ' target="_blank" rel="noopener noreferrer"' : '' ) . '>';
+		$feed .= '<span class="date">' . esc_html( $date_val ) . '</span>';
+		$feed .= '<div><h4>' . esc_html( $title ) . '</h4><div class="byline">' . esc_html( $author ) . '</div></div>';
+		$feed .= '<span class="cat">' . esc_html( $category_val ) . '</span>';
+		$feed .= '<span class="arrow" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12H19M12 5L19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';
+		$feed .= '</a>';
+	}
+	$feed .= '</div>';
+	$feed .= '</div></section>';
+}
 
 /* ---------------------------------------------------------------------------
- * Section 8 — Footer CTA (static)
+ * Section 3 — Upcoming pitch nights (dynamic: cherry_pitch_event)
+ * Section 4 — Resource library (dynamic: cherry_resource)
+ * ------------------------------------------------------------------------- */
+$events = '';
+if ( ! empty( $upcoming_events ) ) {
+	$events = do_blocks( '<!-- wp:cherrystone/events-list {"eyebrow":"Calendar","heading":"Upcoming Pitch Nights.","lede":"Where founders meet our members. Request an invitation or add a date to your calendar.","upcomingOnly":true} /-->' );
+}
+
+$resources = '';
+if ( $resource_count > 0 ) {
+	$resources = do_blocks( '<!-- wp:cherrystone/resource-cards {"eyebrow":"Resources","heading":"The library.","lede":"Letters, decks, and curated links for founders and members — updated as new material is published.","collapseAfter":9} /-->' );
+}
+
+/* ---------------------------------------------------------------------------
+ * Section 5 — Digest signup (one quiet band; mailto-backed like site forms)
+ * ------------------------------------------------------------------------- */
+$digest  = '<section class="block digest-band-section"><div class="container">';
+$digest .= '<div class="digest-band">';
+$digest .= '<div class="digest-band-copy">';
+$digest .= '<span class="eyebrow accent">Stay current</span>';
+$digest .= '<h3>Get the Cherrystone digest.</h3>';
+$digest .= '<p>A short monthly note &mdash; dealflow, portfolio wins, and pitch night recaps. No noise.</p>';
+$digest .= '</div>';
+$digest .= '<div class="digest-band-form-area">';
+$digest .= '<form class="digest-band-form" data-comms-digest data-recipient="info@cherrystoneangelgroup.com" novalidate aria-label="' . esc_attr__( 'Digest signup', 'cherrystone-blocks' ) . '">';
+$digest .= '<label class="sr-only" for="comms-digest-email">' . esc_html__( 'Email address', 'cherrystone-blocks' ) . '</label>';
+$digest .= '<input type="email" id="comms-digest-email" name="email" class="newsletter-email-input" placeholder="' . esc_attr__( 'Your email address', 'cherrystone-blocks' ) . '" required />';
+$digest .= '<button type="submit" class="btn btn-accent"><span>' . esc_html__( 'Subscribe', 'cherrystone-blocks' ) . '</span></button>';
+$digest .= '</form>';
+$digest .= '<p class="digest-band-note" data-comms-digest-note>' . esc_html__( 'Opens your mail client — we add you by hand, and you can leave anytime.', 'cherrystone-blocks' ) . '</p>';
+$digest .= '</div>';
+$digest .= '</div></div></section>';
+
+/* ---------------------------------------------------------------------------
+ * Section 6 — Footer CTA (site-wide pattern)
  * ------------------------------------------------------------------------- */
 $cta_cards = array(
 	array(
@@ -262,7 +298,7 @@ $cta_cards = array(
 	),
 );
 
-$arrow  = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>';
+$arrow   = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>';
 $footer  = '<div class="footer-cta">';
 $footer .= cherrystone_comms_mesh( '0.45' );
 $footer .= '<div style="position:absolute;inset:0;opacity:0.18;">' . cherrystone_comms_wave( '#ffffff', '1' ) . '</div>';
@@ -284,7 +320,7 @@ $footer .= '</div></div></div>';
 /* ---------------------------------------------------------------------------
  * Compose
  * ------------------------------------------------------------------------- */
-$page = $hero . $press . $letters . $news . $events . $resources . $newsletter . $footer;
+$page = $hero . $feed . $events . $resources . $digest . $footer;
 
 $wrapper_attributes = get_block_wrapper_attributes(
 	array( 'class' => 'cherrystone-page-template cherrystone-page-communications-template' )

@@ -1,0 +1,249 @@
+diff --git a/cherrystone-blocks/src/style.css b/cherrystone-blocks/src/style.css
+index b2c3d4e..f5g6h7i 100644
+--- a/cherrystone-blocks/src/style.css
++++ b/cherrystone-blocks/src/style.css
+@@ -39,5 +39,6 @@
+   /* Motion + interaction tokens */
+-  --ease-smooth: ease;
+-  --ease-spring: ease;
+-  --lift: 0px; /* hover lift removed under restrained minimalism */
++  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
++  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
++  --ease-spring-decel: cubic-bezier(0.16, 1, 0.3, 1);
++  --lift: -4px;
+ 
+@@ -217,19 +218,25 @@
+ .btn {
+   display: inline-flex;
+   align-items: center;
+   gap: 10px;
+   padding: 14px 22px;
+   border: 1px solid transparent;
+   border-radius: 999px;
+   font-size: 14px;
+   font-weight: 600;
+   letter-spacing: -0.005em;
+   cursor: pointer;
+-  transition: transform 0.2s var(--ease-spring), background-color 0.2s ease, box-shadow 0.2s ease;
++  transition: transform 0.35s var(--ease-spring-decel), background-color 0.2s ease, box-shadow 0.2s ease;
+   white-space: nowrap;
+ }
+ .btn:hover {
++  transform: scale(1.02);
+ }
+ .btn:active {
+-  transition-duration: 0.08s;
++  transform: scale(0.96);
++  transition: transform 0.08s ease;
+ }
+ 
+@@ -912,13 +919,21 @@
+ .chip {
+   padding: 11px 16px;
+   border: 1px solid var(--line);
+   border-radius: 999px;
+   font-size: 13px;
+   font-weight: 500;
+   background: white;
+   color: var(--ink-muted);
+   cursor: pointer;
+-  transition: all 0.2s;
+-}
+-.chip:hover { border-color: var(--ink); color: var(--ink); }
++  transition: transform 0.3s var(--ease-spring-decel), background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
++}
++.chip:hover {
++  border-color: var(--ink);
++  color: var(--ink);
++  transform: translateY(-1px);
++}
++.chip:active {
++  transform: scale(0.96);
++  transition: transform 0.08s ease;
++}
+ .chip.active { background: var(--ink); color: white; border-color: var(--ink); }
+ 
+@@ -972,13 +987,14 @@
+ .portfolio-card {
+   --px: 0;
+   --py: 0;
+   background: white;
+   padding: 32px 28px;
+   display: flex;
+   flex-direction: column;
+   gap: 16px;
+   min-height: 260px;
+   position: relative;
+   cursor: pointer;
+-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-radius 0.2s ease;
++  border-radius: var(--radius-lg);
++  transition: transform 0.4s var(--ease-spring-decel), box-shadow 0.4s var(--ease-spring-decel);
+ }
+ .portfolio-card.hidden {
+@@ -988,7 +1004,11 @@
+ .portfolio-card:hover, .portfolio-card:focus-visible {
+   background: white;
+-  box-shadow: var(--shadow-soft);
++  transform: translateY(var(--lift)) scale(1.01);
++  box-shadow: var(--shadow-strong);
+   z-index: 2;
+-  border-radius: var(--radius-lg);
++}
++.portfolio-card:active {
++  transform: translateY(calc(var(--lift) * 0.25)) scale(0.98);
++  transition: transform 0.08s ease;
+ }
+@@ -1007,5 +1027,5 @@
+   flex-shrink: 0;
+-  transition: transform 0.2s var(--ease-smooth);
++  transition: transform 0.2s var(--ease-spring-decel);
+ }
+ .portfolio-card:hover .logo {
+ 
+@@ -1640,11 +1660,12 @@
+ .member-card {
+   background: white;
+   padding: 28px 24px;
+   display: flex;
+   flex-direction: column;
+   gap: 12px;
+   min-height: 290px;
+-  transition: transform 0.2s var(--ease-smooth), box-shadow 0.2s var(--ease-smooth), border-radius 0.2s ease;
++  border-radius: var(--radius-lg);
++  transition: transform 0.4s var(--ease-spring-decel), box-shadow 0.4s var(--ease-spring-decel);
+   position: relative;
+   overflow: hidden;
+ }
+@@ -1656,6 +1677,9 @@
+ .member-card:hover {
+-  transform: translateY(var(--lift));
++  transform: translateY(var(--lift)) scale(1.01);
+   box-shadow: var(--shadow-strong);
+   z-index: 2;
+-  border-radius: var(--radius-lg);
++}
++.member-card:active {
++  transform: translateY(calc(var(--lift) * 0.25)) scale(0.98);
++  transition: transform 0.08s ease;
+ }
+ 
+@@ -1778,8 +1802,17 @@
+ .member-portal-tab {
+   padding: 10px 20px;
+   border-radius: 999px;
++  transition: transform 0.3s var(--ease-spring-decel), background-color 0.2s ease, color 0.2s ease;
++}
++.member-portal-tab:hover {
++  transform: translateY(-1px);
++  color: var(--ink);
++}
++.member-portal-tab:active {
++  transform: scale(0.96);
++  transition: transform 0.08s ease;
+ }
+ 
+@@ -4403,17 +4436,21 @@
+ .sponsor-card {
+   position: relative;
+   overflow: hidden;
+   flex: 0 0 240px;
+   box-sizing: border-box;
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   gap: 12px;
+   padding: 0;
+   background: var(--surface);
+   border: 1px solid var(--line);
+   border-radius: var(--radius-lg);
+   text-decoration: none;
+-  transition: border-color 0.2s ease,
+-    transform 0.2s ease, box-shadow 0.2s ease;
++  transition: border-color 0.2s ease,
++    transform 0.4s var(--ease-spring-decel), box-shadow 0.4s var(--ease-spring-decel);
+ }
+@@ -4431,6 +4468,11 @@
+ .sponsor-card:hover,
+ .sponsor-card:focus-within {
+   border-color: var(--accent-gold);
+-  box-shadow: var(--shadow-soft);
+-}
++  transform: translateY(var(--lift)) scale(1.01);
++  box-shadow: var(--shadow-strong);
++}
++.sponsor-card:active {
++  transform: translateY(calc(var(--lift) * 0.25)) scale(0.98);
++  transition: transform 0.08s ease;
++}
+ 
+@@ -5358,11 +5400,15 @@
+ .faq-accordion-trigger {
+   width: 100%;
+   padding: 20px 28px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   gap: 16px;
+   background: none;
+   border: none;
+   cursor: pointer;
+   text-align: left;
+   font-size: 16px;
+   font-weight: 600;
+   color: var(--ink);
+   font-family: var(--font-body);
+   letter-spacing: -0.01em;
+-  transition: color 0.2s ease;
+-}
++  transition: color 0.2s var(--ease-spring-decel), transform 0.3s var(--ease-spring-decel);
++}
++.faq-accordion-trigger:active {
++  transform: scale(0.99);
++  transition: transform 0.08s ease;
++}
+ .faq-accordion-trigger:hover {
+@@ -5390,7 +5436,7 @@
+   color: var(--ink-muted);
+-  transition: all 0.2s var(--ease-smooth);
++  transition: transform 0.4s var(--ease-spring-decel), background-color 0.4s var(--ease-spring-decel), color 0.4s var(--ease-spring-decel);
+ }
+@@ -5397,8 +5443,8 @@
+ .faq-accordion-panel {
+   display: grid;
+   grid-template-rows: 0fr;
+   overflow: hidden;
+-  transition: grid-template-rows 0.2s ease-out, opacity 0.2s ease-out;
++  transition: grid-template-rows 0.4s var(--ease-spring-decel), opacity 0.4s var(--ease-spring-decel);
+   opacity: 0;
+ }
+ 
++/* Accessibility Reduced Motion Fallback */
++@media (prefers-reduced-motion: reduce) {
++  *,
++  *::before,
++  *::after {
++    animation-duration: 0.01ms !important;
++    animation-iteration-count: 1 !important;
++    transition-duration: 0.01ms !important;
++    scroll-behavior: auto !important;
++  }
++
++  .btn:hover,
++  .member-card:hover,
++  .sponsor-card:hover,
++  .portfolio-card:hover,
++  .chip:hover,
++  .member-portal-tab:hover {
++    transform: none !important;
++  }
++
++  .btn:active,
++  .member-card:active,
++  .sponsor-card:active,
++  .portfolio-card:active,
++  .chip:active,
++  .member-portal-tab:active,
++  .faq-accordion-trigger:active {
++    transform: none !important;
++  }
++}

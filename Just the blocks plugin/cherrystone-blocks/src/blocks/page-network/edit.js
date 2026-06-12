@@ -26,7 +26,7 @@ const TEMPLATE = [
 			tierFilter: 'Sponsors',
 		},
 	],
-    [
+	[
 		'cherrystone/sponsors',
 		{
 			eyebrow: 'Partners',

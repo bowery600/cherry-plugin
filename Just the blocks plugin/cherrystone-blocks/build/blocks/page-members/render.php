@@ -103,7 +103,7 @@ ob_start();
 							</div>
 							<div class="timeline-card">
 								<span class="timeline-step-num"><?php echo esc_html( 'STEP ' . $step['num'] . ' - ' . strtoupper( $step['phase'] ) ); ?></span>
-								<h4><?php echo esc_html( $step['title'] ); ?></h4>
+								<h3><?php echo esc_html( $step['title'] ); ?></h3>
 								<p><?php echo esc_html( $step['desc'] ); ?></p>
 								<span class="timeline-status-badge <?php echo 'active' === $step['status'] ? 'active' : ''; ?>"><?php echo esc_html( $step['status'] ); ?></span>
 							</div>

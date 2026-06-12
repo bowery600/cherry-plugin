@@ -120,15 +120,29 @@ export default function Edit( { attributes, setAttributes } ) {
 									setAttributes( { ctaLabel: value } )
 								}
 							/>
-							<svg className="arr" width="16" height="16" viewBox="0 0 16 16" fill="none">
-								<path d="M3 8h9M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+							<svg
+								className="arr"
+								width="16"
+								height="16"
+								viewBox="0 0 16 16"
+								fill="none"
+							>
+								<path
+									d="M3 8h9M9 4l4 4-4 4"
+									stroke="currentColor"
+									strokeWidth="1.6"
+									strokeLinecap="round"
+									strokeLinejoin="round"
+								/>
 							</svg>
 						</span>
 					</div>
 					<div className="sector-card reveal d1">
 						<div className="sector-card-head">
 							<span className="t">Where members invest</span>
-							<span className="n">{ sectors.length } verticals</span>
+							<span className="n">
+								{ sectors.length } verticals
+							</span>
 						</div>
 						<div id="sectorRows">
 							{ sectors.map( ( item, index ) => (
@@ -149,8 +163,9 @@ export default function Edit( { attributes, setAttributes } ) {
 											}
 										/>
 										<div className="sector-sample">
-											e.g. <RichText 
-												tagName="span" 
+											e.g.{ ' ' }
+											<RichText
+												tagName="span"
 												value={ item.sample }
 												onChange={ ( value ) =>
 													setAttributes( {
@@ -166,8 +181,17 @@ export default function Edit( { attributes, setAttributes } ) {
 									</div>
 									<div className="sector-meter">
 										<div className="sector-bars">
-											{ Array.from( { length: MAX_BARS } ).map( ( _, i ) => (
-												<i key={ i } className={ i < Number( item.count ) ? 'on' : '' }></i>
+											{ Array.from( {
+												length: MAX_BARS,
+											} ).map( ( _, i ) => (
+												<i
+													key={ i }
+													className={
+														i < Number( item.count )
+															? 'on'
+															: ''
+													}
+												></i>
 											) ) }
 										</div>
 										<RichText

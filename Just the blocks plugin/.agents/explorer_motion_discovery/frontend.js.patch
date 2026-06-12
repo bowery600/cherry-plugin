@@ -1,0 +1,190 @@
+diff --git a/cherrystone-blocks/assets/js/frontend.js b/cherrystone-blocks/assets/js/frontend.js
+index a1b2c3d..e4f5g6h 100644
+--- a/cherrystone-blocks/assets/js/frontend.js
++++ b/cherrystone-blocks/assets/js/frontend.js
+@@ -1912,8 +1912,126 @@
+ 			});
+ 		};
+ 
++		const initMotionImprovements = () => {
++			const prefersReducedMotion =
++				window.matchMedia &&
++				window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches;
++
++			if ( prefersReducedMotion ) {
++				return;
++			}
++
++			// 1. Slider values scroll animation
++			const initSliderAnimations = () => {
++				const sliders = document.querySelectorAll(
++					'#calc-amt-slider, .calc-range-slider'
++				);
++				sliders.forEach( ( slider ) => {
++					const minVal = Number( slider.min ) || 100000;
++					const targetVal = Number( slider.value ) || 500000;
++
++					// Set to min initially to prep for entry animation
++					slider.value = minVal;
++					slider.dispatchEvent( new Event( 'input' ) );
++
++					const animateSlider = ( start, end ) => {
++						const duration = 800; // ms
++						let startTime = null;
++
++						const step = ( timestamp ) => {
++							if ( ! startTime ) {
++								startTime = timestamp;
++							}
++							const elapsed = timestamp - startTime;
++							const progress = Math.min( elapsed / duration, 1 );
++
++							// cubic-bezier(0.16, 1, 0.3, 1) approximation (easeOutQuart)
++							const ease = 1 - Math.pow( 1 - progress, 4 );
++
++							slider.value = Math.round(
++								start + ( end - start ) * ease
++							);
++							slider.dispatchEvent( new Event( 'input' ) );
++
++							if ( progress < 1 ) {
++								requestAnimationFrame( step );
++							}
++						};
++						requestAnimationFrame( step );
++					};
++
++					const observer = new IntersectionObserver(
++						( entries ) => {
++							entries.forEach( ( entry ) => {
++								if ( entry.isIntersecting ) {
++									animateSlider( minVal, targetVal );
++									observer.unobserve( slider );
++								}
++							} );
++						},
++						{ threshold: 0.15 }
++					);
++					observer.observe( slider );
++				} );
++			};
++
++			// 2. Stat numbers count-up animation
++			const initStatAnimations = () => {
++				const statElements = document.querySelectorAll(
++					'.stats .stat .num span.accent, ' +
++						'.stats-dashboard-card .stats-number-display strong.stats-number-value'
++				);
++
++				const animateStatNumber = ( element ) => {
++					const originalText = element.textContent.trim();
++					const cleanStr = originalText.replace( /,/g, '' );
++					const regex = /^([^0-9\.\-]*)([0-9\.\-]+)(.*)$/;
++					const match = cleanStr.match( regex );
++
++					if ( ! match ) {
++						return;
++					}
++
++					const prefix = match[ 1 ];
++					const targetNum = parseFloat( match[ 2 ] );
++					const suffix = match[ 3 ];
++					const decimals = match[ 2 ].includes( '.' )
++						? match[ 2 ].split( '.' )[ 1 ].length
++						: 0;
++					const hasCommas = originalText.includes( ',' );
++
++					const duration = 400; // ms
++					let startTime = null;
++
++					const formatVal = ( val ) => {
++						let valStr = val.toFixed( decimals );
++						if ( hasCommas ) {
++							const parts = valStr.split( '.' );
++							parts[ 0 ] = parts[ 0 ].replace(
++								/\B(?=(\d{3})+(?!\d))/g,
++								','
++							);
++							valStr = parts.join( '.' );
++						}
++						return prefix + valStr + suffix;
++					};
++
++					element.textContent = formatVal( 0 );
++
++					const step = ( timestamp ) => {
++						if ( ! startTime ) {
++							startTime = timestamp;
++						}
++						const elapsed = timestamp - startTime;
++						const progress = Math.min( elapsed / duration, 1 );
++
++						// spring deceleration approximation (easeOutQuart)
++						const ease = 1 - Math.pow( 1 - progress, 4 );
++						const currentNum = targetNum * ease;
++
++						element.textContent = formatVal( currentNum );
++
++						if ( progress < 1 ) {
++							requestAnimationFrame( step );
++						} else {
++							element.textContent = originalText;
++						}
++					};
++					requestAnimationFrame( step );
++				};
++
++				statElements.forEach( ( element ) => {
++					const observer = new IntersectionObserver(
++						( entries ) => {
++							entries.forEach( ( entry ) => {
++								if ( entry.isIntersecting ) {
++									animateStatNumber( element );
++									observer.unobserve( element );
++								}
++							} );
++						},
++						{ threshold: 0.1 }
++					);
++					observer.observe( element );
++				} );
++			};
++
++			// 3. Dynamic tilt / parallax for portfolio cards
++			const initPortfolioCardParallax = () => {
++				const cards = document.querySelectorAll( '.portfolio-card' );
++				cards.forEach( ( card ) => {
++					card.addEventListener( 'mousemove', ( e ) => {
++						const rect = card.getBoundingClientRect();
++						const x = e.clientX - rect.left;
++						const y = e.clientY - rect.top;
++
++						const px = ( x / rect.width ) * 2 - 1;
++						const py = ( y / rect.height ) * 2 - 1;
++
++						card.style.setProperty( '--px', px.toFixed( 3 ) );
++						card.style.setProperty( '--py', py.toFixed( 3 ) );
++					} );
++
++					card.addEventListener( 'mouseleave', () => {
++						card.style.setProperty( '--px', '0' );
++						card.style.setProperty( '--py', '0' );
++					} );
++				} );
++			};
++
++			initSliderAnimations();
++			initStatAnimations();
++			initPortfolioCardParallax();
++		};
++
+ 		initBioDrawers();
+ 		initSpotlightCountdowns();
+ 		initStatementRotators();
+@@ -1924,6 +2042,7 @@
+ 		initCommsFeed();
+ 		initCommsDigest();
+ 		initAccessibilityFixes();
++		initMotionImprovements();
+ 	} );
+ } )();

@@ -8,21 +8,21 @@ const TEMPLATE = [
 		'cherrystone/page-hero',
 		{
 			eyebrow: 'Communications',
-			heading: 'News, letters,<br>and resources.',
-			lede: 'Portfolio milestones, letters from leadership, press coverage, and Pitch Night announcements — collected in one place for founders, members, and co-investors.',
+			heading: 'From the fund,<br>to our network.',
+			lede: 'Announcements, letters, and resources from Cherrystone — kept simple and kept current for our members, founders, and co-investors.',
 			showGraphic: true,
 			showMeta: false,
 		},
 	],
-	[ 'cherrystone/press-news-showcase', {} ],
-	[ 'cherrystone/featured-news', {} ],
+	// The front end renders a custom filterable feed of every communication
+	// (see render.php); news-list is the closest editor stand-in.
 	[
 		'cherrystone/news-list',
 		{
-			eyebrow: 'Latest updates',
-			heading: 'Announcements & member notes.',
-			lede: 'Portfolio milestones, member spotlights, and program updates from across the Cherrystone network.',
-			maxItems: 6,
+			eyebrow: 'Updates',
+			heading: 'The latest from Cherrystone.',
+			lede: 'Portfolio milestones, exits, pitch night news, and notes from leadership — the full record, in one place.',
+			maxItems: 8,
 		},
 	],
 	[
@@ -30,7 +30,7 @@ const TEMPLATE = [
 		{
 			eyebrow: 'Calendar',
 			heading: 'Upcoming Pitch Nights.',
-			lede: 'Where founders present to our members. Add these to your calendar or request an invitation.',
+			lede: 'Where founders meet our members. Request an invitation or add a date to your calendar.',
 			upcomingOnly: true,
 		},
 	],
@@ -38,12 +38,12 @@ const TEMPLATE = [
 		'cherrystone/resource-cards',
 		{
 			eyebrow: 'Resources',
-			heading: 'Letters, decks, and member resources.',
-			lede: 'Curated documents and links for founders and members — updated as new material is published.',
+			heading: 'The library.',
+			lede: 'Letters, decks, and curated links for founders and members — updated as new material is published.',
 			warm: true,
+			collapseAfter: 9,
 		},
 	],
-	[ 'cherrystone/newsletter-signup-panel', {} ],
 	[ 'cherrystone/footer-cta', {} ],
 ];
 

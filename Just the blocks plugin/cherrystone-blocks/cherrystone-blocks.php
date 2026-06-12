@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Cherrystone Blocks
  * Description:       A tidy Cherrystone block toolbox for landing pages, investor workflows, founder FAQs, and other polished little bits of venture-site magic.
- * Version:           6.7
+ * Version:           7.0
  * Requires at least: 6.5
  * Requires PHP:      7.4
  * Author:            Cherrystone Angel Group
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 define( 'CHERRYSTONE_BLOCKS_PATH', plugin_dir_path( __FILE__ ) );
 define( 'CHERRYSTONE_BLOCKS_URL', plugin_dir_url( __FILE__ ) );
-define( 'CHERRYSTONE_BLOCKS_VERSION', '6.9' );
+define( 'CHERRYSTONE_BLOCKS_VERSION', '7.0' );
 define( 'CHERRYSTONE_MEMBER_PORTAL_COOKIE', 'cherry_member_auth' );
 define( 'CHERRYSTONE_MEMBER_PORTAL_PASSWORD', 'cherrystone2004' );
 
@@ -491,6 +491,44 @@ function cherrystone_blocks_enqueue_fonts() {
 	);
 }
 add_action( 'enqueue_block_assets', 'cherrystone_blocks_enqueue_fonts' );
+
+/**
+ * Load page-specific portfolio hero artwork after the base block stylesheet.
+ */
+function cherrystone_blocks_enqueue_portfolio_hero_graphics() {
+	$style_path = CHERRYSTONE_BLOCKS_PATH . 'assets/css/portfolio-hero-graphics.css';
+
+	if ( ! file_exists( $style_path ) ) {
+		return;
+	}
+
+	wp_enqueue_style(
+		'cherrystone-blocks-portfolio-hero-graphics',
+		CHERRYSTONE_BLOCKS_URL . 'assets/css/portfolio-hero-graphics.css',
+		array( 'cherrystone-blocks-style' ),
+		filemtime( $style_path )
+	);
+}
+add_action( 'enqueue_block_assets', 'cherrystone_blocks_enqueue_portfolio_hero_graphics' );
+
+/**
+ * Load named page photos for page-specific hero treatments.
+ */
+function cherrystone_blocks_enqueue_page_pictures() {
+	$style_path = CHERRYSTONE_BLOCKS_PATH . 'assets/css/page-pictures.css';
+
+	if ( ! file_exists( $style_path ) ) {
+		return;
+	}
+
+	wp_enqueue_style(
+		'cherrystone-blocks-page-pictures',
+		CHERRYSTONE_BLOCKS_URL . 'assets/css/page-pictures.css',
+		array( 'cherrystone-blocks-style', 'cherrystone-blocks-portfolio-hero-graphics' ),
+		filemtime( $style_path )
+	);
+}
+add_action( 'enqueue_block_assets', 'cherrystone_blocks_enqueue_page_pictures' );
 
 /**
  * Load lightweight front-end interactions for static Cherrystone blocks.

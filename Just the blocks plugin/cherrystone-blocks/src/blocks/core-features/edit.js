@@ -77,7 +77,10 @@ export default function Edit( { attributes, setAttributes } ) {
 					</div>
 					<div className="features">
 						{ cards.map( ( card, index ) => (
-							<div className={ `feature reveal d${ index }` } key={ index }>
+							<div
+								className={ `feature reveal d${ index }` }
+								key={ index }
+							>
 								<RichText
 									tagName="span"
 									className="feature-num"

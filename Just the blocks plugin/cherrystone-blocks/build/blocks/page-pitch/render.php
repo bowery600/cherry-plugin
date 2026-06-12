@@ -49,7 +49,7 @@ $wrapper_attributes = get_block_wrapper_attributes(
 );
 ?>
 <div <?php echo $wrapper_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped by get_block_wrapper_attributes(). ?>>
-	<section class="page-hero pitch-page-hero pitch-hero-redesign" style="background-image: url('<?php echo esc_url( get_template_directory_uri() . '/assets/img/pitch-night-hero.png' ); ?>');">
+	<section class="page-hero pitch-page-hero pitch-hero-redesign" style="background-image: url('<?php echo esc_url( CHERRYSTONE_BLOCKS_URL . 'assets/page-pictures/pitch-night.webp' ); ?>');">
 		<div class="pitch-hero-overlay"></div>
 		<div class="container pitch-hero-content">
 			<span class="eyebrow accent"><?php esc_html_e( 'Pitch Night 2026', 'cherrystone-blocks' ); ?></span>
