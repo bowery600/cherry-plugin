@@ -428,6 +428,58 @@ function cherrystone_blocks_render_founder_wpforms( $block_content, $block ) {
 add_filter( 'render_block', 'cherrystone_blocks_render_founder_wpforms', 9, 2 );
 
 /**
+ * Render the member interest block through WPForms when configured.
+ *
+ * Same approach as the founder application form: the Members page keeps the
+ * Cherrystone section design while submissions flow through WPForms for
+ * storage, notifications, and spam handling. Without WPForms or a form ID the
+ * saved Cherrystone fallback form renders unchanged.
+ *
+ * @param string $block_content Rendered block HTML.
+ * @param array  $block         Parsed block data.
+ * @return string
+ */
+function cherrystone_blocks_render_member_wpforms( $block_content, $block ) {
+	if ( empty( $block['blockName'] ) || 'cherrystone/member-interest-form' !== $block['blockName'] ) {
+		return $block_content;
+	}
+
+	if ( ! shortcode_exists( 'wpforms' ) ) {
+		return $block_content;
+	}
+
+	$form_id = isset( $block['attrs']['wpformsId'] ) ? absint( $block['attrs']['wpformsId'] ) : 0;
+
+	if ( ! $form_id ) {
+		return $block_content;
+	}
+
+	$heading     = isset( $block['attrs']['heading'] ) ? $block['attrs']['heading'] : __( 'Join the investor community.', 'cherrystone-blocks' );
+	$description = isset( $block['attrs']['description'] ) ? $block['attrs']['description'] : __( 'Tell us a little about your background, investment interests, and connection to the Cherrystone network.', 'cherrystone-blocks' );
+
+	ob_start();
+	?>
+	<section id="member-interest-form" class="wp-block-cherrystone-member-interest-form block cherrystone-form-block cherrystone-wpforms-block">
+		<div class="container">
+			<div class="block-head">
+				<div>
+					<h2><?php echo wp_kses_post( $heading ); ?></h2>
+				</div>
+				<?php if ( $description ) : ?>
+					<p class="lede"><?php echo wp_kses_post( $description ); ?></p>
+				<?php endif; ?>
+			</div>
+			<div class="cherrystone-wpforms-embed">
+				<?php echo do_shortcode( '[wpforms id="' . absint( $form_id ) . '" title="false" description="false"]' ); ?>
+			</div>
+		</div>
+	</section>
+	<?php
+	return ob_get_clean();
+}
+add_filter( 'render_block', 'cherrystone_blocks_render_member_wpforms', 9, 2 );
+
+/**
  * Load brand fonts wherever blocks render, including the editor canvas.
  */
 function cherrystone_blocks_enqueue_fonts() {

@@ -6,7 +6,8 @@ import {
 import { PanelBody, TextControl } from '@wordpress/components';
 
 export default function Edit( { attributes, setAttributes } ) {
-	const { heading, description, submitLabel, recipient } = attributes;
+	const { heading, description, submitLabel, recipient, wpformsId } =
+		attributes;
 	const blockProps = useBlockProps( {
 		className: 'block cherrystone-form-block',
 	} );
@@ -27,6 +28,16 @@ export default function Edit( { attributes, setAttributes } ) {
 						value={ recipient }
 						onChange={ ( value ) =>
 							setAttributes( { recipient: value } )
+						}
+					/>
+					<TextControl
+						label="WPForms form ID"
+						help="Optional. If set and WPForms is active, this form renders on the front end instead of the email-draft fallback."
+						value={ wpformsId ? String( wpformsId ) : '' }
+						onChange={ ( value ) =>
+							setAttributes( {
+								wpformsId: parseInt( value, 10 ) || 0,
+							} )
 						}
 					/>
 				</PanelBody>

@@ -591,6 +591,20 @@ section.block.warm { background: var(--paper-warm); }
   z-index: 2;
 }
 .value-card:last-child { border-right: none; }
+
+/* "The path to capital." process steps: two per row, no editorial stagger. */
+.diligence-timeline-section .value-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+.diligence-timeline-section .value-card { border-right: none; border-bottom: 1px solid var(--line); }
+.diligence-timeline-section .value-card:nth-child(odd) { border-right: 1px solid var(--line); }
+.diligence-timeline-section .value-card:nth-last-child(-n+2) { border-bottom: none; }
+.diligence-timeline-section .value-card:nth-child(2) { padding-top: 40px; }
+@media (max-width: 768px) {
+  .diligence-timeline-section .value-grid { grid-template-columns: 1fr; }
+  .diligence-timeline-section .value-card:nth-child(odd) { border-right: none; }
+  .diligence-timeline-section .value-card:nth-last-child(2) { border-bottom: 1px solid var(--line); }
+}
 .value-card .num {
   font-family: var(--font-mono);
   font-size: 12px;
@@ -1040,16 +1054,16 @@ section.block.warm { background: var(--paper-warm); }
   display: flex;
   gap: 12px;
   width: max-content;
-  animation: portfolio-marquee-rtl 60s linear infinite;
+  animation: portfolio-marquee-rtl 120s linear infinite;
 }
 .marquee-row--rtl .marquee-track {
-  animation: portfolio-marquee-rtl 60s linear infinite;
+  animation: portfolio-marquee-rtl 120s linear infinite;
 }
 .marquee-row--ltr .marquee-track {
-  animation: portfolio-marquee-ltr 50s linear infinite;
+  animation: portfolio-marquee-ltr 100s linear infinite;
 }
 .marquee-row:nth-child(3) .marquee-track {
-  animation: portfolio-marquee-ltr 70s linear infinite;
+  animation: portfolio-marquee-ltr 140s linear infinite;
 }
 .marquee-track:hover {
   animation-play-state: paused;
@@ -2141,8 +2155,20 @@ section.block.warm { background: var(--paper-warm); }
 .cherrystone-wpforms-embed .wpforms-field.wpforms-field-checkbox,
 .cherrystone-wpforms-embed .wpforms-field.wpforms-field-radio,
 .cherrystone-wpforms-embed .wpforms-field.wpforms-field-html,
-.cherrystone-wpforms-embed .wpforms-field.wpforms-field-content {
+.cherrystone-wpforms-embed .wpforms-field.wpforms-field-content,
+.cherrystone-wpforms-embed .wpforms-field:has(input.wpforms-field-large) {
   grid-column: 1 / -1;
+}
+/* WPForms anti-spam decoy field: pull it out of the grid visually but keep it
+   in the DOM so the spam check still works. */
+.cherrystone-wpforms-embed .wpforms-field:has(> input[aria-hidden="true"]) {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  clip-path: inset(50%);
 }
 .cherrystone-wpforms-embed .wpforms-field-label,
 .cherrystone-wpforms-embed .wpforms-field-sublabel {
@@ -4328,7 +4354,7 @@ section.block.warm { background: var(--paper-warm); }
   display: flex;
   gap: 20px;
   width: max-content;
-  animation: sponsor-marquee 40s linear infinite;
+  animation: sponsor-marquee 80s linear infinite;
 }
 .sponsor-carousel-track:hover {
   animation-play-state: paused;
@@ -6421,12 +6447,19 @@ section.block.warm { background: var(--paper-warm); }
 
 .pitch-sponsor-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 2px;
   background: var(--line);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   overflow: hidden;
+}
+/* Odd sponsor counts: stretch the final item so no empty cell shows through. */
+.pitch-sponsor-grid .sponsor-item:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+@media (max-width: 640px) {
+  .pitch-sponsor-grid { grid-template-columns: 1fr; }
 }
 
 .sponsor-item {

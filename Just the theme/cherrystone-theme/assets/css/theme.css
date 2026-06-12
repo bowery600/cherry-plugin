@@ -19,8 +19,8 @@
 	--line-soft: var(--wp--preset--color--line-soft, #EBF0F5);
 	--surface: var(--wp--preset--color--surface, #FFFFFF);
 
-	--accent: var(--wp--preset--color--accent, #D95C41);
-	--accent-ink: var(--wp--preset--color--accent-ink, #1A5B7A);
+	--accent: var(--wp--preset--color--accent, #1A5B7A);
+	--accent-ink: var(--wp--preset--color--accent-ink, #14455C);
 	--accent-soft: var(--wp--preset--color--accent-soft, #E3EEF4);
 	--accent-gold: var(--wp--preset--color--accent-gold, #E8A365);
 	--sea: var(--wp--preset--color--sea, #5F8B9C);
@@ -133,6 +133,11 @@ h1, h2, h3 {
 	display: flex;
 	align-items: center;
 	gap: 40px;
+}
+/* WP flow layout adds margin-block-start to every sibling block, which pushed
+   the menu and Apply button 12px below the logo's centerline. */
+.cs-site-header .cs-nav-inner > * {
+	margin-block-start: 0 !important;
 }
 
 /* Brand / logo. Brand soaks up the spare space so menu + actions sit flush right. */
@@ -897,7 +902,14 @@ header.wp-block-template-part {
     mask-position: center;
     -webkit-mask-position: center;
     opacity: 0.7;
-    vertical-align: text-top;
+    flex: 0 0 auto;
+}
+/* The dropdown link renders as a flex row; center the lock against the label
+   and keep the icon+text pair centered like the other dropdown items. */
+.cs-site-header .wp-block-navigation .lock-item .wp-block-navigation-item__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .cs-site-header .wp-block-navigation .lock-item .wp-block-navigation-item__content:hover::before,
 .cs-site-header .wp-block-navigation .lock-item .wp-block-navigation-item__content:focus::before {
