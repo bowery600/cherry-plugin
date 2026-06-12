@@ -31,20 +31,50 @@
 				const empty = directory.querySelector(
 					'[data-member-directory-empty]'
 				);
+				const roleSelect = directory.querySelector(
+					'[data-member-directory-role]'
+				);
+				const sortSelect = directory.querySelector(
+					'[data-member-directory-sort]'
+				);
+				const grid = cards[ 0 ].parentElement;
 				const total = cards.length;
+
+				const sortKey = ( card, mode ) =>
+					mode === 'last-asc'
+						? card.dataset.last || ''
+						: card.dataset.name || '';
 
 				const update = () => {
 					const query = search.value.trim().toLowerCase();
+					const role = roleSelect ? roleSelect.value : '';
 					let visible = 0;
 
 					cards.forEach( ( card ) => {
 						const text = card.dataset.search || '';
-						const isMatch = ! query || text.includes( query );
+						const isMatch =
+							( ! query || text.includes( query ) ) &&
+							( ! role || ( card.dataset.role || '' ) === role );
 						card.classList.toggle( 'is-hidden', ! isMatch );
 						if ( isMatch ) {
 							visible += 1;
 						}
 					} );
+
+					if ( sortSelect ) {
+						const mode = sortSelect.value;
+						const sorted = cards
+							.slice()
+							.sort( ( a, b ) =>
+								sortKey( a, mode ).localeCompare(
+									sortKey( b, mode )
+								)
+							);
+						if ( mode === 'first-desc' ) {
+							sorted.reverse();
+						}
+						sorted.forEach( ( card ) => grid.appendChild( card ) );
+					}
 
 					count.textContent = `Showing ${ visible } of ${ total }`;
 					if ( empty ) {
@@ -53,6 +83,12 @@
 				};
 
 				search.addEventListener( 'input', update );
+				if ( roleSelect ) {
+					roleSelect.addEventListener( 'change', update );
+				}
+				if ( sortSelect ) {
+					sortSelect.addEventListener( 'change', update );
+				}
 				update();
 			} );
 
@@ -1230,8 +1266,135 @@
 			});
 		};
 
+		// Rotate .about-statement phrases one at a time (sponsors / about
+		// pages). No-JS and reduced-motion users keep the static stack.
+		const initStatementRotators = () => {
+			if ( window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches ) {
+				return;
+			}
+
+			document.querySelectorAll( '.about-statement' ).forEach( ( section ) => {
+				const rotator = section.querySelector( '.about-statement-rotator' );
+				const phrases = rotator
+					? Array.from( rotator.querySelectorAll( '.asr-phrase' ) )
+					: [];
+				const pips = Array.from(
+					section.querySelectorAll( '.about-statement-pips span' )
+				);
+
+				if ( phrases.length < 2 ) {
+					return;
+				}
+
+				// Reserve room for the tallest phrase before phrases go absolute.
+				const measure = () => {
+					section.classList.remove( 'is-rotating' );
+					rotator.style.minHeight = '';
+					const tallest = Math.max(
+						...phrases.map( ( p ) => p.offsetHeight )
+					);
+					rotator.style.minHeight = tallest + 'px';
+					section.classList.add( 'is-rotating' );
+				};
+
+				let resizeTimer;
+				window.addEventListener( 'resize', () => {
+					clearTimeout( resizeTimer );
+					resizeTimer = setTimeout( measure, 150 );
+				} );
+				measure();
+
+				let index = 0;
+				const show = ( next ) => {
+					phrases.forEach( ( p, i ) => {
+						p.classList.toggle( 'is-active', i === next );
+						p.classList.toggle( 'is-leaving', i === index && i !== next );
+					} );
+					pips.forEach( ( p, i ) =>
+						p.classList.toggle( 'is-active', i === next )
+					);
+					index = next;
+				};
+
+				show( 0 );
+				setInterval(
+					() => show( ( index + 1 ) % phrases.length ),
+					4500
+				);
+			} );
+		};
+
+		// Click/tap toggles the bio overlay on member, leadership, and
+		// sponsor cards (hover/focus reveal still works where defined).
+		const initBioCardToggles = () => {
+			const cards = Array.from(
+				document.querySelectorAll( '.member-card, .sponsor-card' )
+			).filter( ( card ) =>
+				card.querySelector( '.member-bio, .sponsor-card-bio' )
+			);
+
+			if ( ! cards.length ) {
+				return;
+			}
+
+			const syncToggle = ( card ) => {
+				const toggle = card.querySelector( '.sponsor-bio-toggle' );
+				if ( toggle ) {
+					toggle.setAttribute(
+						'aria-expanded',
+						card.classList.contains( 'is-open' ) ? 'true' : 'false'
+					);
+				}
+			};
+
+			const closeAll = ( except ) => {
+				cards.forEach( ( card ) => {
+					if ( card !== except ) {
+						card.classList.remove( 'is-open' );
+						syncToggle( card );
+					}
+				} );
+			};
+
+			cards.forEach( ( card ) => {
+				card.addEventListener( 'click', ( event ) => {
+					// Links inside the card (LinkedIn, sponsor site) keep working.
+					if ( event.target.closest( 'a' ) ) {
+						return;
+					}
+					closeAll( card );
+					card.classList.toggle( 'is-open' );
+					syncToggle( card );
+				} );
+
+				card.addEventListener( 'keydown', ( event ) => {
+					if (
+						( event.key === 'Enter' || event.key === ' ' ) &&
+						event.target === card
+					) {
+						event.preventDefault();
+						card.click();
+					}
+				} );
+			} );
+
+			document.addEventListener( 'click', ( event ) => {
+				if ( ! event.target.closest( '.member-card, .sponsor-card' ) ) {
+					closeAll();
+				}
+			} );
+
+			document.addEventListener( 'keydown', ( event ) => {
+				if ( event.key === 'Escape' ) {
+					closeAll();
+				}
+			} );
+		};
+
 		initBioDrawers();
 		initSpotlightCountdowns();
+		initStatementRotators();
+		initBioCardToggles();
 		initVideoScrollHero();
 		initFounderCarousels();
 		initPitchCalculators();

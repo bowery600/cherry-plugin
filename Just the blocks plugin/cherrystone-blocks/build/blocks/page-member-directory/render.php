@@ -61,6 +61,15 @@ $members = get_posts(
 
 $total_members = count( $members );
 
+$member_roles = array();
+foreach ( $members as $member ) {
+	$member_role = get_post_meta( $member->ID, 'cs_member_role', true );
+	if ( $member_role && ! in_array( $member_role, $member_roles, true ) ) {
+		$member_roles[] = $member_role;
+	}
+}
+sort( $member_roles, SORT_NATURAL | SORT_FLAG_CASE );
+
 ?>
 <div class="cherrystone-page-template cherrystone-page-member-directory-template" data-member-directory>
 	<section class="page-hero">
@@ -91,6 +100,25 @@ $total_members = count( $members );
 					placeholder="<?php esc_attr_e( 'Search by name, expertise, or company', 'cherrystone-blocks' ); ?>"
 					data-member-directory-search
 				>
+				<select
+					class="member-directory-select"
+					aria-label="<?php esc_attr_e( 'Filter members by role', 'cherrystone-blocks' ); ?>"
+					data-member-directory-role
+				>
+					<option value=""><?php esc_html_e( 'All roles', 'cherrystone-blocks' ); ?></option>
+					<?php foreach ( $member_roles as $member_role ) : ?>
+						<option value="<?php echo esc_attr( strtolower( $member_role ) ); ?>"><?php echo esc_html( $member_role ); ?></option>
+					<?php endforeach; ?>
+				</select>
+				<select
+					class="member-directory-select"
+					aria-label="<?php esc_attr_e( 'Sort members', 'cherrystone-blocks' ); ?>"
+					data-member-directory-sort
+				>
+					<option value="first-asc"><?php esc_html_e( 'First name A-Z', 'cherrystone-blocks' ); ?></option>
+					<option value="last-asc"><?php esc_html_e( 'Last name A-Z', 'cherrystone-blocks' ); ?></option>
+					<option value="first-desc"><?php esc_html_e( 'Name Z-A', 'cherrystone-blocks' ); ?></option>
+				</select>
 			</div>
 		</div>
 	</section>
@@ -131,8 +159,9 @@ $total_members = count( $members );
 						$initials = substr( $initials, 0, 2 );
 
 						$search_text = strtolower( trim( $name . ' ' . $role . ' ' . wp_strip_all_tags( $bio ) ) );
+						$last_name   = strtolower( end( $words ) );
 						?>
-						<article class="member-card" tabindex="0" data-member-card data-search="<?php echo esc_attr( $search_text ); ?>" style="cursor:pointer;height:100%;">
+						<article class="member-card" tabindex="0" data-member-card data-search="<?php echo esc_attr( $search_text ); ?>" data-name="<?php echo esc_attr( strtolower( $name ) ); ?>" data-last="<?php echo esc_attr( $last_name ); ?>" data-role="<?php echo esc_attr( strtolower( $role ) ); ?>" style="cursor:pointer;height:100%;">
 							<div class="member-directory-card-front">
 								<div class="member-avatar">
 									<?php if ( $photo_url ) : ?>

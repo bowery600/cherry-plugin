@@ -1449,7 +1449,8 @@ section.block.warm { background: var(--paper-warm); }
   background: var(--accent);
   flex-shrink: 0;
 }
-/* Phrases render as a static stacked list (rotation removed). */
+/* Phrases stack statically until frontend.js marks the section live
+   (no-JS and prefers-reduced-motion keep the static list). */
 .about-statement-rotator {
   position: relative;
 }
@@ -1466,8 +1467,43 @@ section.block.warm { background: var(--paper-warm); }
   color: var(--accent);
   font-weight: inherit;
 }
+.about-statement.is-rotating .asr-phrase {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.55s var(--ease-smooth), transform 0.55s var(--ease-smooth);
+  pointer-events: none;
+}
+.about-statement.is-rotating .asr-phrase.is-active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.about-statement.is-rotating .asr-phrase.is-leaving {
+  opacity: 0;
+  transform: translateY(-22px);
+}
 .about-statement-pips {
   display: none;
+}
+.about-statement.is-rotating .about-statement-pips {
+  display: flex;
+  gap: 10px;
+  margin-top: clamp(28px, 4vw, 44px);
+}
+.about-statement.is-rotating .about-statement-pips span {
+  display: block;
+  width: 28px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.22);
+  transition: background-color 0.15s ease;
+}
+.about-statement.is-rotating .about-statement-pips span.is-active {
+  background: var(--accent);
 }
 .principles {
   display: grid;
@@ -1628,9 +1664,35 @@ section.block.warm { background: var(--paper-warm); }
 }
 .member-directory-search-wrap {
   margin-top: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+.member-directory-select {
+  padding: 14px 40px 14px 20px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%233A5A78' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.member-directory-select:focus {
+  border-color: var(--accent-ink);
+  box-shadow: 0 0 0 3px rgba(14, 65, 100, 0.12);
 }
 .member-directory-search {
-  width: 100%;
+  flex: 1 1 320px;
+  width: auto;
   max-width: 520px;
   min-width: min(320px, 100%);
   padding: 14px 22px;
@@ -1788,7 +1850,8 @@ section.block.warm { background: var(--paper-warm); }
 
 }
 .member-card:hover .member-bio,
-.member-card:focus-within .member-bio {
+.member-card:focus-within .member-bio,
+.member-card.is-open .member-bio {
   opacity: 1;
 
   pointer-events: auto;
@@ -1811,7 +1874,8 @@ section.block.warm { background: var(--paper-warm); }
 }
 .member-card:hover .member-link-cta,
 .member-card:focus-within .member-link-cta,
-.member-card:focus-visible .member-link-cta {
+.member-card:focus-visible .member-link-cta,
+.member-card.is-open .member-link-cta {
   opacity: 1;
 
 }
@@ -4274,6 +4338,8 @@ section.block.warm { background: var(--paper-warm); }
   100% { transform: translateX(calc(-50% - 10px)); }
 }
 .sponsor-card {
+  position: relative;
+  overflow: hidden;
   flex: 0 0 240px;
   box-sizing: border-box;
   display: flex;
@@ -4289,8 +4355,9 @@ section.block.warm { background: var(--paper-warm); }
     transform 0.2s ease, box-shadow 0.2s ease;
 }
 .sponsor-card-link {
-  height: 100%;
-  min-height: 200px;
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 160px;
   padding: 22px;
   text-decoration: none;
   color: inherit;
@@ -4339,6 +4406,76 @@ section.block.warm { background: var(--paper-warm); }
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+/* "View bio" toggle + overlay (click-to-open; mirrors the member cards) */
+.sponsor-bio-toggle {
+  margin: 0 22px 18px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--accent-ink);
+}
+.sponsor-bio-toggle:focus-visible {
+  outline: 2px solid var(--accent-ink);
+  outline-offset: 3px;
+}
+.sponsor-card-bio {
+  position: absolute;
+  inset: 0;
+  background: var(--surface);
+  border-radius: inherit;
+  padding: 24px 22px 56px;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ink);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  overflow-y: auto;
+  z-index: 10;
+  pointer-events: none;
+}
+.sponsor-card-bio::before {
+  content: "About";
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent-ink);
+  letter-spacing: 0.06em;
+  margin-bottom: 12px;
+}
+.sponsor-card.is-open .sponsor-card-bio {
+  opacity: 1;
+  pointer-events: auto;
+}
+.sponsor-link-cta {
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  bottom: 20px;
+  z-index: 11;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--accent-ink);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+.sponsor-card.is-open .sponsor-link-cta {
+  opacity: 1;
+}
+.sponsor-link-cta a {
+  color: inherit;
+  text-decoration: none;
+  pointer-events: auto;
+}
 /* "See all" footer link */
 .sponsor-carousel-footer {
   display: flex;
@@ -4380,7 +4517,7 @@ section.block.warm { background: var(--paper-warm); }
   }
 }
 @media (max-width: 900px) {
-  .about-statement-rotator {
+  .about-statement.is-rotating .about-statement-rotator {
     min-height: clamp(112px, 22vw, 168px);
   }
   .sponsor-benefits-layout {
@@ -5936,7 +6073,8 @@ section.block.warm { background: var(--paper-warm); }
 }
 
 .cherrystone-page-member-directory-template .member-card:hover .member-bio,
-.cherrystone-page-member-directory-template .member-card:focus-within .member-bio {
+.cherrystone-page-member-directory-template .member-card:focus-within .member-bio,
+.cherrystone-page-member-directory-template .member-card.is-open .member-bio {
   opacity: 1 !important;
   transform: scale(1) translateY(0) !important;
   pointer-events: auto !important;
@@ -5973,7 +6111,8 @@ section.block.warm { background: var(--paper-warm); }
 }
 
 .cherrystone-page-member-directory-template .member-card:hover .member-link-cta,
-.cherrystone-page-member-directory-template .member-card:focus-within .member-link-cta {
+.cherrystone-page-member-directory-template .member-card:focus-within .member-link-cta,
+.cherrystone-page-member-directory-template .member-card.is-open .member-link-cta {
   opacity: 1 !important;
   transform: translateY(0) !important;
   pointer-events: auto !important;

@@ -94,10 +94,17 @@ $render_card = static function ( $post, $assets_base, $on_error, $clone = false 
 				</span>
 			</div>
 			<span class="sponsor-card-name"><?php echo esc_html( $name ); ?></span>
-			<?php if ( $description ) : ?>
-				<span class="sponsor-card-desc"><?php echo esc_html( $description ); ?></span>
-			<?php endif; ?>
 		</a>
+		<?php if ( $description ) : ?>
+			<button class="sponsor-bio-toggle" type="button" aria-expanded="false"<?php echo $tab_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+				<?php esc_html_e( 'View bio', 'cherrystone-blocks' ); ?>
+				<svg width="10" height="10" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+			</button>
+			<p class="sponsor-card-bio"><?php echo esc_html( $description ); ?></p>
+			<?php if ( $url ) : ?>
+				<span class="sponsor-link-cta"><a href="<?php echo esc_url( $url ); ?>" target="_blank" rel="noopener noreferrer"<?php echo $tab_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>><?php esc_html_e( 'Visit website ->', 'cherrystone-blocks' ); ?></a></span>
+			<?php endif; ?>
+		<?php endif; ?>
 	</article>
 	<?php
 };
