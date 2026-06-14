@@ -399,12 +399,16 @@
 							parseInt( s.dataset.step ) === stepIndex
 						)
 					);
-					labels.forEach( ( l ) =>
-						l.classList.toggle(
-							'is-active',
-							parseInt( l.dataset.stepLabel ) === stepIndex
-						)
-					);
+					labels.forEach( ( l ) => {
+						const isActive =
+							parseInt( l.dataset.stepLabel ) === stepIndex;
+						l.classList.toggle( 'is-active', isActive );
+						if ( isActive ) {
+							l.setAttribute( 'aria-current', 'step' );
+						} else {
+							l.removeAttribute( 'aria-current' );
+						}
+					} );
 					if ( progressBar ) {
 						progressBar.style.width = `${
 							( stepIndex / totalSteps ) * 100

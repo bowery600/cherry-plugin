@@ -43,6 +43,7 @@ export default function save( { attributes } ) {
 							<span
 								className="step-label is-active"
 								data-step-label="1"
+								aria-current="step"
 							>
 								Basic Info
 							</span>
