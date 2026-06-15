@@ -1,7 +1,8 @@
 import { RichText, useBlockProps } from '@wordpress/block-editor';
 
 export default function save( { attributes } ) {
-	const { eyebrow, heading, lede, faqs = [] } = attributes;
+	const { eyebrow, heading, lede, faqs = [], blockId } = attributes;
+	const uniqueId = blockId || 'fallback';
 	const blockProps = useBlockProps.save( {
 		className: 'block faq-accordion-section',
 	} );
@@ -52,8 +53,10 @@ export default function save( { attributes } ) {
 						>
 							<button
 								type="button"
+								id={ `faq-trigger-${ uniqueId }-${ index }` }
 								className="faq-accordion-trigger"
 								aria-expanded={ index === 0 }
+								aria-controls={ `faq-panel-${ uniqueId }-${ index }` }
 							>
 								<RichText.Content
 									tagName="span"
@@ -67,6 +70,9 @@ export default function save( { attributes } ) {
 								</span>
 							</button>
 							<div
+								id={ `faq-panel-${ uniqueId }-${ index }` }
+								role="region"
+								aria-labelledby={ `faq-trigger-${ uniqueId }-${ index }` }
 								className="faq-accordion-panel"
 								hidden={ index !== 0 }
 							>
