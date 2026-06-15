@@ -1,4 +1,4 @@
-import { useState } from '@wordpress/element';
+import { useState, useEffect } from '@wordpress/element';
 
 import {
 	InspectorControls,
@@ -58,12 +58,18 @@ const searchInputStyle = {
 	marginBottom: 32,
 };
 
-export default function Edit( { attributes, setAttributes } ) {
-	const { eyebrow, heading, lede, faqs = [] } = attributes;
+export default function Edit( { attributes, setAttributes, clientId } ) {
+	const { eyebrow, heading, lede, faqs = [], blockId } = attributes;
+	const uniqueId = blockId || clientId;
 	const blockProps = useBlockProps( {
 		className: 'block faq-accordion-section',
 	} );
 	const [ openIndex, setOpenIndex ] = useState( 0 );
+	useEffect( () => {
+		if ( ! attributes.blockId ) {
+			setAttributes( { blockId: clientId } );
+		}
+	}, [ attributes.blockId, clientId, setAttributes ] );
 
 	return (
 		<>
@@ -140,11 +146,14 @@ export default function Edit( { attributes, setAttributes } ) {
 								>
 									<button
 										type="button"
+										id={ `faq-trigger-${ uniqueId }-${ index }` }
 										className="faq-accordion-trigger"
 										style={ triggerStyle }
 										onClick={ () =>
 											setOpenIndex( isOpen ? -1 : index )
 										}
+										aria-expanded={ isOpen }
+										aria-controls={ `faq-panel-${ uniqueId }-${ index }` }
 									>
 										<RichText
 											tagName="span"
@@ -176,6 +185,9 @@ export default function Edit( { attributes, setAttributes } ) {
 									</button>
 									{ isOpen && (
 										<div
+											id={ `faq-panel-${ uniqueId }-${ index }` }
+											role="region"
+											aria-labelledby={ `faq-trigger-${ uniqueId }-${ index }` }
 											className="faq-accordion-panel"
 											style={ panelStyle }
 										>
