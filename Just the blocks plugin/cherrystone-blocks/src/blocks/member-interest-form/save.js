@@ -37,6 +37,7 @@ export default function save( { attributes } ) {
 								id="cs-mi-name"
 								name="name"
 								type="text"
+								aria-required="true"
 								placeholder="Jane Investor"
 								autoComplete="name"
 							/>
@@ -52,6 +53,7 @@ export default function save( { attributes } ) {
 								id="cs-mi-email"
 								name="email"
 								type="email"
+								aria-required="true"
 								placeholder="you@example.com"
 								autoComplete="email"
 							/>
@@ -77,6 +79,7 @@ export default function save( { attributes } ) {
 							<textarea
 								id="cs-mi-background"
 								name="background"
+								aria-required="true"
 								placeholder="Operating, investing, industry, or board experience."
 							></textarea>
 							<span
@@ -92,6 +95,7 @@ export default function save( { attributes } ) {
 							<textarea
 								id="cs-mi-interest"
 								name="interest"
+								aria-required="true"
 								placeholder="What draws you to the group, and how would you like to participate?"
 							></textarea>
 							<span
