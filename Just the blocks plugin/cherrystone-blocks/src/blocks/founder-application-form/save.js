@@ -70,6 +70,7 @@ export default function save( { attributes } ) {
 										name="name"
 										type="text"
 										data-required
+										aria-required="true"
 										autoComplete="name"
 									/>
 									<span
@@ -85,6 +86,7 @@ export default function save( { attributes } ) {
 										name="email"
 										type="email"
 										data-required
+										aria-required="true"
 										autoComplete="email"
 									/>
 									<span
@@ -102,6 +104,7 @@ export default function save( { attributes } ) {
 										name="company"
 										type="text"
 										data-required
+										aria-required="true"
 									/>
 									<span
 										className="field-error-msg"
@@ -140,6 +143,7 @@ export default function save( { attributes } ) {
 									<div
 										className="check-group"
 										data-required-group="stages"
+										role="group"
 									>
 										{ STAGES.map( ( s, index ) => (
 											<label
@@ -171,6 +175,7 @@ export default function save( { attributes } ) {
 									<div
 										className="check-group"
 										data-required-group="sectors"
+										role="group"
 									>
 										{ SECTORS.map( ( s, index ) => (
 											<label
@@ -222,6 +227,7 @@ export default function save( { attributes } ) {
 										name="amtRaising"
 										type="text"
 										data-required
+										aria-required="true"
 										placeholder="$1.5M"
 									/>
 									<span
@@ -269,6 +275,7 @@ export default function save( { attributes } ) {
 										id="cs-ap-what"
 										name="whatBuilding"
 										data-required
+										aria-required="true"
 									></textarea>
 									<span
 										className="field-error-msg"
@@ -284,6 +291,7 @@ export default function save( { attributes } ) {
 										id="cs-ap-why"
 										name="whyNow"
 										data-required
+										aria-required="true"
 									></textarea>
 									<span
 										className="field-error-msg"
