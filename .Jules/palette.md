@@ -1,0 +1,3 @@
+## 2024-06-19 - [WordPress Dynamic Blocks Accessibility]
+**Learning:** WordPress `render.php` dynamic blocks handle frontend interactions using inline vanilla JavaScript scripts attached below the template output. It’s critical to sync `aria-pressed` states for custom UI toggle buttons (like portfolio grids) alongside standard class toggling in these script blocks.
+**Action:** When adding ARIA states to buttons managed via vanilla JS in `render.php` blocks, locate the script block at the end of the file and ensure the `aria-*` attributes are updated dynamically in sync with visual DOM changes.
