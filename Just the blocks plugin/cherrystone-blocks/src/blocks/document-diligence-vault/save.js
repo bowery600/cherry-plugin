@@ -71,7 +71,12 @@ export default function save( { attributes } ) {
 										</span>
 									</span>
 								) : (
-									<button className="btn btn-ghost doc-download-btn-vault">
+									<button
+										className="btn btn-ghost doc-download-btn-vault"
+										aria-label={ `Download ${
+											doc.title || 'document'
+										}` }
+									>
 										DOWNLOAD
 									</button>
 								) }
