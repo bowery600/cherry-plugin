@@ -1,0 +1,3 @@
+## 2024-06-24 - Interactive filter buttons missing ARIA state tracking
+**Learning:** Found that custom filter buttons generated via `render.php` (e.g., in the `portfolio-grid` block) rely heavily on inline vanilla JS for `.active` class toggling but originally failed to synchronize state to the accessibility tree. Relying purely on CSS classes for UI state ignores screen readers.
+**Action:** When working with inline vanilla JS component scripts, ensure `s.setAttribute('aria-pressed', 'true'/'false')` logic perfectly mirrors any `.classList.add`/`.remove('active')` logic so visual state isn't decoupled from accessibility state.
