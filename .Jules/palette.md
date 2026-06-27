@@ -1,0 +1,3 @@
+## 2026-06-27 - Screen reader awareness for active tab/filter button states
+**Learning:** When building custom filter components (like the portfolio grid filters), visual state changes (e.g., adding an 'active' class) are invisible to screen readers unless paired with appropriate ARIA attributes.
+**Action:** Always pair visual active states on custom toggle buttons with `aria-pressed="true"` (or `aria-selected="true"` for tabs within a tablist), and ensure JavaScript toggles the ARIA state synchronously with the visual class. Additionally, group related filters using `role="group"` and `aria-label` to provide context to the user about what the buttons control.
