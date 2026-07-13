@@ -82,13 +82,13 @@ $wrapper_attributes = get_block_wrapper_attributes(
 		?>
 
 		<?php if ( ! empty( $tags ) ) : ?>
-			<div class="portfolio-controls resource-tabs" style="margin-bottom: 32px; display: flex; gap: 12px; flex-wrap: wrap;">
-				<button class="chip active" data-filter="all"><?php esc_html_e( 'All', 'cherrystone-blocks' ); ?></button>
+			<div class="portfolio-controls resource-tabs" role="group" aria-label="<?php esc_attr_e( 'Filter resources', 'cherrystone-blocks' ); ?>" style="margin-bottom: 32px; display: flex; gap: 12px; flex-wrap: wrap;">
+				<button class="chip active" data-filter="all" aria-pressed="true"><?php esc_html_e( 'All', 'cherrystone-blocks' ); ?></button>
 				<?php foreach ( $tags as $tag_name ) : ?>
 					<?php
 					$filter_val = strtolower( str_replace( ' ', '-', $tag_name ) );
 					?>
-					<button class="chip" data-filter="<?php echo esc_attr( $filter_val ); ?>"><?php echo esc_html( $tag_name ); ?></button>
+					<button class="chip" data-filter="<?php echo esc_attr( $filter_val ); ?>" aria-pressed="false"><?php echo esc_html( $tag_name ); ?></button>
 				<?php endforeach; ?>
 			</div>
 		<?php endif; ?>
