@@ -1,0 +1,4 @@
+## 2024-07-16 - Initial Journal\n**Learning:** Starting journal for Cherrystone Blocks.\n**Action:** Keep learning.
+## 2024-07-16 - Synchronizing ARIA states with visual classes in server-rendered templates
+**Learning:** For server-rendered WordPress blocks with interactive elements (like filter groups), defining the initial ARIA state in the PHP template must be paired with JavaScript logic to synchronize the ARIA state (`aria-pressed`) along with visual classes (`.active`). Applying `role="group"` and `aria-label` to the container improves screen reader context for related buttons.
+**Action:** When adding or modifying interactive UI components like toggle groups or filter buttons in server-side rendered templates, explicitly check if the ARIA state requires JavaScript synchronization to match visual state changes.
