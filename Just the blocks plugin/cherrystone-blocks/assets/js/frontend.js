@@ -125,6 +125,15 @@
 
 					if ( panel ) {
 						// CSS grid-template-rows transition handles visibility
+						if ( isOpen ) {
+							panel.hidden = false;
+						} else {
+							setTimeout( () => {
+								if ( ! item.classList.contains( 'is-open' ) ) {
+									panel.hidden = true;
+								}
+							}, 400 );
+						}
 					}
 				};
 
