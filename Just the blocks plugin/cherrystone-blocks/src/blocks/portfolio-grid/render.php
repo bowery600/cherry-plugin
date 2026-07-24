@@ -135,18 +135,18 @@ else :
 			</div>
 
 			<div class="portfolio-filters">
-				<div class="filter-group filter-status">
-					<button class="filter-btn active" data-filter-type="status" data-filter-val="Active">Active</button>
-					<button class="filter-btn" data-filter-type="status" data-filter-val="Exit">Exits</button>
+				<div class="filter-group filter-status" role="group" aria-label="Filter by status">
+					<button class="filter-btn active" aria-pressed="true" data-filter-type="status" data-filter-val="Active">Active</button>
+					<button class="filter-btn" aria-pressed="false" data-filter-type="status" data-filter-val="Exit">Exits</button>
 				</div>
-				<div class="filter-group filter-vertical">
-					<button class="filter-btn active" data-filter-type="sector" data-filter-val="All">All Verticals</button>
-					<button class="filter-btn" data-filter-type="sector" data-filter-val="Life Sciences">Life Sciences</button>
-					<button class="filter-btn" data-filter-type="sector" data-filter-val="Software">Software</button>
-					<button class="filter-btn" data-filter-type="sector" data-filter-val="Consumer">Consumer</button>
-					<button class="filter-btn" data-filter-type="sector" data-filter-val="Industrial Tech">Industrial Tech</button>
-					<button class="filter-btn" data-filter-type="sector" data-filter-val="Healthcare">Healthcare</button>
-					<button class="filter-btn" data-filter-type="sector" data-filter-val="Fintech">Fintech</button>
+				<div class="filter-group filter-vertical" role="group" aria-label="Filter by sector">
+					<button class="filter-btn active" aria-pressed="true" data-filter-type="sector" data-filter-val="All">All Verticals</button>
+					<button class="filter-btn" aria-pressed="false" data-filter-type="sector" data-filter-val="Life Sciences">Life Sciences</button>
+					<button class="filter-btn" aria-pressed="false" data-filter-type="sector" data-filter-val="Software">Software</button>
+					<button class="filter-btn" aria-pressed="false" data-filter-type="sector" data-filter-val="Consumer">Consumer</button>
+					<button class="filter-btn" aria-pressed="false" data-filter-type="sector" data-filter-val="Industrial Tech">Industrial Tech</button>
+					<button class="filter-btn" aria-pressed="false" data-filter-type="sector" data-filter-val="Healthcare">Healthcare</button>
+					<button class="filter-btn" aria-pressed="false" data-filter-type="sector" data-filter-val="Fintech">Fintech</button>
 				</div>
 			</div>
 
@@ -251,8 +251,12 @@ else :
 
 				// Update active classes for the group
 				const siblings = this.parentElement.querySelectorAll('.filter-btn');
-				siblings.forEach(s => s.classList.remove('active'));
+				siblings.forEach(s => {
+					s.classList.remove('active');
+					s.setAttribute('aria-pressed', 'false');
+				});
 				this.classList.add('active');
+				this.setAttribute('aria-pressed', 'true');
 
 				if (type === 'status') {
 					currentStatus = val;
