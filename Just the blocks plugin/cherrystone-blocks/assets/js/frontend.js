@@ -941,10 +941,12 @@
 
 					chips.forEach( ( chip ) => {
 						chip.addEventListener( 'click', () => {
-							chips.forEach( ( c ) =>
-								c.classList.remove( 'active' )
-							);
+							chips.forEach( ( c ) => {
+								c.classList.remove( 'active' );
+								c.setAttribute( 'aria-pressed', 'false' );
+							} );
 							chip.classList.add( 'active' );
+							chip.setAttribute( 'aria-pressed', 'true' );
 
 							const filter = chip.getAttribute( 'data-filter' );
 							collapseExpanded = false;
@@ -1034,10 +1036,12 @@
 
 					chips.forEach( ( chip ) => {
 						chip.addEventListener( 'click', () => {
-							chips.forEach( ( c ) =>
-								c.classList.remove( 'active' )
-							);
+							chips.forEach( ( c ) => {
+								c.classList.remove( 'active' );
+								c.setAttribute( 'aria-pressed', 'false' );
+							} );
 							chip.classList.add( 'active' );
+							chip.setAttribute( 'aria-pressed', 'true' );
 							filter = chip.getAttribute( 'data-filter' );
 							expanded = false;
 							render();
@@ -1821,6 +1825,16 @@
 					page.querySelectorAll( '.filter-btn' ).forEach(
 						( button ) => {
 							button.addEventListener( 'click', () => {
+								const siblings =
+									button.parentElement.querySelectorAll(
+										'.filter-btn'
+									);
+								siblings.forEach( ( s ) => {
+									s.classList.remove( 'active' );
+									s.setAttribute( 'aria-pressed', 'false' );
+								} );
+								button.classList.add( 'active' );
+								button.setAttribute( 'aria-pressed', 'true' );
 								window.requestAnimationFrame( retarget );
 							} );
 						}
