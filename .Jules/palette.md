@@ -1,0 +1,3 @@
+## 2024-08-29 - Missing aria-pressed on toggle chips
+**Learning:** Found an accessibility issue pattern across `page-communications` and `resource-cards` where "chip" buttons are used as toggles or tabs for filtering content. They visually indicate the active state via an `.active` class, but lack the `aria-pressed` state for screen readers.
+**Action:** Always ensure that when implementing custom toggle buttons or filters (like chips) that use a visual class for active state, the `aria-pressed="true"` attribute is synced with the active state in JavaScript and set correctly on the server side as well.
