@@ -202,10 +202,10 @@ if ( ! empty( $communications ) ) {
 
 	if ( count( $category_counts ) > 1 ) {
 		$feed .= '<div class="portfolio-controls comms-feed-tabs" role="group" aria-label="' . esc_attr__( 'Filter updates by category', 'cherrystone-blocks' ) . '">';
-		$feed .= '<button class="chip active" data-filter="all">' . esc_html__( 'All', 'cherrystone-blocks' ) . '<span class="chip-count mono">' . esc_html( count( $communications ) ) . '</span></button>';
+		$feed .= '<button class="chip active" aria-pressed="true" data-filter="all">' . esc_html__( 'All', 'cherrystone-blocks' ) . '<span class="chip-count mono">' . esc_html( count( $communications ) ) . '</span></button>';
 		foreach ( $category_counts as $cat_name => $cat_count ) {
 			$filter_val = strtolower( str_replace( ' ', '-', $cat_name ) );
-			$feed      .= '<button class="chip" data-filter="' . esc_attr( $filter_val ) . '">' . esc_html( $cat_name ) . '<span class="chip-count mono">' . esc_html( $cat_count ) . '</span></button>';
+			$feed      .= '<button class="chip" aria-pressed="false" data-filter="' . esc_attr( $filter_val ) . '">' . esc_html( $cat_name ) . '<span class="chip-count mono">' . esc_html( $cat_count ) . '</span></button>';
 		}
 		$feed .= '</div>';
 	}
