@@ -1,0 +1,3 @@
+## 2024-09-02 - Filter Group ARIA State Synchronization
+**Learning:** In the Cherrystone blocks (e.g., portfolio-grid), filter buttons use a `.active` class but lack `aria-pressed` states, and their container lacks `role="group"` and `aria-label`. This makes it difficult for screen readers to understand the filter context and active selection.
+**Action:** When implementing filter groups in server-rendered blocks, define the container with `role="group"` and `aria-label`, add `aria-pressed="true/false"` on the buttons, and sync the ARIA state with the visual class via the block's inline JavaScript.
