@@ -103,7 +103,7 @@ $wrapper_attributes = get_block_wrapper_attributes( array( 'class' => 'block fou
 
 					<div class="founder-carousel-indicators">
 						<?php foreach ( $testimonials as $index => $post ) : ?>
-							<button class="carousel-dot-indicator<?php echo 0 === $index ? ' is-active' : ''; ?>" aria-label="<?php echo esc_attr( sprintf( __( 'Go to slide %d', 'cherrystone-blocks' ), $index + 1 ) ); ?>"></button>
+							<button class="carousel-dot-indicator<?php echo 0 === $index ? ' is-active' : ''; ?>" aria-label="<?php echo esc_attr( sprintf( __( 'Go to slide %d', 'cherrystone-blocks' ), $index + 1 ) ); ?>"<?php echo 0 === $index ? ' aria-current="true"' : ''; ?>></button>
 						<?php endforeach; ?>
 					</div>
 				</div>

@@ -1,0 +1,3 @@
+## 2026-09-24 - Added aria-pressed and aria-current to interactive controls
+**Learning:** The custom filter button groups (portfolio grid, communications page) and carousel indicators were using an 'active' CSS class but missing 'aria-pressed' and 'aria-current' attributes respectively, especially on server render and JavaScript sync. This is a recurring pattern where visual state is updated without assistive technology state.
+**Action:** When implementing filter groups or toggle buttons in server-rendered templates, always sync the ARIA state with visual classes (e.g., `.active`) via inline JavaScript or the main frontend script.
