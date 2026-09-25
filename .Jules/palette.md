@@ -1,0 +1,3 @@
+## 2024-05-15 - Filter group accessibility sync
+**Learning:** Filter buttons in server-rendered templates often use visual classes (like `.active`) without syncing ARIA states (`aria-pressed`). This creates an accessibility barrier where screen reader users cannot perceive the active filter state.
+**Action:** When implementing filter groups or toggle buttons in server-rendered templates, follow the project pattern: define the container with `role="group"` and a descriptive `aria-label` (if a group), use `aria-pressed` to indicate active state, and sync the ARIA state with visual classes via inline JavaScript or the main frontend script.
