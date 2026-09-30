@@ -1,0 +1,3 @@
+## 2026-09-30 - Syncing ARIA States in WordPress Blocks
+**Learning:** For server-rendered WordPress blocks that rely on inline scripts for frontend interactivity (like filter buttons), adding `aria-pressed` states requires syncing them manually alongside class toggles in the inline script since there's no underlying React state management.
+**Action:** When implementing filter groups in server-rendered templates, define the container with `role="group"` and a descriptive `aria-label`, use `aria-pressed` to indicate active state, and sync the ARIA state with visual classes via inline JavaScript.
