@@ -1,0 +1,4 @@
+## 2026-10-09 - Portfolio Grid Filter Accessibility\n**Learning:** Filter buttons in custom blocks should use  with descriptive s and  to ensure screen reader users can identify the purpose of the group and which filter is active.\n**Action:** When creating grouped toggle controls or filters in the future, always wrap them in a semantically labeled group and synchronize their active visual state with  or .
+## 2024-10-09 - Portfolio Grid Filter Accessibility
+**Learning:** Filter buttons in custom blocks should use `role="group"` with descriptive `aria-label`s and `aria-pressed` to ensure screen reader users can identify the purpose of the group and which filter is active.
+**Action:** When creating grouped toggle controls or filters in the future, always wrap them in a semantically labeled group and synchronize their active visual state with `aria-pressed` or `aria-current`.
