@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .faq-accordion-panel {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.4s;
+    }
+    .faq-accordion-item.is-open .faq-accordion-panel {
+      grid-template-rows: 1fr;
+    }
+  </style>
+</head>
+<body>
+  <div class="faq-accordion-section">
+    <div class="faq-accordion-item is-open" data-faq-item>
+      <button class="faq-accordion-trigger" aria-expanded="true">Q1</button>
+      <div class="faq-accordion-panel" id="panel1">Ans 1</div>
+    </div>
+    <div class="faq-accordion-item" data-faq-item>
+      <button class="faq-accordion-trigger" aria-expanded="false">Q2</button>
+      <div class="faq-accordion-panel" id="panel2" hidden>Ans 2</div>
+    </div>
+  </div>
+  <script>
+    // simplified version of the logic
+    document.querySelectorAll('.faq-accordion-section').forEach(section => {
+      const items = Array.from(section.querySelectorAll('.faq-accordion-item'));
+      const setOpen = ( item, isOpen ) => {
+          const trigger = item.querySelector('.faq-accordion-trigger');
+          const panel = item.querySelector('.faq-accordion-panel');
+          item.classList.toggle('is-open', isOpen);
+          if (trigger) trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+          if (panel) {
+              if (isOpen) {
+                  panel.hidden = false;
+              } else {
+                  setTimeout(() => {
+                      if (!item.classList.contains('is-open')) panel.hidden = true;
+                  }, 400);
+              }
+          }
+      };
+      items.forEach(item => {
+          const trigger = item.querySelector('.faq-accordion-trigger');
+          trigger.addEventListener('click', () => {
+              const nextState = !item.classList.contains('is-open');
+              items.forEach(otherItem => setOpen(otherItem, false));
+              setOpen(item, nextState);
+          });
+      });
+    });
+  </script>
+</body>
+</html>
