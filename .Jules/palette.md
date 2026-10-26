@@ -1,0 +1,3 @@
+## 2026-10-26 - Syncing Accessible Accordion State with CSS Transitions
+**Learning:** When using CSS grid transitions (`grid-template-rows`) to animate accordion panels, adding the HTML `hidden` attribute instantly on close breaks the animation and removes the element abruptly. However, omitting the `hidden` attribute leaves visually collapsed content accessible to screen readers, violating a11y standards.
+**Action:** Remove the `hidden` attribute immediately when expanding, but use a `setTimeout` matching the exact CSS transition duration (e.g., 400ms) before applying the `hidden` attribute when collapsing. This ensures a smooth visual transition while properly removing the content from the accessibility tree once it is no longer visible.

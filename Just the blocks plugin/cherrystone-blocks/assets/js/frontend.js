@@ -125,6 +125,16 @@
 
 					if ( panel ) {
 						// CSS grid-template-rows transition handles visibility
+						// Manage hidden attribute for screen readers while respecting transitions
+						if ( isOpen ) {
+							panel.hidden = false;
+						} else {
+							setTimeout( () => {
+								if ( ! item.classList.contains( 'is-open' ) ) {
+									panel.hidden = true;
+								}
+							}, 400 ); // Match CSS transition duration
+						}
 					}
 				};
 
@@ -686,7 +696,7 @@
 						const active = grid
 							? grid.querySelector(
 									'.calc-selector-btn.is-active'
-							  )
+								)
 							: null;
 						return active ? active.dataset.value : null;
 					};
@@ -872,7 +882,7 @@
 						? parseInt(
 								grid.getAttribute( 'data-collapse-after' ),
 								10
-						  ) || 0
+							) || 0
 						: 0;
 					let collapseExpanded = false;
 					let showMoreBtn = null;
@@ -1671,7 +1681,7 @@
 								? null
 								: hubPositions[
 										normalizeSector( currentSector )
-								  ] || hubPositions.Other;
+									] || hubPositions.Other;
 
 						items.forEach( ( item, index ) => {
 							const visible = visibleItems.indexOf( item ) !== -1;
@@ -1744,10 +1754,10 @@
 							const hub =
 								currentSector === 'All'
 									? hubPositions[ item.sector ] ||
-									  hubPositions.Other
+										hubPositions.Other
 									: hubPositions[
 											normalizeSector( currentSector )
-									  ] || hubPositions.Other;
+										] || hubPositions.Other;
 							line.style.opacity = showLine ? '1' : '0';
 							line.setAttribute( 'x1', `${ hub.x }%` );
 							line.setAttribute( 'y1', `${ hub.y }%` );
@@ -1994,7 +2004,7 @@
 					const phrases = rotator
 						? Array.from(
 								rotator.querySelectorAll( '.asr-phrase' )
-						  )
+							)
 						: [];
 
 					if ( phrases.length < 2 ) {
