@@ -66,7 +66,7 @@ export default function save( { attributes } ) {
 								href: post.url,
 								className: 'sidebar-post-card',
 								key: index,
-						  }
+							}
 						: { className: 'sidebar-post-card', key: index };
 					return (
 						<PostCardTag { ...postCardProps }>
