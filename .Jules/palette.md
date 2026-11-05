@@ -1,0 +1,3 @@
+## 2023-11-05 - Add ARIA Roles and State to Portfolio Filter Buttons
+**Learning:** The portfolio grid filter buttons are missing the 'aria-pressed' state which makes it hard for screen reader users to identify which filter is active. Additionally, the filter buttons lack the 'role="group"' on their wrappers. Since this project manages ARIA states for tabs/groups natively in inline JS or global scripts (e.g. syncing active class with ARIA state), I should ensure that any added ARIA attributes are kept in sync with the visual state.
+**Action:** Always verify that custom tab or filter patterns use standard ARIA roles ('group', 'tablist') and state attributes ('aria-pressed', 'aria-current', or 'aria-selected') to make them accessible.
