@@ -1,0 +1,3 @@
+## 2024-05-15 - Filter Button ARIA States
+**Learning:** Found an accessibility issue pattern in filter buttons across multiple components (`portfolio-grid` and `page-communications`). They use visual `active` classes for selected states, but lack `aria-pressed` or `aria-current` attributes to convey this state to screen readers. In `portfolio-grid`, the filter groups also lack `role="group"` and `aria-label`.
+**Action:** When implementing filter groups or toggle buttons, ensure the container has `role="group"` with a descriptive `aria-label`. Buttons within these groups should use `aria-pressed="true/false"` synced with their visual active state to ensure accessibility for screen reader users.
